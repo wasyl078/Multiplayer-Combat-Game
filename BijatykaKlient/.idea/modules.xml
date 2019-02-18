@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BijatykaKlient.iml" filepath="$PROJECT_DIR$/BijatykaKlient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../BijatykaSerwer/BijatykaSerwer.iml" filepath="$PROJECT_DIR$/../BijatykaSerwer/BijatykaSerwer.iml" />
     </modules>
   </component>
 </project>
