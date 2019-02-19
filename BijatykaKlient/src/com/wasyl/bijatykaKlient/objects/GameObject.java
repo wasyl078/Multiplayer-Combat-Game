@@ -15,7 +15,7 @@ public abstract class GameObject {
     }
 
     //draw()
-    public abstract void draw(GraphicsContext gc);
+    public abstract void draw(GraphicsContext gc, int cpx, int cpy);
 
     //gettery i settery
     public double getPositionX() {

@@ -17,9 +17,9 @@ public class DrawHandler {
         players = new LinkedList<Player>();
     }
 
-    public void draw(GraphicsContext gc) {
+    public void draw(GraphicsContext gc,int cpx,int cpy) {
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).draw(gc);
+            objects.get(i).draw(gc,cpx,cpy);
         }
     }
 

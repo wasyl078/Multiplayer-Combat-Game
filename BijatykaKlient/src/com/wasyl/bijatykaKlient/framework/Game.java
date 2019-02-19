@@ -153,9 +153,8 @@ public class Game extends Application {
             gc.setFill(Color.BLACK);
             gc.fillRect(0, 0, 5000, 2000);
             camera.update();
-            //canvas.setTranslateX(camera.getPositionX());
-            //canvas.setTranslateY(0);
-            drawHandler.draw(gc);
+            drawHandler.draw(gc, (int)camera.getPositionX(), (int)camera.getPositionY());
+
         }
     }
 

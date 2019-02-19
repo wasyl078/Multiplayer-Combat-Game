@@ -28,7 +28,10 @@ public class Player extends GameObject {
 
     //rysowanie odpoiwedniego obrazka postaci
     @Override
-    public void draw(GraphicsContext gc) {
+    public void draw(GraphicsContext gc,int cpx,int cpy) {
+        setPositionX(getPositionX() +cpx);
+        setPositionY(getPositionY() +cpy);
+
         if (direction == 1) gc.drawImage(imageLeft, getPositionX(), getPositionY());
         else gc.drawImage(imageRight, getPositionX(), getPositionY());
     }

@@ -14,8 +14,8 @@ public class Platform extends GameObject {
         this.sizeWidth = sizeWidth;
     }
     @Override
-    public void draw(GraphicsContext gc) {
+    public void draw(GraphicsContext gc,int cpx,int cpy) {
         gc.setFill(Color.LIGHTGOLDENRODYELLOW);
-        gc.fillRect(getPositionX(),getPositionY(),sizeWidth,sizeHeight);
+        gc.fillRect(getPositionX() + cpx,getPositionY() + cpy,sizeWidth,sizeHeight);
     }
 }
