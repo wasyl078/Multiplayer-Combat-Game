@@ -1,39 +1,56 @@
 package com.wasyl.bijatykaKlient.framework;
-import com.wasyl.bijatykaKlient.objects.Handler;
-import com.wasyl.bijatykaKlient.objects.Player;
+
+import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.textures.Textures;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 
 public class Game extends Application {
 
-    private ArrayList<String>input = new ArrayList<String>();
+    //związane z okienkiem
+    private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    static double screenWidth = screenSize.getWidth();
+    static double screenHeight = screenSize.getHeight();
+    private Canvas canvas;
 
 
+    //związane z obiektami w grze
+    private ArrayList<String> input = new ArrayList<String>();
+    private DrawHandler drawHandler;
+    private Textures textures;
+
+
+    //związane z identyfikacją grtacza
+    private int playerLastAction = -1;
+    private int thisIndividualPlayerNumber = -1;
+
+    //main() wywołujący launch(), czyli start()
     public static void main(String[] args) {
         launch(args);
     }
 
+
+    //start() == launch()
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
+
+        //utworzEnie komunikacji z serwerem
+        Msg msg = new Msg(this);
+        Communication communication = new Communication(this, msg);
+
         stage.setTitle("Gra");
 
         //stworzenie ważnych objektów
-        Textures textures = new Textures();
-        Handler handler = new Handler();
-        Player player = new Player(40, 40, input, textures);
-        handler.addObject(player);
+        textures = new Textures();
+        drawHandler = new DrawHandler(textures);
 
         //stworzenie grupy
         Group root = new Group();
@@ -45,8 +62,12 @@ public class Game extends Application {
         theScene.setOnKeyPressed(
                 e -> {
                     String code = e.getCode().toString();
-                    if (!input.contains(code))
-                        input.add(code);
+                    if (!input.contains(code)) input.add(code);
+
+                    if (code.equals("UP")) setPlayerLastAction(1);
+                    else if (code.equals("RIGHT")) setPlayerLastAction(2);
+                    else if (code.equals("DOWN")) setPlayerLastAction(3);
+                    else if (code.equals("LEFT")) setPlayerLastAction(4);
                 });
 
         theScene.setOnKeyReleased(
@@ -57,35 +78,42 @@ public class Game extends Application {
 
 
         //stworzenie płótna
-        Canvas canvas = new Canvas(1920, 1080);
+        canvas = new Canvas(Game.screenWidth, Game.screenHeight);
         root.getChildren().add(canvas);
         stage.setMaximized(true);
         stage.setFullScreen(true);
-        //stworzenie pędzelka
-        GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        //stworzenie gameloopa
-        Timeline gameLoop = new Timeline();
-        gameLoop.setCycleCount(Timeline.INDEFINITE);
-        final long timeStart = System.currentTimeMillis();
-        KeyFrame kf = new KeyFrame(
-                Duration.seconds(0.017),                // 60 FPS
-                ae -> {
-                    double t = (System.currentTimeMillis() - timeStart) / 1000.0;
-
-                    gc.setFill(Color.BLACK);
-                    gc.fillRect(0, 0, 1920, 1080);
-
-                    handler.update();
-                    handler.draw(gc);
-                    System.out.println(input);
-                });
-
-        //odpalenie gameloopa
-        gameLoop.getKeyFrames().add(kf);
-        gameLoop.play();
 
         //wyświetlenie wszystkiego
         stage.show();
+    }
+
+    public void draw() {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        gc.fillRect(0, 0, 1920, 1080);
+
+        drawHandler.draw(gc);
+    }
+
+    //gettery
+    public DrawHandler getDrawHandler() {
+        return drawHandler;
+    }
+
+    public int getPlayerLastAction() {
+        return playerLastAction;
+    }
+
+    public void setPlayerLastAction(int playerLastAction) {
+        this.playerLastAction = playerLastAction;
+    }
+
+    public int getThisIndividualPlayerNumber() {
+        return thisIndividualPlayerNumber;
+    }
+
+    public void setThisIndividualPlayerNumber(int thisIndividualPlayerNumber) {
+        this.thisIndividualPlayerNumber = thisIndividualPlayerNumber;
     }
 }

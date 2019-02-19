@@ -16,10 +16,6 @@ public abstract class GameObject {
         setPositionY(y);
     }
 
-    //update()
-    public abstract void update(LinkedList<GameObject> object);
-
-
     //draw()
     public abstract void draw(GraphicsContext gc);
 
