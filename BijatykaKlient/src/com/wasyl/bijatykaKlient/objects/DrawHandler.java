@@ -37,8 +37,8 @@ public class DrawHandler {
         objects.add(gameObject);
     }
 
-    public void addPlayer(int playerNumber){
-        Player bufPlayer = new Player(0,0,playerNumber,textures);
+    public void addPlayer(int characterNumber,int playerNumber){
+        Player bufPlayer = new Player(0,0,characterNumber,playerNumber,textures);
         objects.add(bufPlayer);
         players.add(bufPlayer);
     }

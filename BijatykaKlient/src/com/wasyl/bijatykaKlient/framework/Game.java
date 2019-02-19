@@ -2,11 +2,13 @@ package com.wasyl.bijatykaKlient.framework;
 
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.textures.Textures;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -21,17 +23,20 @@ public class Game extends Application {
     public static double screenWidth = screenSize.getWidth();
     public static double screenHeight = screenSize.getHeight();
     private Canvas canvas;
-
+    private Image lukaszPrawoImage;
+    private Image maciekLewoImage;
+    private Image botPrawoImage;
 
     //związane z obiektami w grze
     private ArrayList<String> input = new ArrayList<String>();
     private DrawHandler drawHandler;
     private Textures textures;
-
+    private Camera camera;
 
     //związane z identyfikacją grtacza
     private int playerLastAction = 0;
     private int thisIndividualPlayerNumber = 0;
+    public static int isChoosen = 0;
 
     //main() wywołujący launch(), czyli start()
     public static void main(String[] args) {
@@ -41,11 +46,7 @@ public class Game extends Application {
 
     //start() == launch()
     @Override
-    public void start(Stage stage) {
-
-        stage = new CharacterChooser(new Textures());
-
-        stage = new Stage();
+    public void start(Stage stage) throws InterruptedException {
 
         stage.setTitle("Gra");
 
@@ -53,20 +54,50 @@ public class Game extends Application {
         textures = new Textures();
         drawHandler = new DrawHandler(textures);
         drawHandler.makeFirstLevel();
+        camera = new Camera(drawHandler.players);
+
+        //stworzenie grupy
+        Group root = new Group();
+
+        //wybór gracza
+        this.lukaszPrawoImage = textures.getLukaszPrawoImage();
+        this.maciekLewoImage = textures.getMaciekLewoImage();
+        this.botPrawoImage = textures.getBotPrawoImage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+        //obsługa zdarzeń (myszki)
+        scene.setOnMouseClicked(
+                e -> {
+
+                    double posX = e.getX();
+                    double posY = e.getY();
+                    if (posX >= screenWidth / 4 - lukaszPrawoImage.getWidth() / 2 && posX <= screenWidth / 4 + lukaszPrawoImage.getWidth() / 2) {
+                        if (posY >= screenHeight / 2 - lukaszPrawoImage.getHeight() / 2 && posY <= screenHeight / 2 + lukaszPrawoImage.getHeight() / 2) {
+                            isChoosen = 1;
+                        }
+                    } else if (posX >= screenWidth * 2 / 4 - maciekLewoImage.getWidth() / 2 && posX <= screenWidth * 2 / 4 + maciekLewoImage.getWidth() / 2) {
+                        if (posY >= screenHeight / 2 - maciekLewoImage.getHeight() / 2 && posY <= screenHeight / 2 + maciekLewoImage.getHeight() / 2) {
+                            isChoosen = 2;
+                        }
+                    } else if (posX >= screenWidth * 3 / 4 - botPrawoImage.getWidth() / 2 && posX <= screenWidth * 3 / 4 + maciekLewoImage.getWidth() / 2) {
+                        if (posY >= screenHeight / 2 - botPrawoImage.getHeight() / 2 && posY <= screenHeight / 2 + maciekLewoImage.getHeight() / 2) {
+                            isChoosen = 3;
+                        }
+                    }
+                });
+
+
+        //Scene theScene = new Scene(root, screenWidth,screenHeight,true, SceneAntialiasing.BALANCED);
+
 
         //utworzEnie komunikacji z serwerem
         Msg msg = new Msg(this);
         Communication communication = new Communication(this, msg);
 
-        //stworzenie grupy
-        Group root = new Group();
-        //Scene theScene = new Scene(root, screenWidth,screenHeight,true, SceneAntialiasing.BALANCED);
-        Scene theScene = new Scene(root);
-        stage.setScene(theScene);
-
         //obsługa zdarzeń z klawiatury
 
-        theScene.setOnKeyPressed(
+        scene.setOnKeyPressed(
                 e -> {
                     String code = e.getCode().toString();
                     if (!input.contains(code)) input.add(code);
@@ -78,11 +109,11 @@ public class Game extends Application {
                     else if (code.equals("ESCAPE")) System.exit(0);
                 });
 
-        theScene.setOnKeyReleased(
+        scene.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
                     input.remove(code);
-                    if (input.isEmpty()) setPlayerLastAction(0);
+                    if (input.isEmpty() || code.equals("LEFT") || code.equals("RIGHT")) setPlayerLastAction(0);
                 });
 
         //stworzenie płótna
@@ -99,10 +130,33 @@ public class Game extends Application {
     public void draw() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, 1920, 1080);
+        if (isChoosen == 0) {
+            //narysowanie wszystkiego
+            gc.setFill(Color.BLACK);
+            gc.fillRect(0, 0, screenWidth, screenHeight);
 
-        drawHandler.draw(gc);
+            //Łukasz obrazek
+            gc.setFill(Color.GREEN);
+            gc.fillRect(screenWidth / 4 - lukaszPrawoImage.getWidth() / 2, screenHeight / 2 - lukaszPrawoImage.getHeight() / 2, lukaszPrawoImage.getWidth(), lukaszPrawoImage.getHeight());
+            gc.drawImage(lukaszPrawoImage, screenWidth / 4 - lukaszPrawoImage.getWidth() / 2, screenHeight / 2 - lukaszPrawoImage.getHeight() / 2);
+
+            //Maciek obrazek
+            gc.setFill(Color.RED);
+            gc.fillRect(screenWidth * 2 / 4 - maciekLewoImage.getWidth() / 2, screenHeight / 2 - maciekLewoImage.getHeight() / 2, maciekLewoImage.getWidth(), maciekLewoImage.getHeight());
+            gc.drawImage(maciekLewoImage, screenWidth * 2 / 4 - maciekLewoImage.getWidth() / 2, screenHeight / 2 - maciekLewoImage.getHeight() / 2);
+
+            //Bot obrazek
+            gc.setFill(Color.BLUE);
+            gc.fillRect(screenWidth * 3 / 4 - botPrawoImage.getWidth() / 2, screenHeight / 2 - maciekLewoImage.getHeight() / 2, maciekLewoImage.getWidth(), maciekLewoImage.getHeight());
+            gc.drawImage(botPrawoImage, screenWidth * 3 / 4 - maciekLewoImage.getWidth() / 2, screenHeight / 2 - maciekLewoImage.getHeight() / 2);
+        } else {
+            gc.setFill(Color.BLACK);
+            gc.fillRect(0, 0, 5000, 2000);
+            camera.update();
+            //canvas.setTranslateX(camera.getPositionX());
+            //canvas.setTranslateY(0);
+            drawHandler.draw(gc);
+        }
     }
 
     //gettery

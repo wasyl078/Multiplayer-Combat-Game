@@ -16,7 +16,7 @@ public class Communication {
     private ArrayList strumienieWejsciowe;
     private Msg msg;
     private UpdateHandler updateHandler;
-    private int iloscGraczy = 0;
+    public static int iloscGraczy = 0;
 
 
     //konstruktor klasy

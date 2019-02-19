@@ -19,12 +19,13 @@ public class Player extends GameObject {
     private double PlayerImageWidth;
     private double PlayerImageHeight;
 
-    //związane z pozycją oraz  stanem gracza
+    //związane z pozycją oraz stanem gracza
     private int playerNumber;
     private boolean falling = true;
     private boolean jumping = false;
     private double lastPosX = 0;
     private boolean direction = true; //true - left       false - right
+    private int characterImageNumber = 0;
 
     //difoltowe
     public double defaultPlayerVelocity = 10;
@@ -36,7 +37,7 @@ public class Player extends GameObject {
     public Player(int x, int y, int playerNumber, ID id, Textures textures, int characterImageNumber) {
         super(x, y, id);
         this.textures = textures;
-        setCharacterImageNumber(3);
+        setCharacterImageNumber(0);
         setPlayerNumber(playerNumber);
     }
 
@@ -111,6 +112,7 @@ public class Player extends GameObject {
 
     //ustalenie jakim obrazkiem jest ten gracz
     public void setCharacterImageNumber(int imageNumber) {
+        if(imageNumber == this.characterImageNumber)return;
         if (imageNumber == 1) {
             PlayerImageHeight = textures.getLukaszLewoImage().getHeight();
             PlayerImageWidth = textures.getLukaszPrawoImage().getWidth();
@@ -121,6 +123,10 @@ public class Player extends GameObject {
             PlayerImageHeight = textures.getBotLewoImage().getHeight();
             PlayerImageWidth = textures.getBotPrawoImage().getWidth();
         }
+
+        setPositionX(200);
+        setPositionY(200);
+        this.characterImageNumber = imageNumber;
     }
 
 
@@ -166,5 +172,9 @@ public class Player extends GameObject {
 
     public void setJumping(boolean jumping) {
         this.jumping = jumping;
+    }
+
+    public int getCharacterImageNumber(){
+        return characterImageNumber;
     }
 }

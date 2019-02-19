@@ -27,6 +27,8 @@ public class Msg {
 
         for (int i = 0; i < playersList.size(); i++) {
             bufWiadom += "_";
+            bufWiadom += (int) playersList.get(i).getCharacterImageNumber();
+            bufWiadom += ".";
             bufWiadom += (int) playersList.get(i).getPositionX();
             bufWiadom += ".";
             bufWiadom += (int) playersList.get(i).getPositionY();
@@ -40,27 +42,15 @@ public class Msg {
 
         String[] parts = wiadom.split("_");
         int bufNumerGracza = Integer.parseInt(parts[0]);
-        int bufAkcjaGracza = Integer.parseInt(parts[1]);
+        int bufNumerObrazkaGracza = Integer.parseInt(parts[1]);
+        int bufAkcjaGracza = Integer.parseInt(parts[2]);
 
         int bufVel = 10;
         for (int i = 0; i < playersList.size(); i++) {
             Player bufPlayer = playersList.get(i);
             if (bufPlayer.getPlayerNumber() == bufNumerGracza) {
 
-                /*
-                if (bufAkcjaGracza == 1) {
-                    bufPlayer.setVelocityY(-20);
-                } else if (bufAkcjaGracza == 2) {
-                    bufPlayer.setVelocityX(20);
-                } else if (bufAkcjaGracza == 3) {
-                    bufPlayer.setVelocityY(20);
-                } else if (bufAkcjaGracza == 4) {
-                    bufPlayer.setVelocityX(-20);
-                } else if (bufAkcjaGracza == 0) {
-                    bufPlayer.setVelocityX(0);
-                    bufPlayer.setVelocityY(0);
-                }
-                */
+                bufPlayer.setCharacterImageNumber(bufNumerObrazkaGracza);
 
                 if (bufAkcjaGracza == 1 && !bufPlayer.isJumping()) {
                     bufPlayer.setVelocityY(-bufVel - 10);

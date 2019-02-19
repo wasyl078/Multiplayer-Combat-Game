@@ -48,7 +48,7 @@ public class CharacterChooser extends Stage {
         Scene theScene = new Scene(root);
         stage.setScene(theScene);
 
-        //TODO obsługa zdarzeń (myszki)
+        //obsługa zdarzeń (myszki)
         theScene.setOnMouseClicked(
                 e -> {
 

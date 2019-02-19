@@ -30,6 +30,7 @@ public class Msg {
         int posX;
         int posY;
         int numberOfPlayers = Integer.valueOf(parts[0]);
+        int characterImageNumber;
 
         //odczekanie dziesięciu pierwszych wiadomości, żeby mieć pewność, że pierwsza będzie prawidłowa
         if(messagesCounterToDown!=0){
@@ -41,14 +42,17 @@ public class Msg {
         //pododawnie wszystkich obecnych graczy
         while(numberOfPlayers != lastPlayersNumber){
             lastPlayersNumber++;
-            drawHandler.addPlayer(lastPlayersNumber);
+            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber].substring(0,1)),lastPlayersNumber);
+            System.out.println(Integer.parseInt(parts[lastPlayersNumber].substring(0,1)));
         }
 
         //poustawianie pozycji wszystkich graczy na ekranie
         for (int i = 1; i <= numberOfPlayers; i++) {
             String[] buf = parts[i].split("\\.");
-            posX = Integer.parseInt(buf[0]);
-            posY = Integer.parseInt(buf[1]);
+
+            characterImageNumber = Integer.parseInt(buf[0]);
+            posX = Integer.parseInt(buf[1]);
+            posY = Integer.parseInt(buf[2]);
 
             //korekta pozycji względem rozmiarów ekranu
             posX = (int) Game.screenWidth * posX / 1920;
@@ -57,6 +61,7 @@ public class Msg {
 
             for (int j = 0; j < players.size(); j++) {
                 if (i == players.get(j).getPlayerNumber()) {
+                    players.get(j).setCharacterImageNumber(characterImageNumber);
                     players.get(j).setPositionX(posX);
                     players.get(j).setPositionY(posY);
                 }
@@ -73,7 +78,7 @@ public class Msg {
 
         int bufThisIndividualPlayerNumber = game.getThisIndividualPlayerNumber();
 
-        bufWiadom += bufThisIndividualPlayerNumber + "_" + bufPlayerLastAction;
+        bufWiadom += bufThisIndividualPlayerNumber + "_"+ Game.isChoosen +"_"+ bufPlayerLastAction;
 
         System.out.println(bufWiadom);
         return bufWiadom;
