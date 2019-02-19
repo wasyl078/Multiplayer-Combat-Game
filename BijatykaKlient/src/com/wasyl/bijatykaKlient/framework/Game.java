@@ -5,8 +5,10 @@ import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -29,8 +31,8 @@ public class Game extends Application {
 
 
     //związane z identyfikacją grtacza
-    private int playerLastAction = -1;
-    private int thisIndividualPlayerNumber = -1;
+    private int playerLastAction = 0;
+    private int thisIndividualPlayerNumber = 0;
 
     //main() wywołujący launch(), czyli start()
     public static void main(String[] args) {
@@ -42,18 +44,19 @@ public class Game extends Application {
     @Override
     public void start(Stage stage) {
 
-        //utworzEnie komunikacji z serwerem
-        Msg msg = new Msg(this);
-        Communication communication = new Communication(this, msg);
-
         stage.setTitle("Gra");
 
         //stworzenie ważnych objektów
         textures = new Textures();
         drawHandler = new DrawHandler(textures);
 
+        //utworzEnie komunikacji z serwerem
+        Msg msg = new Msg(this);
+        Communication communication = new Communication(this, msg);
+
         //stworzenie grupy
         Group root = new Group();
+        //Scene theScene = new Scene(root, screenWidth,screenHeight,true, SceneAntialiasing.BALANCED);
         Scene theScene = new Scene(root);
         stage.setScene(theScene);
 
@@ -68,14 +71,15 @@ public class Game extends Application {
                     else if (code.equals("RIGHT")) setPlayerLastAction(2);
                     else if (code.equals("DOWN")) setPlayerLastAction(3);
                     else if (code.equals("LEFT")) setPlayerLastAction(4);
+                    else if(code.equals("ESCAPE")) System.exit(0);
                 });
 
         theScene.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
                     input.remove(code);
+                    if(input.isEmpty()) setPlayerLastAction(0);
                 });
-
 
         //stworzenie płótna
         canvas = new Canvas(Game.screenWidth, Game.screenHeight);
@@ -83,14 +87,15 @@ public class Game extends Application {
         stage.setMaximized(true);
         stage.setFullScreen(true);
 
-
         //wyświetlenie wszystkiego
+        communication.update();
         stage.show();
     }
 
     public void draw() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
+        gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, 1920, 1080);
 
         drawHandler.draw(gc);

@@ -1,7 +1,6 @@
 package com.wasyl.bijatykaKlient.objects;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 import javafx.scene.image.Image;
 
@@ -16,13 +15,13 @@ public class Player extends GameObject{
 
     public Player(int x, int y,int playerNumber ,Textures textures) {
         super(x,y);
+        this.playerNumber = playerNumber;
         this.textures = textures;
         this.image = toFXImage(textures.botPrawoImage,null);
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setFill(Color.YELLOW);
         gc.drawImage(image,getPositionX(),getPositionY());
     }
 

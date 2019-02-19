@@ -58,8 +58,8 @@ public class Communication {
             try {
                 wiadom = czytelnik.readLine();
                 msg.interpretujJednaWiadomoscZSerwera(wiadom);
-                game.draw();
                 update();
+                game.draw();
             } catch (Exception e) {
                 e.printStackTrace();
             }

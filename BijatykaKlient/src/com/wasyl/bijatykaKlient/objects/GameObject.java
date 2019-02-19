@@ -2,8 +2,6 @@ package com.wasyl.bijatykaKlient.objects;
 
 import javafx.scene.canvas.GraphicsContext;
 
-import java.util.LinkedList;
-
 public abstract class GameObject {
 
     private double positionX;
