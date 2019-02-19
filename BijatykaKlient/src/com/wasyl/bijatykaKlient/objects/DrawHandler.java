@@ -23,6 +23,16 @@ public class DrawHandler {
         }
     }
 
+    public void makeFirstLevel(){
+        double wdth = 1920;
+        double hght = 1080;
+
+        addObject(new Platform(wdth / 6, hght * 10 / 12, (int) wdth * 2 / 3, (int) hght / 48));
+        addObject(new Platform(wdth / 8, hght * 8 / 12,  (int) wdth / 4, (int) hght / 48));
+        addObject(new Platform(wdth * 5 / 8, hght * 8 / 12, (int) wdth / 4, (int) hght / 48));
+
+    }
+
     public void addObject(GameObject gameObject) {
         objects.add(gameObject);
     }

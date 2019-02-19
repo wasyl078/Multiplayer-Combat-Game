@@ -9,7 +9,7 @@ public abstract class GameObject {
     private double velocityX;
     private double velocityY;
 
-    public GameObject(int x, int y) {
+    public GameObject(double x, double y) {
         setPositionX(x);
         setPositionY(y);
     }

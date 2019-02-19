@@ -5,7 +5,6 @@ import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.SceneAntialiasing;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -19,8 +18,8 @@ public class Game extends Application {
 
     //związane z okienkiem
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    static double screenWidth = screenSize.getWidth();
-    static double screenHeight = screenSize.getHeight();
+    public static double screenWidth = screenSize.getWidth();
+    public static double screenHeight = screenSize.getHeight();
     private Canvas canvas;
 
 
@@ -44,11 +43,16 @@ public class Game extends Application {
     @Override
     public void start(Stage stage) {
 
+        stage = new CharacterChooser(new Textures());
+
+        stage = new Stage();
+
         stage.setTitle("Gra");
 
         //stworzenie ważnych objektów
         textures = new Textures();
         drawHandler = new DrawHandler(textures);
+        drawHandler.makeFirstLevel();
 
         //utworzEnie komunikacji z serwerem
         Msg msg = new Msg(this);
@@ -71,14 +75,14 @@ public class Game extends Application {
                     else if (code.equals("RIGHT")) setPlayerLastAction(2);
                     else if (code.equals("DOWN")) setPlayerLastAction(3);
                     else if (code.equals("LEFT")) setPlayerLastAction(4);
-                    else if(code.equals("ESCAPE")) System.exit(0);
+                    else if (code.equals("ESCAPE")) System.exit(0);
                 });
 
         theScene.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
                     input.remove(code);
-                    if(input.isEmpty()) setPlayerLastAction(0);
+                    if (input.isEmpty()) setPlayerLastAction(0);
                 });
 
         //stworzenie płótna

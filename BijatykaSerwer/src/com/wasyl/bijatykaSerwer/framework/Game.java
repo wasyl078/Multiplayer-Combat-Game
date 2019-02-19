@@ -7,6 +7,10 @@ import com.wasyl.bijatykaSerwer.textures.Textures;
 
 public class Game implements Runnable {
 
+    //zmienne dla rozmiarów "wirtualnego okienka"
+    public static int screenWidth = 1920;
+    public static int screenHeight = 1080;
+
     //zmienne dla ważnych obiektów
     private boolean running = false;
     private Thread thread;
@@ -26,6 +30,7 @@ public class Game implements Runnable {
     private void makeImportantObjects() {
         textures = new Textures();
         updateHandler = new UpdateHandler(textures);
+        updateHandler.makeFirstLevel();
         msg = new Msg(updateHandler);
         communication = new Communication(msg, updateHandler);
     }

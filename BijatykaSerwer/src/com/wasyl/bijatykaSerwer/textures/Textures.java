@@ -1,7 +1,14 @@
 package com.wasyl.bijatykaSerwer.textures;
 
+import com.wasyl.bijatykaSerwer.framework.Game;
+
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+
+import javafx.scene.image.Image;
+
+import static javafx.embed.swing.SwingFXUtils.toFXImage;
 
 public class Textures {
 
@@ -12,7 +19,7 @@ public class Textures {
     private BufferedImage maciekLewoImage;
     private BufferedImage maciekPrawoImage;
     private BufferedImage botLewoImage;
-    public BufferedImage botPrawoImage;
+    private BufferedImage botPrawoImage;
     private BufferedImage mieczLewoImage;
     private BufferedImage mieczPrawoImage;
     private BufferedImage mieczPionowoImage;
@@ -44,102 +51,121 @@ public class Textures {
         mieczPionowoImage = ss.grabImage(11, 1, 65, 128);
         pistoletPrawo = ss.grabImage(12, 1, 128, 89);
         pistoletLewo = ss.grabImage(13, 1, 128, 89);
-        pociskPrawo = ss.grabImage(1,1,53,33);
-        pociskLewo = ss.grabImage(2,1,53,33);
-        mieczSwietlnyPionowoLewoImage = ss.grabImage(15,1,15,128);
-        mieczSwietlnyPionowoPrawoImage = ss.grabImage(14,1,15,128);
-        mieczSwietlnyAtakPrawoImage = ss.grabImage(2,2,90,90);
-        mieczSwietlnyAtakLewoImage = ss.grabImage(1,2,90,90);
-        botLewoImage = ss.grabImage(4, 2, 93,128);
-        botPrawoImage = ss.grabImage(3,2,93,128);
+        pociskPrawo = ss.grabImage(1, 1, 53, 33);
+        pociskLewo = ss.grabImage(2, 1, 53, 33);
+        mieczSwietlnyPionowoLewoImage = ss.grabImage(15, 1, 15, 128);
+        mieczSwietlnyPionowoPrawoImage = ss.grabImage(14, 1, 15, 128);
+        mieczSwietlnyAtakPrawoImage = ss.grabImage(2, 2, 90, 90);
+        mieczSwietlnyAtakLewoImage = ss.grabImage(1, 2, 90, 90);
+        botLewoImage = ss.grabImage(4, 2, 93, 128);
+        botPrawoImage = ss.grabImage(3, 2, 93, 128);
     }
 
-    public BufferedImage getLevel1Image() {
-        return level1Image;
-    }
 
     public Image getLukaszPrawoImage() {
-        Image bufImage = lukaszPrawoImage.getScaledInstance((int) (0.022396 * 1920), (int) (0.059259 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(lukaszPrawoImage, (int) (0.022396 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getLukaszLewoImage() {
-        Image bufImage = lukaszLewoImage.getScaledInstance((int) (0.022396 * 1920), (int) (0.059259 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(lukaszLewoImage, (int) (0.022396 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getMaciekLewoImage() {
-        Image bufImage = maciekLewoImage.getScaledInstance((int) (0.022396 * 1920), (int) (0.059259 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(maciekLewoImage, (int) (0.022396 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getMaciekPrawoImage() {
-        Image bufImage = maciekPrawoImage.getScaledInstance((int) (0.022396 * 1920), (int) (0.059259 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(maciekPrawoImage, (int) (0.022396 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getMieczLewoImage() {
-        Image bufImage = mieczLewoImage.getScaledInstance((int) (0.066666 * 1920), (int) (0.060185185 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(mieczLewoImage, (int) (0.066666 * Game.screenWidth), (int) (0.060185185 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getMieczPrawoImage() {
-        Image bufImage = mieczPrawoImage.getScaledInstance((int) (0.066666 * 1920), (int) (0.060185185 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(mieczPrawoImage, (int) (0.066666 * Game.screenWidth), (int) (0.060185185 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getMieczPionowoImage() {
-        Image bufImage = mieczPionowoImage.getScaledInstance((int) (0.03385416 * 1920), (int) (0.1185185 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(mieczPionowoImage, (int) (0.03385416 * Game.screenWidth), (int) (0.1185185 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getPistoletPrawo() {
-        Image bufImage = pistoletPrawo.getScaledInstance((int) (0.0520833 * 1920), (int) (0.063888 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(pistoletPrawo, (int) (0.0520833 * Game.screenWidth), (int) (0.063888 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getPistoletLewo() {
-        Image bufImage = pistoletLewo.getScaledInstance((int) (0.0520833 * 1920), (int) (0.063888 * 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(pistoletLewo, (int) (0.0520833 * Game.screenWidth), (int) (0.063888 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getPociskPrawo() {
-        Image bufImage = pociskPrawo.getScaledInstance((int)(0.0078125*1920), (int)(0.008333*1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(pociskPrawo, (int) (0.0078125 * Game.screenWidth), (int) (0.008333 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getPociskLewo() {
-        Image bufImage = pociskLewo.getScaledInstance((int)(0.0078125*1920), (int)(0.008333*1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(pociskLewo, (int) (0.0078125 * Game.screenWidth), (int) (0.008333 * Game.screenHeight)), null);
+
         return bufImage;
     }
 
     public Image getMieczSwietlnyAtakLewoImage() {
-        Image bufImage = mieczSwietlnyAtakLewoImage.getScaledInstance((int)(0.098958*1920), (int)(0.05864*1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(mieczSwietlnyAtakLewoImage, (int) (0.098958 * Game.screenWidth), (int) (0.05864 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getMieczSwietlnyAtakPrawoImage() {
-        Image bufImage = mieczSwietlnyAtakPrawoImage.getScaledInstance((int)(0.098958*1920), (int)(0.05864*1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(mieczSwietlnyAtakPrawoImage, (int) (0.098958 * Game.screenWidth), (int) (0.05864 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getMieczSwietlnyPionowoLewoImage() {
-        Image bufImage = mieczSwietlnyPionowoLewoImage.getScaledInstance((int)(0.0130208*1920), (int)(0.197222*1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(mieczSwietlnyPionowoLewoImage, (int) (0.0130208 * Game.screenWidth), (int) (0.197222 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getMieczSwietlnyPionowoPrawoImage() {
-        Image bufImage = mieczSwietlnyPionowoPrawoImage.getScaledInstance((int)(0.0130208*1920), (int)(0.197222*1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(mieczSwietlnyPionowoPrawoImage, (int) (0.0130208 * Game.screenWidth), (int) (0.197222 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getBotLewoImage() {
-        Image bufImage = botLewoImage.getScaledInstance((int) (0.02421875 * 1920), (int) (0.059259* 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(botLewoImage, (int) (0.02421875 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
         return bufImage;
     }
 
     public Image getBotPrawoImage() {
-        Image bufImage = botPrawoImage.getScaledInstance((int) (0.02421875 * 1920), (int) (0.059259* 1080), Image.SCALE_DEFAULT);
+        Image bufImage = toFXImage(scale(botPrawoImage, (int) (0.02421875 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
         return bufImage;
+    }
+
+
+    //metoda skalująca obrazki (BufferedImage ---> JavaFx Image)
+    public static BufferedImage scale(BufferedImage src, int w, int h) {
+        BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+
+        int x, y;
+        int ww = src.getWidth();
+        int hh = src.getHeight();
+        int[] ys = new int[h];
+        for (y = 0; y < h; y++)
+            ys[y] = y * hh / h;
+        for (x = 0; x < w; x++) {
+            int newX = x * ww / w;
+            for (y = 0; y < h; y++) {
+                int col = src.getRGB(newX, ys[y]);
+                img.setRGB(x, y, col);
+            }
+        }
+        return img;
     }
 }

@@ -22,10 +22,24 @@ public class UpdateHandler {
             objects.get(i).update(objects);
         }
     }
+    public void makeFirstLevel(){
+        double wdth = 1920;
+        double hght = 1080;
+
+        addObject(new Platform(wdth / 6, hght * 10 / 12, ID.Platform, (int) wdth * 2 / 3, (int) hght / 48));
+        addObject(new Platform(wdth / 8, hght * 8 / 12, ID.Platform, (int) wdth / 4, (int) hght / 48));
+        addObject(new Platform(wdth * 5 / 8, hght * 8 / 12, ID.Platform, (int) wdth / 4, (int) hght / 48));
+
+    }
 
     public void addPlayer(int playerNumber){
-        Player bufPlayer = new Player(69,200,playerNumber,textures);
+        Player bufPlayer = new Player(69,200,playerNumber, ID.Player,textures,3);
         objects.add(bufPlayer);
         players.add(bufPlayer);
+    }
+
+    public void addObject(GameObject bufObject){
+        objects.add(bufObject);
+
     }
 }
