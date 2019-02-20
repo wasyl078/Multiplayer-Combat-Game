@@ -1,5 +1,6 @@
 package com.wasyl.bijatykaKlient.framework;
 
+import com.wasyl.bijatykaKlient.objects.Background;
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.animation.AnimationTimer;
@@ -32,6 +33,7 @@ public class Game extends Application {
     private DrawHandler drawHandler;
     private Textures textures;
     private Camera camera;
+    private Background background;
 
     //związane z identyfikacją grtacza
     private int playerLastAction = 0;
@@ -46,15 +48,18 @@ public class Game extends Application {
 
     //start() == launch()
     @Override
-    public void start(Stage stage) throws InterruptedException {
+    public void start(Stage stage){
 
         stage.setTitle("Gra");
 
         //stworzenie ważnych objektów
         textures = new Textures();
         drawHandler = new DrawHandler(textures);
+        background = new Background(0,0,textures);
+        drawHandler.addObject(background);
         drawHandler.makeFirstLevel();
         camera = new Camera(drawHandler.players);
+
 
         //stworzenie grupy
         Group root = new Group();
@@ -119,7 +124,7 @@ public class Game extends Application {
         //stworzenie płótna
         canvas = new Canvas(Game.screenWidth, Game.screenHeight);
         root.getChildren().add(canvas);
-        stage.setMaximized(true);
+        //stage.setMaximized(true);
         stage.setFullScreen(true);
 
         //wyświetlenie wszystkiego
@@ -151,7 +156,7 @@ public class Game extends Application {
             gc.drawImage(botPrawoImage, screenWidth * 3 / 4 - maciekLewoImage.getWidth() / 2, screenHeight / 2 - maciekLewoImage.getHeight() / 2);
         } else {
             gc.setFill(Color.BLACK);
-            gc.fillRect(0, 0, 5000, 2000);
+            //gc.fillRect(0, 0, 5000, 2000);
             camera.update();
             drawHandler.draw(gc, (int)camera.getPositionX(), (int)camera.getPositionY());
 

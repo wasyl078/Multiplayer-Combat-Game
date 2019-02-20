@@ -24,7 +24,7 @@ public class Player extends GameObject {
     private boolean falling = true;
     private boolean jumping = false;
     private double lastPosX = 0;
-    private boolean direction = true; //true - left       false - right
+    private int direction = 1; //true - left       false - right
     private int characterImageNumber = 0;
 
     //difoltowe
@@ -54,8 +54,8 @@ public class Player extends GameObject {
             if (getVelocityY() > maxSpeed) setVelocityY(maxSpeed);
         }
 
-        if (getPositionX() - lastPosX < 0) direction = true;
-        else if (getPositionX() - lastPosX > 0) direction = false;
+        if (getPositionX() - lastPosX < 0) direction = 1;
+        else if (getPositionX() - lastPosX > 0) direction = 2;
         lastPosX = (int) getPositionX();
 
         collisions(objects);
@@ -176,5 +176,9 @@ public class Player extends GameObject {
 
     public int getCharacterImageNumber(){
         return characterImageNumber;
+    }
+
+    public int getDirection() {
+        return direction;
     }
 }

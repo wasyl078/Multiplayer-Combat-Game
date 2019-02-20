@@ -28,9 +28,9 @@ public class Player extends GameObject {
 
     //rysowanie odpoiwedniego obrazka postaci
     @Override
-    public void draw(GraphicsContext gc,int cpx,int cpy) {
-        setPositionX(getPositionX() +cpx);
-        setPositionY(getPositionY() +cpy);
+    public void draw(GraphicsContext gc, int cpx, int cpy) {
+        setPositionX(getPositionX() + cpx);
+        setPositionY(getPositionY() + cpy);
 
         if (direction == 1) gc.drawImage(imageLeft, getPositionX(), getPositionY());
         else gc.drawImage(imageRight, getPositionX(), getPositionY());
@@ -54,8 +54,12 @@ public class Player extends GameObject {
     }
 
 
-    //getttery
+    //getttery i settery
     public int getPlayerNumber() {
         return playerNumber;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 }

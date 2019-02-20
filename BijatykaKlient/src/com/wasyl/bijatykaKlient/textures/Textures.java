@@ -29,11 +29,17 @@ public class Textures {
     private BufferedImage mieczSwietlnyAtakPrawoImage;
     private BufferedImage mieczSwietlnyPionowoLewoImage;
     private BufferedImage mieczSwietlnyPionowoPrawoImage;
+    private BufferedImage background1;
+    private BufferedImage background2;
+    private BufferedImage background3;
 
     public Textures() {
         SpriteSheetLoader loader = new SpriteSheetLoader();
         try {
             spriteSheet = loader.loadImage("obrazki/sprite.png");
+            background1 = loader.loadImage("obrazki/background 1.png");
+            background2 = loader.loadImage("obrazki/background 2.png");
+            background3 = loader.loadImage("obrazki/background 3.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,6 +66,28 @@ public class Textures {
     }
 
 
+    //metoda skalująca obrazki (BufferedImage ---> JavaFx Image)
+    public static BufferedImage scale(BufferedImage src, int w, int h) {
+        BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+
+        int x, y;
+        int ww = src.getWidth();
+        int hh = src.getHeight();
+        int[] ys = new int[h];
+        for (y = 0; y < h; y++)
+            ys[y] = y * hh / h;
+        for (x = 0; x < w; x++) {
+            int newX = x * ww / w;
+            for (y = 0; y < h; y++) {
+                int col = src.getRGB(newX, ys[y]);
+                img.setRGB(x, y, col);
+            }
+        }
+        return img;
+    }
+
+
+    //gettery poszczególnych obrazków
     public Image getLukaszPrawoImage() {
         Image bufImage = toFXImage(scale(lukaszPrawoImage, (int) (0.022396 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
         return bufImage;
@@ -112,7 +140,6 @@ public class Textures {
 
     public Image getPociskLewo() {
         Image bufImage = toFXImage(scale(pociskLewo, (int) (0.0078125 * Game.screenWidth), (int) (0.008333 * Game.screenHeight)), null);
-
         return bufImage;
     }
 
@@ -146,24 +173,19 @@ public class Textures {
         return bufImage;
     }
 
+    public Image getBackground1() {
+        Image bufImage = toFXImage(scale(background1, (int) (1 * Game.screenWidth), (int) (1 * Game.screenHeight)), null);
+        return bufImage;
+    }
 
-    //metoda skalująca obrazki (BufferedImage ---> JavaFx Image)
-    public static BufferedImage scale(BufferedImage src, int w, int h) {
-        BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 
-        int x, y;
-        int ww = src.getWidth();
-        int hh = src.getHeight();
-        int[] ys = new int[h];
-        for (y = 0; y < h; y++)
-            ys[y] = y * hh / h;
-        for (x = 0; x < w; x++) {
-            int newX = x * ww / w;
-            for (y = 0; y < h; y++) {
-                int col = src.getRGB(newX, ys[y]);
-                img.setRGB(x, y, col);
-            }
-        }
-        return img;
+    public Image getBackground2() {
+        Image bufImage = toFXImage(scale(background2, (int) (2 * Game.screenWidth), (int) (1 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getBackground3() {
+        Image bufImage = toFXImage(scale(background3, (int) (2 * Game.screenWidth), (int) (1 * Game.screenHeight)), null);
+        return bufImage;
     }
 }

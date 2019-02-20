@@ -29,21 +29,22 @@ public class Msg {
         String[] parts = wiadom.split("_");
         int posX;
         int posY;
+        int direction;
         int numberOfPlayers = Integer.valueOf(parts[0]);
         int characterImageNumber;
 
         //odczekanie dziesięciu pierwszych wiadomości, żeby mieć pewność, że pierwsza będzie prawidłowa
-        if(messagesCounterToDown!=0){
+        if (messagesCounterToDown != 0) {
             messagesCounterToDown--;
-            if(messagesCounterToDown == 1) game.setThisIndividualPlayerNumber(numberOfPlayers);
+            if (messagesCounterToDown == 1) game.setThisIndividualPlayerNumber(numberOfPlayers);
             return;
         }
 
         //pododawnie wszystkich obecnych graczy
-        while(numberOfPlayers != lastPlayersNumber){
+        while (numberOfPlayers != lastPlayersNumber) {
             lastPlayersNumber++;
-            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber].substring(0,1)),lastPlayersNumber);
-            System.out.println(Integer.parseInt(parts[lastPlayersNumber].substring(0,1)));
+            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber].substring(0, 1)), lastPlayersNumber);
+            System.out.println(Integer.parseInt(parts[lastPlayersNumber].substring(0, 1)));
         }
 
         //poustawianie pozycji wszystkich graczy na ekranie
@@ -51,8 +52,9 @@ public class Msg {
             String[] buf = parts[i].split("\\.");
 
             characterImageNumber = Integer.parseInt(buf[0]);
-            posX = Integer.parseInt(buf[1]);
-            posY = Integer.parseInt(buf[2]);
+            direction = Integer.parseInt(buf[1]);
+            posX = Integer.parseInt(buf[2]);
+            posY = Integer.parseInt(buf[3]);
 
             //korekta pozycji względem rozmiarów ekranu
             posX = (int) Game.screenWidth * posX / 1920;
@@ -60,10 +62,12 @@ public class Msg {
 
 
             for (int j = 0; j < players.size(); j++) {
+                Player bufPlayer = players.get(j);
                 if (i == players.get(j).getPlayerNumber()) {
-                    players.get(j).setCharacterImageNumber(characterImageNumber);
-                    players.get(j).setPositionX(posX);
-                    players.get(j).setPositionY(posY);
+                    bufPlayer.setDirection(direction);
+                    bufPlayer.setCharacterImageNumber(characterImageNumber);
+                    bufPlayer.setPositionX(posX);
+                    bufPlayer.setPositionY(posY);
                 }
             }
         }
@@ -78,7 +82,7 @@ public class Msg {
 
         int bufThisIndividualPlayerNumber = game.getThisIndividualPlayerNumber();
 
-        bufWiadom += bufThisIndividualPlayerNumber + "_"+ Game.isChoosen +"_"+ bufPlayerLastAction;
+        bufWiadom += bufThisIndividualPlayerNumber + "_" + Game.isChoosen + "_" + bufPlayerLastAction;
 
         System.out.println(bufWiadom);
         return bufWiadom;

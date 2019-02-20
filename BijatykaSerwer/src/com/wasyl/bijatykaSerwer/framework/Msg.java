@@ -26,12 +26,15 @@ public class Msg {
         bufWiadom += players;
 
         for (int i = 0; i < playersList.size(); i++) {
+            Player bpla = playersList.get(i);
             bufWiadom += "_";
-            bufWiadom += (int) playersList.get(i).getCharacterImageNumber();
+            bufWiadom += (int) bpla.getCharacterImageNumber();
             bufWiadom += ".";
-            bufWiadom += (int) playersList.get(i).getPositionX();
+            bufWiadom += bpla.getDirection();
             bufWiadom += ".";
-            bufWiadom += (int) playersList.get(i).getPositionY();
+            bufWiadom += (int) bpla.getPositionX();
+            bufWiadom += ".";
+            bufWiadom += (int) bpla.getPositionY();
         }
         return bufWiadom;
     }
