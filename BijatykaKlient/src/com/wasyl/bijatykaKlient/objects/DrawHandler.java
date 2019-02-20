@@ -1,5 +1,6 @@
 package com.wasyl.bijatykaKlient.objects;
 
+import com.wasyl.bijatykaKlient.framework.Game;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -24,8 +25,8 @@ public class DrawHandler {
     }
 
     public void makeFirstLevel(){
-        double wdth = 1920;
-        double hght = 1080;
+        double wdth = Game.screenWidth;
+        double hght = Game.screenHeight;
 
         addObject(new Platform(wdth / 6, hght * 10 / 12, (int) wdth * 2 / 3, (int) hght / 48));
         addObject(new Platform(wdth / 8, hght * 8 / 12,  (int) wdth / 4, (int) hght / 48));

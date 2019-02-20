@@ -3,7 +3,6 @@ package com.wasyl.bijatykaKlient.framework;
 import com.wasyl.bijatykaKlient.objects.Background;
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.textures.Textures;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -21,8 +20,14 @@ public class Game extends Application {
 
     //związane z okienkiem
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static double screenWidth = screenSize.getWidth();
-    public static double screenHeight = screenSize.getHeight();
+
+
+    //public static double screenWidth = screenSize.getWidth();
+    //public static double screenHeight = screenSize.getHeight();
+    public static double screenWidth = 1600;
+    public static double screenHeight = 900;
+
+
     private Canvas canvas;
     private Image lukaszPrawoImage;
     private Image maciekLewoImage;
@@ -125,7 +130,7 @@ public class Game extends Application {
         canvas = new Canvas(Game.screenWidth, Game.screenHeight);
         root.getChildren().add(canvas);
         //stage.setMaximized(true);
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
 
         //wyświetlenie wszystkiego
         communication.update();
