@@ -2,8 +2,6 @@ package com.wasyl.bijatykaSerwer.textures;
 
 import com.wasyl.bijatykaSerwer.framework.Game;
 
-import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 import javafx.scene.image.Image;
@@ -31,6 +29,11 @@ public class Textures {
     private BufferedImage mieczSwietlnyAtakPrawoImage;
     private BufferedImage mieczSwietlnyPionowoLewoImage;
     private BufferedImage mieczSwietlnyPionowoPrawoImage;
+    private BufferedImage toporPionowoPrawo;
+    private BufferedImage toporPionowoLewo;
+    private BufferedImage toporAtakLewo;
+    private BufferedImage toporAtakPrawo;
+
 
     public Textures() {
         SpriteSheetLoader loader = new SpriteSheetLoader();
@@ -53,12 +56,16 @@ public class Textures {
         pistoletLewo = ss.grabImage(13, 1, 128, 89);
         pociskPrawo = ss.grabImage(1, 1, 53, 33);
         pociskLewo = ss.grabImage(2, 1, 53, 33);
-        mieczSwietlnyPionowoLewoImage = ss.grabImage(15, 1, 15, 128);
-        mieczSwietlnyPionowoPrawoImage = ss.grabImage(14, 1, 15, 128);
-        mieczSwietlnyAtakPrawoImage = ss.grabImage(2, 2, 90, 90);
-        mieczSwietlnyAtakLewoImage = ss.grabImage(1, 2, 90, 90);
+        mieczSwietlnyPionowoLewoImage = ss.grabImage(15, 1, 18, 128);
+        mieczSwietlnyPionowoPrawoImage = ss.grabImage(14, 1, 18, 128);
+        mieczSwietlnyAtakPrawoImage = ss.grabImage(2, 2, 114, 38);
+        mieczSwietlnyAtakLewoImage = ss.grabImage(1, 2, 114, 38);
         botLewoImage = ss.grabImage(4, 2, 93, 128);
         botPrawoImage = ss.grabImage(3, 2, 93, 128);
+        toporPionowoPrawo = ss.grabImage(5, 2, 30, 117);
+        toporPionowoLewo = ss.grabImage(6, 2, 30, 117);
+        toporAtakPrawo = ss.grabImage(7, 2, 121, 66);
+        toporAtakLewo = ss.grabImage(8, 2, 121, 66);
     }
 
 
@@ -114,7 +121,6 @@ public class Textures {
 
     public Image getPociskLewo() {
         Image bufImage = toFXImage(scale(pociskLewo, (int) (0.0078125 * Game.screenWidth), (int) (0.008333 * Game.screenHeight)), null);
-
         return bufImage;
     }
 
@@ -135,6 +141,26 @@ public class Textures {
 
     public Image getMieczSwietlnyPionowoPrawoImage() {
         Image bufImage = toFXImage(scale(mieczSwietlnyPionowoPrawoImage, (int) (0.0130208 * Game.screenWidth), (int) (0.197222 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getToporAtakLewoImage() {
+        Image bufImage = toFXImage(scale(toporAtakLewo, (int) (0.06302 * Game.screenWidth), (int) (0.06111 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getToporAtakPrawoImage() {
+        Image bufImage = toFXImage(scale(toporAtakPrawo, (int) (0.06302 * Game.screenWidth), (int) (0.06111 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getToporPionowoLewoImage() {
+        Image bufImage = toFXImage(scale(toporPionowoLewo, (int) (0.015625 * Game.screenWidth), (int) (0.108333 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getToporPionowoPrawoImage() {
+        Image bufImage = toFXImage(scale(toporPionowoPrawo, (int) (0.015625 * Game.screenWidth), (int) (0.108333 * Game.screenHeight)), null);
         return bufImage;
     }
 

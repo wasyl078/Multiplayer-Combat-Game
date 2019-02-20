@@ -1,5 +1,7 @@
 package com.wasyl.bijatykaSerwer.objects;
 
+import com.wasyl.bijatykaSerwer.objects.melee.MeleeAxe;
+import com.wasyl.bijatykaSerwer.objects.melee.MeleeLightSaber;
 import com.wasyl.bijatykaSerwer.textures.Textures;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -27,6 +29,16 @@ public class Player extends GameObject {
     private int direction = 1; //true - left       false - right
     private int characterImageNumber = 0;
 
+    //związane z broniami
+    private MeleeLightSaber lightSaber;
+    private MeleeAxe axe;
+    private int whichWeapon = 1;
+    private int lastWeapon = 1;
+    private int hittedCounter = 0;
+    private int attackingCounter = 0;
+    private int attacking = 0;
+    private int directionToRecoil = 0;
+
     //difoltowe
     public double defaultPlayerVelocity = 10;
     private double gravity = 0.5;
@@ -39,6 +51,8 @@ public class Player extends GameObject {
         this.textures = textures;
         setCharacterImageNumber(0);
         setPlayerNumber(playerNumber);
+        this.lightSaber = new MeleeLightSaber(0, 0, ID.MeleeLightSaber, this, textures);
+        this.axe = new MeleeAxe(0,0,ID.MeleeAxe, this, textures);
     }
 
 
@@ -70,6 +84,9 @@ public class Player extends GameObject {
                 setPositionY(-100);
             }
         }
+
+        if (whichWeapon == 1) lightSaber.update(objects);
+        else if(whichWeapon ==2) axe.update(objects);
     }
 
 
@@ -112,7 +129,7 @@ public class Player extends GameObject {
 
     //ustalenie jakim obrazkiem jest ten gracz
     public void setCharacterImageNumber(int imageNumber) {
-        if(imageNumber == this.characterImageNumber)return;
+        if (imageNumber == this.characterImageNumber) return;
         if (imageNumber == 1) {
             PlayerImageHeight = textures.getLukaszLewoImage().getHeight();
             PlayerImageWidth = textures.getLukaszPrawoImage().getWidth();
@@ -148,6 +165,9 @@ public class Player extends GameObject {
         return new Rectangle2D((int) getPositionX() + PlayerImageWidth * 4 / 5, (int) getPositionY() + PlayerImageHeight / 4, PlayerImageWidth / 5, PlayerImageHeight / 2);
     }
 
+    public Rectangle2D getBoundsCentral() {
+        return new Rectangle2D((int) getPositionX(), (int) getPositionY(), PlayerImageWidth, PlayerImageHeight);
+    }
 
     //gettery i settery
     public int getPlayerNumber() {
@@ -174,11 +194,68 @@ public class Player extends GameObject {
         this.jumping = jumping;
     }
 
-    public int getCharacterImageNumber(){
+    public int getCharacterImageNumber() {
         return characterImageNumber;
     }
 
     public int getDirection() {
         return direction;
     }
+
+    public int getWhichWeapon() {
+        return whichWeapon;
+    }
+
+    public void setWhichWeapon(int whichWeapon) {
+        this.whichWeapon = whichWeapon;
+    }
+
+    public int getLastWeapon() {
+        return lastWeapon;
+    }
+
+    public void setLastWeapon(int lastWeapon) {
+        this.lastWeapon = lastWeapon;
+    }
+
+    public int getHittedCounter() {
+        return hittedCounter;
+    }
+
+    public void setHittedCounter(int hittedCounter) {
+        this.hittedCounter = hittedCounter;
+    }
+
+    public int getAttackingCounter() {
+        return attackingCounter;
+    }
+
+    public void setAttackingCounter(int attackingCounter) {
+        this.attackingCounter = attackingCounter;
+    }
+
+    public int getAttacking() {
+        return attacking;
+    }
+
+    public void setAttacking(int attacking) {
+        this.attacking = attacking;
+    }
+
+    public int getDirectionToRecoil() {
+        return directionToRecoil;
+    }
+
+    public void setDirectionToRecoil(int directionToRecoil) {
+        this.directionToRecoil = directionToRecoil;
+    }
+
+    public double getPlayerImageWidth() {
+        return PlayerImageWidth;
+    }
+
+    public double getPlayerImageHeight() {
+        return PlayerImageHeight;
+    }
+
 }

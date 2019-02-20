@@ -32,6 +32,8 @@ public class Msg {
             bufWiadom += ".";
             bufWiadom += bpla.getDirection();
             bufWiadom += ".";
+            bufWiadom += bpla.getLastWeapon();
+            bufWiadom += ".";
             bufWiadom += (int) bpla.getPositionX();
             bufWiadom += ".";
             bufWiadom += (int) bpla.getPositionY();
@@ -46,7 +48,9 @@ public class Msg {
         String[] parts = wiadom.split("_");
         int bufNumerGracza = Integer.parseInt(parts[0]);
         int bufNumerObrazkaGracza = Integer.parseInt(parts[1]);
-        int bufAkcjaGracza = Integer.parseInt(parts[2]);
+        int bufCzyAtakuje = Integer.parseInt(parts[2]);
+        int bufNumerBroni = Integer.parseInt(parts[3]);
+        int bufAkcjaGracza = Integer.parseInt(parts[4]);
 
         int bufVel = 10;
         for (int i = 0; i < playersList.size(); i++) {
@@ -54,6 +58,8 @@ public class Msg {
             if (bufPlayer.getPlayerNumber() == bufNumerGracza) {
 
                 bufPlayer.setCharacterImageNumber(bufNumerObrazkaGracza);
+                bufPlayer.setAttacking(bufCzyAtakuje);
+                bufPlayer.setWhichWeapon(bufNumerBroni);
 
                 if (bufAkcjaGracza == 1 && !bufPlayer.isJumping()) {
                     bufPlayer.setVelocityY(-bufVel - 10);
@@ -68,6 +74,19 @@ public class Msg {
                     if (bufPlayer.isFalling())
                         bufPlayer.setVelocityX(0);
                 }
+
+                if (bufPlayer.getHittedCounter() >=198) {
+                    bufPlayer.setVelocityY(-bufVel - 10);
+                    bufPlayer.setJumping(true);
+                }
+                if (bufPlayer.getHittedCounter() > 0) {
+                    bufPlayer.setVelocityX(bufPlayer.getVelocityX() + (int)(bufPlayer.getDirectionToRecoil() * bufPlayer.getHittedCounter() * bufPlayer.getHittedCounter() / 5000));
+                }
+                if (bufPlayer.getVelocityX() > 10) bufPlayer.setVelocityX(10);
+                else if (bufPlayer.getVelocityX() < -10) bufPlayer.setVelocityX(-10);
+
+                bufPlayer.setHittedCounter(bufPlayer.getHittedCounter() - 1);
+
 
             }
         }

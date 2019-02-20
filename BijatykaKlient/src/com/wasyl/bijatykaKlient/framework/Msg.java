@@ -14,6 +14,7 @@ public class Msg {
     private int lastPlayersNumber = 0;
     private int messagesCounterToDown = 10;
 
+
     //konstruktor klasy
     public Msg(Game game) {
         this.game = game;
@@ -32,11 +33,12 @@ public class Msg {
         int direction;
         int numberOfPlayers = Integer.valueOf(parts[0]);
         int characterImageNumber;
+        int lastWeapon;
 
         //odczekanie dziesięciu pierwszych wiadomości, żeby mieć pewność, że pierwsza będzie prawidłowa
         if (messagesCounterToDown != 0) {
             messagesCounterToDown--;
-            if (messagesCounterToDown == 1) game.setThisIndividualPlayerNumber(numberOfPlayers);
+            if (messagesCounterToDown == 1) Game.thisIndividualPlayerNumber = numberOfPlayers;
             return;
         }
 
@@ -53,8 +55,9 @@ public class Msg {
 
             characterImageNumber = Integer.parseInt(buf[0]);
             direction = Integer.parseInt(buf[1]);
-            posX = Integer.parseInt(buf[2]);
-            posY = Integer.parseInt(buf[3]);
+            lastWeapon = Integer.parseInt(buf[2]);
+            posX = Integer.parseInt(buf[3]);
+            posY = Integer.parseInt(buf[4]);
 
             //korekta pozycji względem rozmiarów ekranu
             posX = (int) Game.screenWidth * posX / 1920;
@@ -64,6 +67,7 @@ public class Msg {
             for (int j = 0; j < players.size(); j++) {
                 Player bufPlayer = players.get(j);
                 if (i == players.get(j).getPlayerNumber()) {
+                    bufPlayer.setLastWeapon(lastWeapon);
                     bufPlayer.setDirection(direction);
                     bufPlayer.setCharacterImageNumber(characterImageNumber);
                     bufPlayer.setPositionX(posX);
@@ -82,7 +86,7 @@ public class Msg {
 
         int bufThisIndividualPlayerNumber = game.getThisIndividualPlayerNumber();
 
-        bufWiadom += bufThisIndividualPlayerNumber + "_" + Game.isChoosen + "_" + bufPlayerLastAction;
+        bufWiadom += bufThisIndividualPlayerNumber + "_" + Game.isChoosen + "_"+ game.getAttack() +"_"+ game.getWeaponNumber()+ "_"+bufPlayerLastAction;
 
         System.out.println(bufWiadom);
         return bufWiadom;

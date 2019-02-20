@@ -8,6 +8,10 @@ import java.net.Socket;
 
 public class Communication {
 
+    //WAŻNE
+    private String host = "192.168.1.28";
+    //!!!!
+
     String wiadom;
     BufferedReader czytelnik;
     PrintWriter pisarz;
@@ -40,7 +44,7 @@ public class Communication {
     //metoda, która ma tylko nawiązać komunikacje z serwerem
     private void konfigurujKomunikacje() {
         try {
-            gniazdo = new Socket("127.0.0.1", 5001);
+            gniazdo = new Socket(host, 5001);
             InputStreamReader czytelnikStrm = new InputStreamReader(gniazdo.getInputStream());
             czytelnik = new BufferedReader(czytelnikStrm);
             pisarz = new PrintWriter(gniazdo.getOutputStream());

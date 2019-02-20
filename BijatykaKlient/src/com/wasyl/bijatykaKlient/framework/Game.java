@@ -1,7 +1,9 @@
 package com.wasyl.bijatykaKlient.framework;
 
 import com.wasyl.bijatykaKlient.objects.Background;
+import com.wasyl.bijatykaKlient.objects.Bot;
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
+import com.wasyl.bijatykaKlient.objects.Player;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -39,11 +41,17 @@ public class Game extends Application {
     private Textures textures;
     private Camera camera;
     private Background background;
+    public static Player actualPlayer;
+    private Bot bot;
 
     //związane z identyfikacją grtacza
     private int playerLastAction = 0;
-    private int thisIndividualPlayerNumber = 0;
+    public static int thisIndividualPlayerNumber = 0;
     public static int isChoosen = 0;
+    private int attack = 0;
+    private int weaponNumber = 1;
+    private boolean ableWeaponChange = true;
+
 
     //main() wywołujący launch(), czyli start()
     public static void main(String[] args) {
@@ -53,14 +61,14 @@ public class Game extends Application {
 
     //start() == launch()
     @Override
-    public void start(Stage stage){
+    public void start(Stage stage) {
 
         stage.setTitle("Gra");
 
         //stworzenie ważnych objektów
         textures = new Textures();
         drawHandler = new DrawHandler(textures);
-        background = new Background(0,0,textures);
+        background = new Background(0, 0, textures);
         drawHandler.addObject(background);
         drawHandler.makeFirstLevel();
         camera = new Camera(drawHandler.players);
@@ -93,6 +101,7 @@ public class Game extends Application {
                     } else if (posX >= screenWidth * 3 / 4 - botPrawoImage.getWidth() / 2 && posX <= screenWidth * 3 / 4 + maciekLewoImage.getWidth() / 2) {
                         if (posY >= screenHeight / 2 - botPrawoImage.getHeight() / 2 && posY <= screenHeight / 2 + maciekLewoImage.getHeight() / 2) {
                             isChoosen = 3;
+                            bot = new Bot(actualPlayer, textures, this);
                         }
                     }
                 });
@@ -111,12 +120,16 @@ public class Game extends Application {
                 e -> {
                     String code = e.getCode().toString();
                     if (!input.contains(code)) input.add(code);
-
                     if (code.equals("UP")) setPlayerLastAction(1);
                     else if (code.equals("RIGHT")) setPlayerLastAction(2);
                     else if (code.equals("DOWN")) setPlayerLastAction(3);
                     else if (code.equals("LEFT")) setPlayerLastAction(4);
-                    else if (code.equals("ESCAPE")) System.exit(0);
+                    else if (code.equals("Z")) setAttack(1);
+                    else if (code.equals("X") && isAbleWeaponChange()) {
+                        changeWeapon();
+                        setAbleWeaponChange(false);
+                    }
+                    if (code.equals("ESCAPE")) System.exit(0);
                 });
 
         scene.setOnKeyReleased(
@@ -124,6 +137,8 @@ public class Game extends Application {
                     String code = e.getCode().toString();
                     input.remove(code);
                     if (input.isEmpty() || code.equals("LEFT") || code.equals("RIGHT")) setPlayerLastAction(0);
+                    if (!input.contains("Z")) setAttack(0);
+                    if (code.equals("X")) setAbleWeaponChange(true);
                 });
 
         //stworzenie płótna
@@ -163,8 +178,8 @@ public class Game extends Application {
             gc.setFill(Color.BLACK);
             //gc.fillRect(0, 0, 5000, 2000);
             camera.update();
-            drawHandler.draw(gc, (int)camera.getPositionX(), (int)camera.getPositionY());
-
+            if(bot != null) bot.update(drawHandler.objects);
+            drawHandler.draw(gc, (int) camera.getPositionX(), (int) camera.getPositionY());
         }
     }
 
@@ -187,5 +202,35 @@ public class Game extends Application {
 
     public void setThisIndividualPlayerNumber(int thisIndividualPlayerNumber) {
         this.thisIndividualPlayerNumber = thisIndividualPlayerNumber;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void changeWeapon(){
+        if(getWeaponNumber() == 1) setWeaponNumber(2);
+        else if(getWeaponNumber() == 2) setWeaponNumber(1);
+
+    }
+
+    public int getWeaponNumber() {
+        return weaponNumber;
+    }
+
+    public void setWeaponNumber(int weaponNumber) {
+        this.weaponNumber = weaponNumber;
+    }
+
+    public boolean isAbleWeaponChange() {
+        return ableWeaponChange;
+    }
+
+    public void setAbleWeaponChange(boolean ableWeaponChange) {
+        this.ableWeaponChange = ableWeaponChange;
     }
 }

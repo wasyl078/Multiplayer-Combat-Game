@@ -1,5 +1,7 @@
 package com.wasyl.bijatykaKlient.objects;
 
+import com.wasyl.bijatykaKlient.objects.melee.MeleeAxe;
+import com.wasyl.bijatykaKlient.objects.melee.MeleeLightSaber;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -16,12 +18,22 @@ public class Player extends GameObject {
     private int playerNumber;
     private int direction = 1;      //1 - left   2 - right
     private int characterImageNumber = 0;
+    private double PlayerImageWidth;
+    private double PlayerImageHeight;
+
+    //związane z broniami
+    private MeleeLightSaber meleeLightSaber;
+    private MeleeAxe meleeAxe;
+    private int lastWeapon = 0;
+
 
     //konstruktor klasy
     public Player(int x, int y, int characterNumber, int playerNumber, Textures textures) {
         super(x, y);
         this.playerNumber = playerNumber;
         this.textures = textures;
+        meleeLightSaber = new MeleeLightSaber(0, 0, this, textures);
+        meleeAxe = new MeleeAxe(0, 0, this, textures);
         setCharacterImageNumber(characterNumber);
     }
 
@@ -34,6 +46,9 @@ public class Player extends GameObject {
 
         if (direction == 1) gc.drawImage(imageLeft, getPositionX(), getPositionY());
         else gc.drawImage(imageRight, getPositionX(), getPositionY());
+
+        meleeLightSaber.draw(gc, cpx, cpy);
+        meleeAxe.draw(gc, cpx, cpy);
     }
 
 
@@ -43,14 +58,24 @@ public class Player extends GameObject {
         if (imageNumber == 1) {
             imageLeft = textures.getLukaszLewoImage();
             imageRight = textures.getLukaszPrawoImage();
+            PlayerImageHeight = textures.getLukaszLewoImage().getHeight();
+            PlayerImageWidth = textures.getLukaszPrawoImage().getWidth();
         } else if (imageNumber == 2) {
             imageLeft = textures.getMaciekLewoImage();
             imageRight = textures.getMaciekPrawoImage();
+            PlayerImageHeight = textures.getMaciekLewoImage().getHeight();
+            PlayerImageWidth = textures.getMaciekPrawoImage().getWidth();
         } else if (imageNumber == 3) {
             imageLeft = textures.getBotLewoImage();
             imageRight = textures.getBotPrawoImage();
+            PlayerImageHeight = textures.getBotLewoImage().getHeight();
+            PlayerImageWidth = textures.getBotPrawoImage().getWidth();
         }
         characterImageNumber = imageNumber;
+        if (characterImageNumber != 0) {
+            meleeLightSaber.calculateWeaponPosition();
+            meleeAxe.calculateWeaponPosition();
+        }
     }
 
 
@@ -62,4 +87,25 @@ public class Player extends GameObject {
     public void setDirection(int direction) {
         this.direction = direction;
     }
+
+    public double getPlayerImageWidth() {
+        return PlayerImageWidth;
+    }
+
+    public double getPlayerImageHeight() {
+        return PlayerImageHeight;
+    }
+
+    public int getLastWeapon() {
+        return lastWeapon;
+    }
+
+    public void setLastWeapon(int lastWeapon) {
+        this.lastWeapon = lastWeapon;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
 }

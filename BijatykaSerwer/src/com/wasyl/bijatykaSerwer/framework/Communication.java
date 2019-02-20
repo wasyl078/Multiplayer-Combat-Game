@@ -30,7 +30,7 @@ public class Communication {
     public void powysylajWiadomosci() {
         String msdsdad = msg.stworzJednaDlugaWiadomosc();
         if (msdsdad.equals("0") || Integer.parseInt(msdsdad.substring(0, 1)) != iloscGraczy) return;
-        System.out.println(msdsdad);
+        //System.out.println(msdsdad);
         rozeslijDoWszystkich(msdsdad);
     }
 

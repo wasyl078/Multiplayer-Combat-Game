@@ -29,9 +29,12 @@ public class Textures {
     private BufferedImage mieczSwietlnyAtakPrawoImage;
     private BufferedImage mieczSwietlnyPionowoLewoImage;
     private BufferedImage mieczSwietlnyPionowoPrawoImage;
+    private BufferedImage toporPionowoPrawo;
+    private BufferedImage toporPionowoLewo;
+    private BufferedImage toporAtakLewo;
+    private BufferedImage toporAtakPrawo;
     private BufferedImage background1;
     private BufferedImage background2;
-    private BufferedImage background3;
 
     public Textures() {
         SpriteSheetLoader loader = new SpriteSheetLoader();
@@ -39,7 +42,6 @@ public class Textures {
             spriteSheet = loader.loadImage("obrazki/sprite.png");
             background1 = loader.loadImage("obrazki/background 1.png");
             background2 = loader.loadImage("obrazki/background 2.png");
-            background3 = loader.loadImage("obrazki/background 3.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,12 +59,16 @@ public class Textures {
         pistoletLewo = ss.grabImage(13, 1, 128, 89);
         pociskPrawo = ss.grabImage(1, 1, 53, 33);
         pociskLewo = ss.grabImage(2, 1, 53, 33);
-        mieczSwietlnyPionowoLewoImage = ss.grabImage(15, 1, 15, 128);
-        mieczSwietlnyPionowoPrawoImage = ss.grabImage(14, 1, 15, 128);
-        mieczSwietlnyAtakPrawoImage = ss.grabImage(2, 2, 90, 90);
-        mieczSwietlnyAtakLewoImage = ss.grabImage(1, 2, 90, 90);
+        mieczSwietlnyPionowoLewoImage = ss.grabImage(15, 1, 18, 128);
+        mieczSwietlnyPionowoPrawoImage = ss.grabImage(14, 1, 18, 128);
+        mieczSwietlnyAtakPrawoImage = ss.grabImage(2, 2, 114, 38);
+        mieczSwietlnyAtakLewoImage = ss.grabImage(1, 2, 114, 38);
         botLewoImage = ss.grabImage(4, 2, 93, 128);
         botPrawoImage = ss.grabImage(3, 2, 93, 128);
+        toporPionowoPrawo = ss.grabImage(5, 2, 30, 117);
+        toporPionowoLewo = ss.grabImage(6, 2, 30, 117);
+        toporAtakPrawo = ss.grabImage(7, 2, 121, 66);
+        toporAtakLewo = ss.grabImage(8, 2, 121, 66);
     }
 
 
@@ -163,6 +169,26 @@ public class Textures {
         return bufImage;
     }
 
+    public Image getToporAtakLewoImage() {
+        Image bufImage = toFXImage(scale(toporAtakLewo, (int) (0.06302 * Game.screenWidth), (int) (0.06111 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getToporAtakPrawoImage() {
+        Image bufImage = toFXImage(scale(toporAtakPrawo, (int) (0.06302 * Game.screenWidth), (int) (0.06111 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getToporPionowoLewoImage() {
+        Image bufImage = toFXImage(scale(toporPionowoLewo, (int) (0.015625 * Game.screenWidth), (int) (0.108333 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getToporPionowoPrawoImage() {
+        Image bufImage = toFXImage(scale(toporPionowoPrawo, (int) (0.015625 * Game.screenWidth), (int) (0.108333 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
     public Image getBotLewoImage() {
         Image bufImage = toFXImage(scale(botLewoImage, (int) (0.02421875 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
         return bufImage;
@@ -178,14 +204,8 @@ public class Textures {
         return bufImage;
     }
 
-
     public Image getBackground2() {
         Image bufImage = toFXImage(scale(background2, (int) (2 * Game.screenWidth), (int) (1 * Game.screenHeight)), null);
-        return bufImage;
-    }
-
-    public Image getBackground3() {
-        Image bufImage = toFXImage(scale(background3, (int) (2 * Game.screenWidth), (int) (1 * Game.screenHeight)), null);
         return bufImage;
     }
 }
