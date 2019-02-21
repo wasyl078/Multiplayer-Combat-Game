@@ -2,6 +2,7 @@ package com.wasyl.bijatykaSerwer.framework;
 
 
 import com.wasyl.bijatykaSerwer.objects.UpdateHandler;
+import com.wasyl.bijatykaSerwer.objects.bullets.PistolBullet;
 import com.wasyl.bijatykaSerwer.textures.Textures;
 
 
@@ -18,6 +19,8 @@ public class Game implements Runnable {
     private Communication communication;
     private Textures textures;
     private Msg msg;
+    public static PistolBullet bufPistolBullet;
+
 
     //konstruktor gry, wywołuje kilka podstawowych metod na początek
     public Game() {

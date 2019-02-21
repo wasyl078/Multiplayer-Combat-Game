@@ -2,28 +2,44 @@ package com.wasyl.bijatykaKlient.objects;
 
 import com.wasyl.bijatykaKlient.framework.Game;
 import com.wasyl.bijatykaKlient.textures.Textures;
+import javafx.scene.canvas.GraphicsContext;
 
 import java.util.LinkedList;
 
-public class Bot {
+public class Bot extends GameObject {
 
-    private Player player;
     private Textures textures;
     private Game game;
+    private int individualPlayerNumber;
     private double theClosestDistanceZ;
     private int attackCounter = 10;
     private boolean work = false;
     private int respawnCounter;
     private int direction;
 
-    public Bot(Player player, Textures textures, Game game) {
-        this.player = player;
+    public Bot(int x, int y, int individualPlayerNumber, Textures textures, Game game) {
+        super(x, y);
+        this.individualPlayerNumber = individualPlayerNumber;
         this.textures = textures;
         this.game = game;
     }
 
 
-    public void update(LinkedList<GameObject> object) {
+    private void update() {
+
+        LinkedList<GameObject>object = game.getDrawHandler().objects;
+        Player player = null;
+        for (int i = 0; i < object.size(); i++) {
+            if (object.get(i).getClass().equals(Player.class)) {
+                System.out.println("bot");
+                if (((Player) object.get(i)).getPlayerNumber() == Game.thisIndividualPlayerNumber) {
+                    player = (Player) object.get(i);
+                }
+            }
+        }
+
+        if (player == null) return;
+
 
         direction = player.getDirection();
         Player playerToFollow = null;
@@ -93,5 +109,10 @@ public class Bot {
         }
         respawnCounter--;
         if (respawnCounter < 0) respawnCounter = 0;
+    }
+
+    @Override
+    public void draw(GraphicsContext gc, int cpx, int cpy) {
+        if (Game.isChoosen == 3) update();
     }
 }

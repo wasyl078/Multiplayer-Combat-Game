@@ -9,11 +9,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Communication {
 
     //zmienne
-    private ArrayList strumienieWejsciowe;
+    private CopyOnWriteArrayList<PrintWriter> strumienieWejsciowe;
     private Msg msg;
     private UpdateHandler updateHandler;
     public static int iloscGraczy = 0;
@@ -30,7 +31,7 @@ public class Communication {
     public void powysylajWiadomosci() {
         String msdsdad = msg.stworzJednaDlugaWiadomosc();
         if (msdsdad.equals("0") || Integer.parseInt(msdsdad.substring(0, 1)) != iloscGraczy) return;
-        //System.out.println(msdsdad);
+        System.out.println(msdsdad);
         rozeslijDoWszystkich(msdsdad);
     }
 
@@ -66,7 +67,7 @@ public class Communication {
 
     //sprawdzanie czy są jacyś nowi klienci
     public void doRoboty() {
-        strumienieWejsciowe = new ArrayList();
+        strumienieWejsciowe = new CopyOnWriteArrayList<PrintWriter>();
         try {
             ServerSocket serverSock = new ServerSocket(5001);
 

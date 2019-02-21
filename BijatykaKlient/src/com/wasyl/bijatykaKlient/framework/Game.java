@@ -6,6 +6,7 @@ import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.objects.Player;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -22,15 +23,14 @@ public class Game extends Application {
 
     //związane z okienkiem
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-
     //public static double screenWidth = screenSize.getWidth();
     //public static double screenHeight = screenSize.getHeight();
-    public static double screenWidth = 1600;
-    public static double screenHeight = 900;
+    public static double screenWidth = 900;
+    public static double screenHeight = 506;
 
 
     private Canvas canvas;
+    private GraphicsContext gc;
     private Image lukaszPrawoImage;
     private Image maciekLewoImage;
     private Image botPrawoImage;
@@ -43,6 +43,7 @@ public class Game extends Application {
     private Background background;
     public static Player actualPlayer;
     private Bot bot;
+
 
     //związane z identyfikacją grtacza
     private int playerLastAction = 0;
@@ -72,7 +73,8 @@ public class Game extends Application {
         drawHandler.addObject(background);
         drawHandler.makeFirstLevel();
         camera = new Camera(drawHandler.players);
-
+        bot = new Bot(0, 0, Game.thisIndividualPlayerNumber, textures, this);
+        drawHandler.addObject(bot);
 
         //stworzenie grupy
         Group root = new Group();
@@ -87,21 +89,21 @@ public class Game extends Application {
         //obsługa zdarzeń (myszki)
         scene.setOnMouseClicked(
                 e -> {
-
-                    double posX = e.getX();
-                    double posY = e.getY();
-                    if (posX >= screenWidth / 4 - lukaszPrawoImage.getWidth() / 2 && posX <= screenWidth / 4 + lukaszPrawoImage.getWidth() / 2) {
-                        if (posY >= screenHeight / 2 - lukaszPrawoImage.getHeight() / 2 && posY <= screenHeight / 2 + lukaszPrawoImage.getHeight() / 2) {
-                            isChoosen = 1;
-                        }
-                    } else if (posX >= screenWidth * 2 / 4 - maciekLewoImage.getWidth() / 2 && posX <= screenWidth * 2 / 4 + maciekLewoImage.getWidth() / 2) {
-                        if (posY >= screenHeight / 2 - maciekLewoImage.getHeight() / 2 && posY <= screenHeight / 2 + maciekLewoImage.getHeight() / 2) {
-                            isChoosen = 2;
-                        }
-                    } else if (posX >= screenWidth * 3 / 4 - botPrawoImage.getWidth() / 2 && posX <= screenWidth * 3 / 4 + maciekLewoImage.getWidth() / 2) {
-                        if (posY >= screenHeight / 2 - botPrawoImage.getHeight() / 2 && posY <= screenHeight / 2 + maciekLewoImage.getHeight() / 2) {
-                            isChoosen = 3;
-                            bot = new Bot(actualPlayer, textures, this);
+                    if (isChoosen == 0) {
+                        double posX = e.getX();
+                        double posY = e.getY();
+                        if (posX >= screenWidth / 4 - lukaszPrawoImage.getWidth() / 2 && posX <= screenWidth / 4 + lukaszPrawoImage.getWidth() / 2) {
+                            if (posY >= screenHeight / 2 - lukaszPrawoImage.getHeight() / 2 && posY <= screenHeight / 2 + lukaszPrawoImage.getHeight() / 2) {
+                                isChoosen = 1;
+                            }
+                        } else if (posX >= screenWidth * 2 / 4 - maciekLewoImage.getWidth() / 2 && posX <= screenWidth * 2 / 4 + maciekLewoImage.getWidth() / 2) {
+                            if (posY >= screenHeight / 2 - maciekLewoImage.getHeight() / 2 && posY <= screenHeight / 2 + maciekLewoImage.getHeight() / 2) {
+                                isChoosen = 2;
+                            }
+                        } else if (posX >= screenWidth * 3 / 4 - botPrawoImage.getWidth() / 2 && posX <= screenWidth * 3 / 4 + maciekLewoImage.getWidth() / 2) {
+                            if (posY >= screenHeight / 2 - botPrawoImage.getHeight() / 2 && posY <= screenHeight / 2 + maciekLewoImage.getHeight() / 2) {
+                                isChoosen = 3;
+                            }
                         }
                     }
                 });
@@ -111,7 +113,7 @@ public class Game extends Application {
 
 
         //utworzEnie komunikacji z serwerem
-        Msg msg = new Msg(this);
+        Msg msg = new Msg(this, textures);
         Communication communication = new Communication(this, msg);
 
         //obsługa zdarzeń z klawiatury
@@ -144,6 +146,7 @@ public class Game extends Application {
         //stworzenie płótna
         canvas = new Canvas(Game.screenWidth, Game.screenHeight);
         root.getChildren().add(canvas);
+        gc = canvas.getGraphicsContext2D();
         //stage.setMaximized(true);
         //stage.setFullScreen(true);
 
@@ -153,7 +156,6 @@ public class Game extends Application {
     }
 
     public void draw() {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
 
         if (isChoosen == 0) {
             //narysowanie wszystkiego
@@ -175,10 +177,9 @@ public class Game extends Application {
             gc.fillRect(screenWidth * 3 / 4 - botPrawoImage.getWidth() / 2, screenHeight / 2 - maciekLewoImage.getHeight() / 2, maciekLewoImage.getWidth(), maciekLewoImage.getHeight());
             gc.drawImage(botPrawoImage, screenWidth * 3 / 4 - maciekLewoImage.getWidth() / 2, screenHeight / 2 - maciekLewoImage.getHeight() / 2);
         } else {
-            gc.setFill(Color.BLACK);
-            //gc.fillRect(0, 0, 5000, 2000);
+            // gc.setFill(Color.BLACK);
+            //gc.fillRect(0, 0, Game.screenWidth, Game.screenHeight);
             camera.update();
-            if(bot != null) bot.update(drawHandler.objects);
             drawHandler.draw(gc, (int) camera.getPositionX(), (int) camera.getPositionY());
         }
     }
@@ -200,10 +201,6 @@ public class Game extends Application {
         return thisIndividualPlayerNumber;
     }
 
-    public void setThisIndividualPlayerNumber(int thisIndividualPlayerNumber) {
-        this.thisIndividualPlayerNumber = thisIndividualPlayerNumber;
-    }
-
     public int getAttack() {
         return attack;
     }
@@ -212,9 +209,10 @@ public class Game extends Application {
         this.attack = attack;
     }
 
-    public void changeWeapon(){
-        if(getWeaponNumber() == 1) setWeaponNumber(2);
-        else if(getWeaponNumber() == 2) setWeaponNumber(1);
+    public void changeWeapon() {
+        if (getWeaponNumber() == 1) setWeaponNumber(2);
+        else if (getWeaponNumber() == 2) setWeaponNumber(3);
+        else if (getWeaponNumber() == 3) setWeaponNumber(1);
 
     }
 

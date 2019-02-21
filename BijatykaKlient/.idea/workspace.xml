@@ -3,20 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="2a36a4ea-dc3c-40b4-8270-2b5b845c6433" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/background 3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/obrazki/sprite.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Communication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Communication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Msg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Msg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/DrawHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/DrawHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/textures/Textures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/textures/Textures.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BijatykaSerwer/obrazki/sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/../BijatykaSerwer/obrazki/sprite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeAxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeAxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeLightSaber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeLightSaber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Communication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Communication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Msg.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Msg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/ID.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/Textures.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/Textures.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,10 +40,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeAxe.java">
+        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+            <state relative-caret-position="611">
+              <caret line="182" column="45" selection-start-line="182" selection-start-column="45" selection-end-line="182" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1842#1843#0" expanded="true" />
+                <element signature="e#1870#1871#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Communication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,10 +66,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/textures/Textures.java">
+        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Background.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="746">
-              <caret line="178" column="24" lean-forward="true" selection-start-line="178" selection-start-column="24" selection-end-line="178" selection-end-column="24" />
+            <state relative-caret-position="375">
+              <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,10 +78,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/Textures.java">
+        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Msg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="148" column="24" lean-forward="true" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
+            <state relative-caret-position="431">
+              <caret line="79" column="12" lean-forward="true" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/DrawHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,39 +104,31 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Bot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
+            <state relative-caret-position="326">
+              <caret line="29" column="52" lean-forward="true" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4184#4185#0" expanded="true" />
+                <element signature="e#4233#4234#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Player.java">
+        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/GameObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Communication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3025#3026#0" expanded="true" />
-                <element signature="e#3114#3115#0" expanded="true" />
-                <element signature="e#3196#3197#0" expanded="true" />
-                <element signature="e#3280#3281#0" expanded="true" />
-                <element signature="e#3347#3348#0" expanded="true" />
-                <element signature="e#3440#3441#0" expanded="true" />
-                <element signature="e#3505#3506#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeLightSaber.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
+              <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,47 +137,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeArmas.java">
+        <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/textures/Textures.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#6465#6466#0" expanded="true" />
-                <element signature="e#6508#6509#0" expanded="true" />
-                <element signature="e#7217#7218#0" expanded="true" />
-                <element signature="e#7273#7274#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/ID.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeAxe.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="42" column="37" lean-forward="true" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+            <state relative-caret-position="341">
+              <caret line="184" column="5" lean-forward="true" selection-start-line="184" selection-start-column="5" selection-end-line="184" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -184,6 +163,7 @@
       <find>System.o</find>
       <find>System</find>
       <find>int</find>
+      <find>player</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,31 +182,38 @@
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/SpriteSheetLoader.java" />
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/SpriteSheet.java" />
         <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/CharacterChooser.java" />
-        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Game.java" />
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/UpdateHandler.java" />
         <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Camera.java" />
         <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/GameObject.java" />
         <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Background.java" />
         <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Platform.java" />
-        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Communication.java" />
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/meleearmasstrategy/MeleeAttack.java" />
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/meleearmasstrategy/MeleeArmas.java" />
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/meleearmasstrategy/MeleeLightSaber.java" />
         <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeArmas.java" />
-        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeLightSaber.java" />
-        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Communication.java" />
-        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/DrawHandler.java" />
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeLightSaber.java" />
-        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeAxe.java" />
-        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Game.java" />
-        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Msg.java" />
-        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Msg.java" />
-        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/ID.java" />
-        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/Player.java" />
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeAxe.java" />
-        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Player.java" />
         <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/textures/Textures.java" />
         <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/Textures.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/sounds/SoundsEffect.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeLightSaber.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeAxe.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/distance/DistanceArmas.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Player.java" />
+        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/distance/DistanceArmas.java" />
+        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/Player.java" />
+        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/ID.java" />
+        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Game.java" />
+        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Msg.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/distance/DistancePistol.java" />
+        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/bullets/PistolBullet.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Msg.java" />
+        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/distance/DistancePistol.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/bullets/PistolBullet.java" />
+        <option value="$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Communication.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/DrawHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Communication.java" />
+        <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Game.java" />
         <option value="$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Bot.java" />
       </list>
     </option>
@@ -251,7 +238,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,7 +281,30 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="bijatykaKlient" type="462c0819:PsiDirectoryNode" />
               <item name="objects" type="462c0819:PsiDirectoryNode" />
+              <item name="bullets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BijatykaKlient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BijatykaKlient" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="bijatykaKlient" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
+              <item name="distance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BijatykaKlient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BijatykaKlient" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="bijatykaKlient" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
               <item name="melee" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BijatykaKlient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BijatykaKlient" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="bijatykaKlient" type="462c0819:PsiDirectoryNode" />
+              <item name="sounds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BijatykaKlient" type="b2602c69:ProjectViewProjectNode" />
@@ -339,6 +348,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="bijatykaSerwer" type="462c0819:PsiDirectoryNode" />
               <item name="objects" type="462c0819:PsiDirectoryNode" />
+              <item name="bullets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BijatykaKlient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BijatykaSerwer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="bijatykaSerwer" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
+              <item name="distance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BijatykaKlient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BijatykaSerwer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="bijatykaSerwer" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
               <item name="melee" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -353,12 +378,13 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550679533175" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550748704900" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../BijatykaSerwer" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -450,7 +476,8 @@
       <workItem from="1550659241730" duration="36000" />
       <workItem from="1550659289289" duration="45000" />
       <workItem from="1550659344406" duration="6332000" />
-      <workItem from="1550669687146" duration="6402000" />
+      <workItem from="1550669687146" duration="13820000" />
+      <workItem from="1550689277035" duration="10426000" />
     </task>
     <task id="LOCAL-00001" summary="asdasdsa">
       <created>1550504196970</created>
@@ -536,16 +563,31 @@
       <option name="project" value="LOCAL" />
       <updated>1550658686172</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="axe + bot 9">
+      <created>1550679549217</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1550679549217</updated>
+    </task>
+    <task id="LOCAL-00014" summary="axe + bot 9">
+      <created>1550679566911</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1550679566911</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43101000" />
+    <option name="totallyTimeSpent" value="60945000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47494304" visible="true" weight="0.20682302" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47494304" visible="true" weight="0.20895523" />
       <window_info id="Structure" order="1" sideWeight="0.52505696" side_tool="true" weight="0.18335089" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -572,9 +614,9 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="right" id="Run" internal_type="SLIDING" order="8" type="SLIDING" visible="true" weight="0.40565032" />
-      <window_info anchor="right" id="Maven" order="9" show_stripe_button="false" weight="0.32995737" />
-      <window_info anchor="right" id="Database" order="10" show_stripe_button="false" />
+      <window_info anchor="right" id="Maven" order="8" show_stripe_button="false" weight="0.32995737" />
+      <window_info anchor="right" id="Database" order="9" show_stripe_button="false" />
+      <window_info anchor="right" id="Run" internal_type="SLIDING" order="10" type="SLIDING" weight="0.4989339" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,12 +633,10 @@
     <MESSAGE value="camera 7" />
     <MESSAGE value="backgrounds 8" />
     <MESSAGE value="skalowanie dziala 8" />
-    <option name="LAST_COMMIT_MESSAGE" value="skalowanie dziala 8" />
+    <MESSAGE value="axe + bot 9" />
+    <option name="LAST_COMMIT_MESSAGE" value="axe + bot 9" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Main.java" />
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/Handler.java" />
     <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Handler.java" />
     <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/textures/SpriteSheetLoader.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -660,29 +700,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/obrazki/background 3.png" />
     <entry file="file://$PROJECT_DIR$/obrazki/background 2.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Background.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/meleearmasstrategy/MeleeAttack.java" />
     <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee.java" />
@@ -707,10 +727,190 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/GameObject.java">
+    <entry file="file://$PROJECT_DIR$/obrazki/sprite.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/SpriteSheetLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/Textures.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="148" column="24" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeArmas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1419#1420#0" expanded="true" />
+            <element signature="e#1459#1460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/sounds/SoundsEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeLightSaber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/distance/PistolBullet.java" />
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeArmas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="791">
+          <caret line="80" column="47" lean-forward="true" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/distance/DistanceArmas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181_69/javafx-src.zip!/javafx/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="2288" selection-start-line="2288" selection-end-line="2288" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeAxe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeLightSaber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/distance/DistanceArmas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/ID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Msg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeAxe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/distance/DistancePistol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -724,49 +924,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181_69/src.zip!/java/lang/Thread.java">
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/bullets/PistolBullet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="747" selection-start-line="747" selection-end-line="747" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeArmas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+        <state relative-caret-position="645">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1419#1420#0" expanded="true" />
-            <element signature="e#1459#1460#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/obrazki/sprite.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/GameObject.java">
+    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/distance/DistancePistol.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state relative-caret-position="570">
+          <caret line="41" column="132" selection-start-line="41" selection-start-column="132" selection-end-line="41" selection-end-column="132" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/SpriteSheetLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/bullets/PistolBullet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="195">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1338#1339#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Communication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        <state relative-caret-position="300">
+          <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/DrawHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Msg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="79" column="12" lean-forward="true" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181_69/javafx-src.zip!/com/sun/javafx/sg/prism/NGCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="1156" selection-start-line="1156" selection-end-line="1156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Background.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/textures/Textures.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="184" column="5" lean-forward="true" selection-start-line="184" selection-start-column="5" selection-end-line="184" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -775,28 +1022,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Communication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/DrawHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeLightSaber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        <state relative-caret-position="221">
+          <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -805,152 +1032,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="132" column="19" lean-forward="true" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
+        <state relative-caret-position="611">
+          <caret line="182" column="45" selection-start-line="182" selection-start-column="45" selection-end-line="182" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1768#1769#0" expanded="true" />
-            <element signature="e#1796#1797#0" expanded="true" />
-            <element signature="e#7632#7633#0" expanded="true" />
-            <element signature="e#7711#7712#0" expanded="true" />
-            <element signature="e#7828#7829#0" expanded="true" />
-            <element signature="e#7927#7928#0" expanded="true" />
-            <element signature="e#8143#8144#0" expanded="true" />
-            <element signature="e#8220#8221#0" expanded="true" />
-            <element signature="e#8446#8447#0" expanded="true" />
-            <element signature="e#8547#8548#0" expanded="true" />
-            <element signature="e#8592#8593#0" expanded="true" />
-            <element signature="e#8631#8632#0" expanded="true" />
-            <element signature="e#8696#8697#0" expanded="true" />
-            <element signature="e#8752#8753#0" expanded="true" />
+            <element signature="e#1842#1843#0" expanded="true" />
+            <element signature="e#1870#1871#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/framework/Msg.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181_69/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="88" column="126" selection-start-line="88" selection-start-column="126" selection-end-line="88" selection-end-column="126" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/framework/Msg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="61" column="37" lean-forward="true" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/ID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeArmas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6465#6466#0" expanded="true" />
-            <element signature="e#6508#6509#0" expanded="true" />
-            <element signature="e#7217#7218#0" expanded="true" />
-            <element signature="e#7273#7274#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeLightSaber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/melee/MeleeAxe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3025#3026#0" expanded="true" />
-            <element signature="e#3114#3115#0" expanded="true" />
-            <element signature="e#3196#3197#0" expanded="true" />
-            <element signature="e#3280#3281#0" expanded="true" />
-            <element signature="e#3347#3348#0" expanded="true" />
-            <element signature="e#3440#3441#0" expanded="true" />
-            <element signature="e#3505#3506#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/textures/Textures.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="746">
-          <caret line="178" column="24" lean-forward="true" selection-start-line="178" selection-start-column="24" selection-end-line="178" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/objects/melee/MeleeAxe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="42" column="37" lean-forward="true" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BijatykaSerwer/src/com/wasyl/bijatykaSerwer/textures/Textures.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="148" column="24" lean-forward="true" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="278">
+          <caret line="747" selection-start-line="747" selection-end-line="747" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/wasyl/bijatykaKlient/objects/Bot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
+        <state relative-caret-position="326">
+          <caret line="29" column="52" lean-forward="true" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4184#4185#0" expanded="true" />
+            <element signature="e#4233#4234#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,5 +1,6 @@
 package com.wasyl.bijatykaSerwer.objects;
 
+import com.wasyl.bijatykaSerwer.objects.distance.DistancePistol;
 import com.wasyl.bijatykaSerwer.objects.melee.MeleeAxe;
 import com.wasyl.bijatykaSerwer.objects.melee.MeleeLightSaber;
 import com.wasyl.bijatykaSerwer.textures.Textures;
@@ -32,6 +33,7 @@ public class Player extends GameObject {
     //związane z broniami
     private MeleeLightSaber lightSaber;
     private MeleeAxe axe;
+    private DistancePistol pistol;
     private int whichWeapon = 1;
     private int lastWeapon = 1;
     private int hittedCounter = 0;
@@ -53,6 +55,7 @@ public class Player extends GameObject {
         setPlayerNumber(playerNumber);
         this.lightSaber = new MeleeLightSaber(0, 0, ID.MeleeLightSaber, this, textures);
         this.axe = new MeleeAxe(0,0,ID.MeleeAxe, this, textures);
+        this.pistol = new DistancePistol(0,0,ID.DistancePistol,this, textures);
     }
 
 
@@ -87,6 +90,7 @@ public class Player extends GameObject {
 
         if (whichWeapon == 1) lightSaber.update(objects);
         else if(whichWeapon ==2) axe.update(objects);
+        else if(whichWeapon == 3) pistol.update(objects);
     }
 
 

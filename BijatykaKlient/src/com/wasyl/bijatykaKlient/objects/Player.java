@@ -1,5 +1,6 @@
 package com.wasyl.bijatykaKlient.objects;
 
+import com.wasyl.bijatykaKlient.objects.distance.DistancePistol;
 import com.wasyl.bijatykaKlient.objects.melee.MeleeAxe;
 import com.wasyl.bijatykaKlient.objects.melee.MeleeLightSaber;
 import com.wasyl.bijatykaKlient.textures.Textures;
@@ -24,6 +25,7 @@ public class Player extends GameObject {
     //związane z broniami
     private MeleeLightSaber meleeLightSaber;
     private MeleeAxe meleeAxe;
+    private DistancePistol distancePistol;
     private int lastWeapon = 0;
 
 
@@ -34,6 +36,7 @@ public class Player extends GameObject {
         this.textures = textures;
         meleeLightSaber = new MeleeLightSaber(0, 0, this, textures);
         meleeAxe = new MeleeAxe(0, 0, this, textures);
+        distancePistol = new DistancePistol(0,0,this,textures);
         setCharacterImageNumber(characterNumber);
     }
 
@@ -49,6 +52,7 @@ public class Player extends GameObject {
 
         meleeLightSaber.draw(gc, cpx, cpy);
         meleeAxe.draw(gc, cpx, cpy);
+        distancePistol.draw(gc, cpx, cpy);
     }
 
 
@@ -75,6 +79,7 @@ public class Player extends GameObject {
         if (characterImageNumber != 0) {
             meleeLightSaber.calculateWeaponPosition();
             meleeAxe.calculateWeaponPosition();
+            distancePistol.calculateWeaponPosition();
         }
     }
 
