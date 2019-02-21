@@ -7,6 +7,7 @@ import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Player extends GameObject {
 

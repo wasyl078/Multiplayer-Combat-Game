@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 public class DistancePistol extends DistanceArmas {
 
-    private int attackCounter = 15;
+    private int attackCounter = 30;
 
 
     public DistancePistol(double x, double y, ID id, Player ownerPlayer, Textures textures) {

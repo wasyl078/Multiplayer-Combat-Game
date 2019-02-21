@@ -10,16 +10,14 @@ public class Bot extends GameObject {
 
     private Textures textures;
     private Game game;
-    private int individualPlayerNumber;
     private double theClosestDistanceZ;
     private int attackCounter = 10;
     private boolean work = false;
     private int respawnCounter;
     private int direction;
 
-    public Bot(int x, int y, int individualPlayerNumber, Textures textures, Game game) {
+    public Bot(int x, int y, Textures textures, Game game) {
         super(x, y);
-        this.individualPlayerNumber = individualPlayerNumber;
         this.textures = textures;
         this.game = game;
     }

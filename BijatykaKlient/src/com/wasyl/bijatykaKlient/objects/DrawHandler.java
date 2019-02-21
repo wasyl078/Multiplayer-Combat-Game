@@ -1,7 +1,6 @@
 package com.wasyl.bijatykaKlient.objects;
 
 import com.wasyl.bijatykaKlient.framework.Game;
-import com.wasyl.bijatykaKlient.framework.Msg;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -43,6 +42,5 @@ public class DrawHandler {
         Player bufPlayer = new Player(0,0,characterNumber,playerNumber,textures);
         objects.add(bufPlayer);
         players.add(bufPlayer);
-        if(playerNumber == Game.thisIndividualPlayerNumber) Game.actualPlayer = bufPlayer;
     }
 }

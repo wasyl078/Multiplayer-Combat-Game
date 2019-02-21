@@ -27,8 +27,6 @@ public class Communication {
 
     public void update() {
 
-        game.draw();
-
         String wiadom;
         try {
             wiadom = msg.createMessageToSendToServer();
@@ -65,6 +63,7 @@ public class Communication {
                 wiadom = czytelnik.readLine();
                 msg.interpretujJednaWiadomoscZSerwera(wiadom);
                 update();
+                game.draw();
             } catch (Exception e) {
                 e.printStackTrace();
             }

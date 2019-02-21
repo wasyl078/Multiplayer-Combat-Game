@@ -45,7 +45,7 @@ public class PistolBullet extends GameObject {
                 if (getBounds().intersects(bufPlayer.getBoundsCentral())) {
                     if (bufPlayer.getHittedCounter() <= 0) {
                         bufPlayer.setHittedCounter(198);
-                        if(defVel == 20) bufPlayer.setDirectionToRecoil(1);
+                        if(defVel == 40) bufPlayer.setDirectionToRecoil(1);
                         else bufPlayer.setDirectionToRecoil(-1);
                     }
                     objects.remove(this);

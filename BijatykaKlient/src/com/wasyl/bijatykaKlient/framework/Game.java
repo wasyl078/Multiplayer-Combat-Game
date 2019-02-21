@@ -6,9 +6,9 @@ import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.objects.Player;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -25,9 +25,8 @@ public class Game extends Application {
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     //public static double screenWidth = screenSize.getWidth();
     //public static double screenHeight = screenSize.getHeight();
-    public static double screenWidth = 900;
-    public static double screenHeight = 506;
-
+    public static double screenWidth = 1600;
+    public static double screenHeight = 900;
 
     private Canvas canvas;
     private GraphicsContext gc;
@@ -41,9 +40,8 @@ public class Game extends Application {
     private Textures textures;
     private Camera camera;
     private Background background;
-    public static Player actualPlayer;
     private Bot bot;
-
+    private int counter = 0;
 
     //związane z identyfikacją grtacza
     private int playerLastAction = 0;
@@ -73,7 +71,7 @@ public class Game extends Application {
         drawHandler.addObject(background);
         drawHandler.makeFirstLevel();
         camera = new Camera(drawHandler.players);
-        bot = new Bot(0, 0, Game.thisIndividualPlayerNumber, textures, this);
+        bot = new Bot(0, 0, textures, this);
         drawHandler.addObject(bot);
 
         //stworzenie grupy
@@ -83,7 +81,7 @@ public class Game extends Application {
         this.lukaszPrawoImage = textures.getLukaszPrawoImage();
         this.maciekLewoImage = textures.getMaciekLewoImage();
         this.botPrawoImage = textures.getBotPrawoImage();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,screenWidth,screenHeight,true, SceneAntialiasing.BALANCED);
         stage.setScene(scene);
 
         //obsługa zdarzeń (myszki)
@@ -107,9 +105,6 @@ public class Game extends Application {
                         }
                     }
                 });
-
-
-        //Scene theScene = new Scene(root, screenWidth,screenHeight,true, SceneAntialiasing.BALANCED);
 
 
         //utworzEnie komunikacji z serwerem
@@ -181,6 +176,8 @@ public class Game extends Application {
             //gc.fillRect(0, 0, Game.screenWidth, Game.screenHeight);
             camera.update();
             drawHandler.draw(gc, (int) camera.getPositionX(), (int) camera.getPositionY());
+            counter++;
+            System.out.println(counter + " | " + (int) camera.getPositionX() +", "+ (int) camera.getPositionY());
         }
     }
 

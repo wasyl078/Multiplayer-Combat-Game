@@ -22,7 +22,6 @@ public class Background extends GameObject {
     @Override
     public void draw(GraphicsContext gc, int cpx, int cpy) {
         setPositionX(-Game.screenWidth/2 + cpx/4);
-        //System.out.println("VASVAS");
         gc.drawImage(image,getPositionX(),getPositionY());
     }
 }

@@ -8,6 +8,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 
 public class Player extends GameObject {
@@ -31,9 +32,9 @@ public class Player extends GameObject {
     private int characterImageNumber = 0;
 
     //związane z broniami
-    private MeleeLightSaber lightSaber;
-    private MeleeAxe axe;
-    private DistancePistol pistol;
+    private final MeleeLightSaber lightSaber;
+    private final MeleeAxe axe;
+    private final DistancePistol pistol;
     private int whichWeapon = 1;
     private int lastWeapon = 1;
     private int hittedCounter = 0;
@@ -42,8 +43,9 @@ public class Player extends GameObject {
     private int directionToRecoil = 0;
 
     //difoltowe
-    public double defaultPlayerVelocity = 10;
-    private double gravity = 0.5;
+    private final Random generator = new Random();
+    public final double defaultPlayerVelocity = 10;
+    private final double gravity = 0.5;
     private final double maxSpeed = 30;
 
 
@@ -83,7 +85,11 @@ public class Player extends GameObject {
             else if (getPositionX() < 920)
                 setPositionX(getPositionX() + 20);
             else {
-                setPositionX(960);
+
+                int addX = generator.nextInt(30);
+                if(generator.nextBoolean()) addX*=-1;
+
+                setPositionX(960 + addX);
                 setPositionY(-100);
             }
         }
