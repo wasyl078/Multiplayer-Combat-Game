@@ -36,7 +36,7 @@ public class Player extends GameObject {
         this.textures = textures;
         meleeLightSaber = new MeleeLightSaber(0, 0, this, textures);
         meleeAxe = new MeleeAxe(0, 0, this, textures);
-        distancePistol = new DistancePistol(0,0,this,textures);
+        distancePistol = new DistancePistol(0, 0, this, textures);
         setCharacterImageNumber(characterNumber);
     }
 
@@ -44,17 +44,9 @@ public class Player extends GameObject {
     //rysowanie odpoiwedniego obrazka postaci
     @Override
     public void draw(GraphicsContext gc, int cpx, int cpy) {
-        //setPositionX(getPositionX() + cpx);
-        //setPositionY(getPositionY() + cpy);
 
-        if (direction == 1) {
-            gc.drawImage(imageLeft, getPositionX()+cpx, getPositionY()+cpy);
-            System.out.println("PLAYER " + playerNumber + " x = " +getPositionX()+cpx);
-        }
-        else {
-            gc.drawImage(imageRight, getPositionX()+cpx, getPositionY()+cpy);
-            System.out.println("PLAYER " + playerNumber + " x = " +getPositionX()+cpx);
-        }
+        if (direction == 1) gc.drawImage(imageLeft, getPositionX() + cpx, getPositionY() + cpy);
+        else gc.drawImage(imageRight, getPositionX() + cpx, getPositionY() + cpy);
 
         meleeLightSaber.draw(gc, cpx, cpy);
         meleeAxe.draw(gc, cpx, cpy);

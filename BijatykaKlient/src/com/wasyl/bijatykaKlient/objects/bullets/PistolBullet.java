@@ -15,7 +15,7 @@ public class PistolBullet extends GameObject {
     private int direction;
     private LinkedList<GameObject> objects;
 
-    public PistolBullet(double x, double y, int direction, Textures textures, LinkedList<GameObject>objects) {
+    public PistolBullet(int x, int y, int direction, Textures textures, LinkedList<GameObject>objects) {
         super(x, y);
         this.direction = direction;
         if (direction == 1) {

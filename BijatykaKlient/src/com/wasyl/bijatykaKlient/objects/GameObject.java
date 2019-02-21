@@ -4,12 +4,12 @@ import javafx.scene.canvas.GraphicsContext;
 
 public abstract class GameObject {
 
-    private double positionX;
-    private double positionY;
-    private double velocityX;
-    private double velocityY;
+    private int positionX;
+    private int positionY;
+    private int velocityX;
+    private int velocityY;
 
-    public GameObject(double x, double y) {
+    public GameObject(int x, int y) {
         setPositionX(x);
         setPositionY(y);
     }
@@ -18,35 +18,35 @@ public abstract class GameObject {
     public abstract void draw(GraphicsContext gc, int cpx, int cpy);
 
     //gettery i settery
-    public double getPositionX() {
+    public int getPositionX() {
         return positionX;
     }
 
-    public void setPositionX(double positionX) {
+    public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
 
-    public double getPositionY() {
+    public int getPositionY() {
         return positionY;
     }
 
-    public void setPositionY(double positionY) {
+    public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
 
-    public double getVelocityX() {
+    public int getVelocityX() {
         return velocityX;
     }
 
-    public void setVelocityX(double velocityX) {
+    public void setVelocityX(int velocityX) {
         this.velocityX = velocityX;
     }
 
-    public double getVelocityY() {
+    public int getVelocityY() {
         return velocityY;
     }
 
-    public void setVelocityY(double velocityY) {
+    public void setVelocityY(int velocityY) {
         this.velocityY = velocityY;
     }
 }

@@ -25,10 +25,10 @@ public class Game extends Application {
 
     //związane z okienkiem
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    //public static double screenWidth = screenSize.getWidth();
-    //public static double screenHeight = screenSize.getHeight();
-    public static double screenWidth = 1600;
-    public static double screenHeight = 900;
+    //public static int screenWidth = (int)screenSize.getWidth();
+    //public static int screenHeight = (int)screenSize.getHeight();
+    public static int screenWidth = 1600;
+    public static int screenHeight = 900;
 
     private final Canvas canvas = new Canvas(Game.screenWidth, Game.screenHeight);
     private final GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -181,7 +181,7 @@ public class Game extends Application {
             // gc.setFill(Color.BLACK);
             //gc.fillRect(0, 0, Game.screenWidth, Game.screenHeight);
             camera.update();
-            drawHandler.draw(gc, (int) camera.getPositionX(), (int) camera.getPositionY());
+            drawHandler.draw(gc, camera.getPositionX(), camera.getPositionY());
         }
     }
 

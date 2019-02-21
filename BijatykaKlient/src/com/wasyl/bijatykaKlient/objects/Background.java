@@ -8,16 +8,15 @@ import javafx.scene.image.Image;
 public class Background extends GameObject {
 
 
-    //ważne obiekty
-    private Textures textures;
+    //ważne obiekty;
     private Image image;
 
 
-    public Background(double x, double y, Textures textures) {
+    public Background(int x, int y, Textures textures) {
         super(x, y);
-        this.textures = textures;
         this.image = textures.getBackground2();
     }
+
 
     @Override
     public void draw(GraphicsContext gc, int cpx, int cpy) {

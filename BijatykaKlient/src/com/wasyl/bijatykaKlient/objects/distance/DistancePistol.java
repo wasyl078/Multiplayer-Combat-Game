@@ -13,8 +13,8 @@ public class DistancePistol extends DistanceArmas {
     private int addPosY2;       //prawo
     private boolean soundSwitch = true;
 
-    public DistancePistol(double x, double y, Player ownerPlayer, Textures textures) {
-        super(x, y, ownerPlayer, textures);
+    public DistancePistol(int x, int y, Player ownerPlayer, Textures textures) {
+        super(x, y, ownerPlayer);
         setRightImage(textures.getPistoletPrawo());
         setLeftImage(textures.getPistoletLewo());
         calculateWeaponPosition();
@@ -26,19 +26,19 @@ public class DistancePistol extends DistanceArmas {
         int lastWeapon = getOwnerPlayer().getLastWeapon();
         if (lastWeapon == 9) {
 
-            gc.drawImage(getLeftImage(), (int) getOwnerPlayer().getPositionX() + addPosX1 +cpx, (int) (getOwnerPlayer().getPositionY() + addPosY1 + cpy));
+            gc.drawImage(getLeftImage(),  getOwnerPlayer().getPositionX() + addPosX1 +cpx, getOwnerPlayer().getPositionY() + addPosY1 + cpy);
             soundSwitch = true;
         } else if (lastWeapon == 10) {
-            gc.drawImage(getRightImage(), (int) getOwnerPlayer().getPositionX() + addPosX2+cpx, (int) (getOwnerPlayer().getPositionY() + addPosY2+cpy));
+            gc.drawImage(getRightImage(),  getOwnerPlayer().getPositionX() + addPosX2+cpx, getOwnerPlayer().getPositionY() + addPosY2+cpy);
             soundSwitch = true;
         } else if (lastWeapon == 11) {
-            gc.drawImage(getLeftImage(), (int) getOwnerPlayer().getPositionX() + addPosX1+cpx, (int) (getOwnerPlayer().getPositionY() + addPosY1+cpy));
+            gc.drawImage(getLeftImage(),  getOwnerPlayer().getPositionX() + addPosX1+cpx, getOwnerPlayer().getPositionY() + addPosY1+cpy);
             if (soundSwitch) {
                 soundSwitch = false;
                 SoundsEffect.makePistolSound();
             }
         } else if (lastWeapon == 12) {
-            gc.drawImage(getRightImage(), (int) getOwnerPlayer().getPositionX() + addPosX2+cpx, (int) (getOwnerPlayer().getPositionY() + addPosY2+cpy));
+            gc.drawImage(getRightImage(),  getOwnerPlayer().getPositionX() + addPosX2+cpx,  getOwnerPlayer().getPositionY() + addPosY2+cpy);
             if (soundSwitch) {
                 soundSwitch = false;
                 SoundsEffect.makePistolSound();

@@ -8,18 +8,18 @@ import java.util.LinkedList;
 
 public class Bot extends GameObject {
 
-    private Textures textures;
     private Game game;
+    private Textures textures;
     private double theClosestDistanceZ;
     private int attackCounter = 10;
     private boolean work = false;
     private int respawnCounter;
     private int direction;
 
-    public Bot(int x, int y, Textures textures, Game game) {
+    public Bot(int x, int y, Textures textures,Game game) {
         super(x, y);
-        this.textures = textures;
         this.game = game;
+        this.textures = textures;
     }
 
 
@@ -48,8 +48,8 @@ public class Bot extends GameObject {
             if (object.get(i).getClass().equals(Player.class)) {
                 Player bufPlayer = (Player) object.get(i);
                 if (bufPlayer.getPlayerNumber() != player.getPlayerNumber()) {
-                    int distanceX = (int) (bufPlayer.getPositionX() - player.getPositionX());
-                    int distanceY = (int) (bufPlayer.getPositionY() - player.getPositionY());
+                    int distanceX = bufPlayer.getPositionX() - player.getPositionX();
+                    int distanceY = bufPlayer.getPositionY() - player.getPositionY();
                     double distanceZ = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
                     if (theClosestDistanceZ > distanceZ) {
                         theClosestDistanceZ = distanceZ;

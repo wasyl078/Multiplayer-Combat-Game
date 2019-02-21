@@ -28,9 +28,9 @@ public class DrawHandler {
         double wdth = Game.screenWidth;
         double hght = Game.screenHeight;
 
-        addObject(new Platform(wdth / 6, hght * 10 / 12, (int) wdth * 2 / 3, (int) hght / 48));
-        addObject(new Platform(wdth / 8, hght * 8 / 12,  (int) wdth / 4, (int) hght / 48));
-        addObject(new Platform(wdth * 5 / 8, hght * 8 / 12, (int) wdth / 4, (int) hght / 48));
+        addObject(new Platform((int)wdth / 6, (int)hght * 10 / 12, (int) wdth * 2 / 3, (int) hght / 48));
+        addObject(new Platform((int)wdth / 8, (int)hght * 8 / 12,  (int) wdth / 4, (int) hght / 48));
+        addObject(new Platform((int)wdth * 5 / 8, (int)hght * 8 / 12, (int) wdth / 4, (int) hght / 48));
 
     }
 

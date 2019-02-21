@@ -9,19 +9,19 @@ public class MeleeLightSaber extends MeleeArmas {
 
 
     //związane z korektą pozycji
-    private double addPosX1;       //lewo,pionowo
-    private double addPosX2;       //prawo,pionowo
-    private double addPosX3;       //lewo, atak
-    private double addPosX4;       //prawo,atak
-    private double addPosY1;       //lewo,pinowo
-    private double addPosY2;       //prawo,pionowo
-    private double addPosY3;       //lewo,atak
-    private double addPosY4;       //prawo,atak
+    private int addPosX1;       //lewo,pionowo
+    private int addPosX2;       //prawo,pionowo
+    private int addPosX3;       //lewo, atak
+    private int addPosX4;       //prawo,atak
+    private int addPosY1;       //lewo,pinowo
+    private int addPosY2;       //prawo,pionowo
+    private int addPosY3;       //lewo,atak
+    private int addPosY4;       //prawo,atak
     private boolean soundSwitch = true;
 
 
-    public MeleeLightSaber(double x, double y, Player ownerPlayer, Textures textures) {
-        super(x, y, ownerPlayer, textures);
+    public MeleeLightSaber(int x, int y, Player ownerPlayer, Textures textures) {
+        super(x, y, ownerPlayer);
         setVerLeft(textures.getMieczSwietlnyPionowoLewoImage());
         setVerRigh(textures.getMieczSwietlnyPionowoPrawoImage());
         setAttLeft(textures.getMieczSwietlnyAtakLewoImage());
@@ -34,38 +34,36 @@ public class MeleeLightSaber extends MeleeArmas {
         Player player = getOwnerPlayer();
         int lastWeapon = player.getLastWeapon();
         if (lastWeapon == 1) {
-            gc.drawImage(getVerLeft(), (int) player.getPositionX() + addPosX1+cpx, (int) (player.getPositionY() + addPosY1+cpy));
+            gc.drawImage(getVerLeft(),  player.getPositionX() + addPosX1 + cpx,player.getPositionY() + addPosY1 + cpy);
             soundSwitch = true;
-        }
-        else if (lastWeapon == 2) {
-            gc.drawImage(getVerRigh(), (int) player.getPositionX() + addPosX2+cpx, (int) (player.getPositionY() + addPosY2+cpy));
+        } else if (lastWeapon == 2) {
+            gc.drawImage(getVerRigh(), player.getPositionX() + addPosX2 + cpx,player.getPositionY() + addPosY2 + cpy);
             soundSwitch = true;
-        }
-        else if (lastWeapon == 3) {
-            gc.drawImage(getAttLeft(), (int) player.getPositionX() + addPosX3+cpx, (int) (player.getPositionY() + addPosY3+cpy));
-            if(soundSwitch){
+        } else if (lastWeapon == 3) {
+            gc.drawImage(getAttLeft(), player.getPositionX() + addPosX3 + cpx, player.getPositionY() + addPosY3 + cpy);
+            if (soundSwitch) {
+                SoundsEffect.makeLightSaberSound();
+                soundSwitch = false;
+            }
+        } else if (lastWeapon == 4) {
+            gc.drawImage(getAttRight(), player.getPositionX() + addPosX4 + cpx, player.getPositionY() + addPosY4 + cpy);
+            if (soundSwitch) {
                 SoundsEffect.makeLightSaberSound();
                 soundSwitch = false;
             }
         }
-        else if (lastWeapon == 4) {
-            gc.drawImage(getAttRight(), (int) player.getPositionX() + addPosX4+cpx, (int) (player.getPositionY() + addPosY4+cpy));
-            if(soundSwitch){
-                SoundsEffect.makeLightSaberSound();
-                soundSwitch = false;
-            }        }
     }
 
 
     //korekta pozycji
     public void calculateWeaponPosition() {
-        addPosX1 = -getVerLeft().getWidth();
-        addPosX2 = getOwnerPlayer().getPlayerImageWidth();
-        addPosX3 = -getAttLeft().getWidth();
+        addPosX1 = -(int) getVerLeft().getWidth();
+        addPosX2 = (int) getOwnerPlayer().getPlayerImageWidth();
+        addPosX3 = -(int) getAttLeft().getWidth();
         addPosX4 = addPosX2;
-        addPosY1 = getOwnerPlayer().getPlayerImageHeight() - getVerLeft().getHeight();
-        addPosY2 = getOwnerPlayer().getPlayerImageHeight() - getVerRigh().getHeight();
-        addPosY3 = getOwnerPlayer().getPlayerImageHeight() - getAttLeft().getHeight();
-        addPosY4 = getOwnerPlayer().getPlayerImageHeight() - getAttRight().getHeight();
+        addPosY1 = (int) getOwnerPlayer().getPlayerImageHeight() - (int) getVerLeft().getHeight();
+        addPosY2 = (int) getOwnerPlayer().getPlayerImageHeight() - (int) getVerRigh().getHeight();
+        addPosY3 = (int) getOwnerPlayer().getPlayerImageHeight() - (int) getAttLeft().getHeight();
+        addPosY4 = (int) getOwnerPlayer().getPlayerImageHeight() - (int) getAttRight().getHeight();
     }
 }

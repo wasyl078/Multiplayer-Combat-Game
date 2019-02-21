@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 public abstract class MeleeArmas extends GameObject {
 
     //związane z obrazkami
-    private Textures textures;
     private Player ownerPlayer;
     private Image verLeft;
     private Image verRigh;
@@ -17,10 +16,9 @@ public abstract class MeleeArmas extends GameObject {
 
 
     //konstruktor klasy
-    public MeleeArmas(double x, double y, Player ownerPlayer , Textures textures) {
+    public MeleeArmas(int x, int y, Player ownerPlayer) {
         super(x, y);
         this.ownerPlayer = ownerPlayer;
-        this.textures = textures;
     }
 
     public Player getOwnerPlayer() {

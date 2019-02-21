@@ -8,14 +8,14 @@ public class Platform extends GameObject {
     private int sizeWidth;
     private int sizeHeight;
 
-    public Platform(double x, double y, int sizeWidth, int sizeHeight) {
+    public Platform(int x, int y, int sizeWidth, int sizeHeight) {
         super(x, y);
         this.sizeHeight =sizeHeight;
         this.sizeWidth = sizeWidth;
     }
     @Override
     public void draw(GraphicsContext gc,int cpx,int cpy) {
-        gc.setFill(Color.GAINSBORO);
+        gc.setFill(Color.BLUEVIOLET);
         gc.fillRect(getPositionX() + cpx,getPositionY() + cpy,sizeWidth,sizeHeight);
     }
 }
