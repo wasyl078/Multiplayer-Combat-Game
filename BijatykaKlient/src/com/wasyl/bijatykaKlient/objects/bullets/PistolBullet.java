@@ -2,6 +2,7 @@ package com.wasyl.bijatykaKlient.objects.bullets;
 
 import com.wasyl.bijatykaKlient.framework.Game;
 import com.wasyl.bijatykaKlient.objects.GameObject;
+import com.wasyl.bijatykaKlient.sounds.SoundsEffect;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -11,18 +12,20 @@ import java.util.LinkedList;
 public class PistolBullet extends GameObject {
 
     private Image bulletImage;
-    private int defVel = 20;
+    private double defVel;
     private int direction;
     private LinkedList<GameObject> objects;
 
     public PistolBullet(int x, int y, int direction, Textures textures, LinkedList<GameObject>objects) {
         super(x, y);
+        defVel = 0.03888*Game.screenWidth;
         this.direction = direction;
         if (direction == 1) {
             defVel = -defVel;
             this.bulletImage = textures.getPociskLewo();
         } else this.bulletImage = textures.getPociskPrawo();
         this.objects = objects;
+        SoundsEffect.makePistolSound();
     }
 
     @Override
@@ -30,7 +33,7 @@ public class PistolBullet extends GameObject {
 
         gc.drawImage(bulletImage,getPositionX() + cpx, getPositionY() + cpy);
 
-        setPositionX(getPositionX() + defVel);
+        setPositionX(getPositionX() + (int)defVel);
         if(getPositionX() > Game.screenWidth*2 || getPositionX()< Game.screenWidth*-2)
             objects.remove(this);
     }

@@ -16,7 +16,7 @@ public class PistolBullet extends GameObject {
     private Textures textures;
     private Image leftImage;
     private Image rightImage;
-    private int defVel = 20;
+    private int defVel = 75;
     private int direction;
 
 
@@ -45,7 +45,7 @@ public class PistolBullet extends GameObject {
                 if (getBounds().intersects(bufPlayer.getBoundsCentral())) {
                     if (bufPlayer.getHittedCounter() <= 0) {
                         bufPlayer.setHittedCounter(198);
-                        if(defVel == 40) bufPlayer.setDirectionToRecoil(1);
+                        if(defVel > 0) bufPlayer.setDirectionToRecoil(1);
                         else bufPlayer.setDirectionToRecoil(-1);
                     }
                     objects.remove(this);
@@ -56,7 +56,7 @@ public class PistolBullet extends GameObject {
 
     @Override
     public Rectangle2D getBounds() {
-        return new Rectangle2D((int) getPositionX(), (int) getPositionY(), leftImage.getWidth(), rightImage.getHeight());
+        return new Rectangle2D((int) getPositionX() - leftImage.getWidth(), (int) getPositionY(), leftImage.getWidth()*3, rightImage.getHeight());
     }
 
     public int getDirection() {

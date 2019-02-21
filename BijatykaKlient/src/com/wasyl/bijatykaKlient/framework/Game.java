@@ -25,10 +25,10 @@ public class Game extends Application {
 
     //związane z okienkiem
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    //public static int screenWidth = (int)screenSize.getWidth();
-    //public static int screenHeight = (int)screenSize.getHeight();
-    public static int screenWidth = 1600;
-    public static int screenHeight = 900;
+    //public final static int screenWidth = (int)screenSize.getWidth();
+    //public final static int screenHeight = (int)screenSize.getHeight();
+    public final static int screenWidth = 1600;
+    public final static int screenHeight = 900;
 
     private final Canvas canvas = new Canvas(Game.screenWidth, Game.screenHeight);
     private final GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -107,8 +107,8 @@ public class Game extends Application {
 
 
         //utworzEnie komunikacji z serwerem
-        Msg msg = new Msg(this, textures);
-        Communication communication = new Communication(msg);
+        final Msg msg = new Msg(this, textures);
+        final Communication communication = new Communication(msg);
 
         //obsługa zdarzeń z klawiatury
         scene.setOnKeyPressed(
@@ -148,7 +148,7 @@ public class Game extends Application {
         gameLoop.setCycleCount( Timeline.INDEFINITE );
 
         KeyFrame kf = new KeyFrame(
-                Duration.seconds(0.017),                // 60 FPS
+                Duration.seconds(0.0085),                // 60 FPS
                 ae -> draw());
 
         gameLoop.getKeyFrames().add( kf );

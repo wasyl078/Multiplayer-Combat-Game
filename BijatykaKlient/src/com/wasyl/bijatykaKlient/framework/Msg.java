@@ -55,8 +55,8 @@ public class Msg {
             int bufDir = Integer.parseInt(bufPistolBullet[1]);
             int bufPosX = Integer.parseInt(bufPistolBullet[2]);
             int bufPosY = Integer.parseInt(bufPistolBullet[3]);
-            bufPosX = (int) Game.screenWidth * bufPosX / 1920;
-            bufPosY = (int) Game.screenHeight * bufPosY / 1080;
+            bufPosX = Game.screenWidth * bufPosX / 1920;
+            bufPosY = Game.screenHeight * bufPosY / 1080;
             game.getDrawHandler().objects.add(new PistolBullet(bufPosX, bufPosY, bufDir, textures, game.getDrawHandler().objects));
         }
 

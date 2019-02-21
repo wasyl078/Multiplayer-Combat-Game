@@ -10,12 +10,13 @@ public class Platform extends GameObject {
 
     public Platform(int x, int y, int sizeWidth, int sizeHeight) {
         super(x, y);
-        this.sizeHeight =sizeHeight;
+        this.sizeHeight = sizeHeight;
         this.sizeWidth = sizeWidth;
     }
+
     @Override
-    public void draw(GraphicsContext gc,int cpx,int cpy) {
-        gc.setFill(Color.BLUEVIOLET);
-        gc.fillRect(getPositionX() + cpx,getPositionY() + cpy,sizeWidth,sizeHeight);
+    public void draw(GraphicsContext gc, int cpx, int cpy) {
+        gc.setFill(Color.DEEPSKYBLUE);
+        gc.fillRect(getPositionX() + cpx, getPositionY() + cpy, sizeWidth, sizeHeight);
     }
 }

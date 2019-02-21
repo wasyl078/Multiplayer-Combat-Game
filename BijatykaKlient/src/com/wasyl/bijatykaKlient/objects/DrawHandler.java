@@ -8,14 +8,12 @@ import java.util.LinkedList;
 
 public class DrawHandler {
 
-    public LinkedList<GameObject> objects;
-    public LinkedList<Player> players;
+    public final LinkedList<GameObject> objects = new LinkedList<GameObject>();
+    public final LinkedList<Player> players = new LinkedList<Player>();
     private Textures textures;
 
     public DrawHandler(Textures textures) {
         this.textures = textures;
-        objects = new LinkedList<GameObject>();
-        players = new LinkedList<Player>();
     }
 
     public void draw(GraphicsContext gc,int cpx,int cpy) {
@@ -25,12 +23,12 @@ public class DrawHandler {
     }
 
     public void makeFirstLevel(){
-        double wdth = Game.screenWidth;
-        double hght = Game.screenHeight;
+        int wdth = Game.screenWidth;
+        int hght = Game.screenHeight;
 
-        addObject(new Platform((int)wdth / 6, (int)hght * 10 / 12, (int) wdth * 2 / 3, (int) hght / 48));
-        addObject(new Platform((int)wdth / 8, (int)hght * 8 / 12,  (int) wdth / 4, (int) hght / 48));
-        addObject(new Platform((int)wdth * 5 / 8, (int)hght * 8 / 12, (int) wdth / 4, (int) hght / 48));
+        addObject(new Platform(wdth / 6, hght * 10 / 12,  wdth * 2 / 3,  hght / 48));
+        addObject(new Platform(wdth / 8, hght * 8 / 12,   wdth / 4,  hght / 48));
+        addObject(new Platform(wdth * 5 / 8, hght * 8 / 12, wdth / 4,  hght / 48));
 
     }
 
