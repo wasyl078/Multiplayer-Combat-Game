@@ -1,20 +1,15 @@
 package com.wasyl.bijatykaKlient.framework;
 
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
-import com.wasyl.bijatykaKlient.objects.GameObject;
 import com.wasyl.bijatykaKlient.objects.Player;
 import com.wasyl.bijatykaKlient.objects.bullets.PistolBullet;
 import com.wasyl.bijatykaKlient.textures.Textures;
-
-import java.util.LinkedList;
 
 public class Msg {
 
     //ważne zmienne
     private Game game;
     private DrawHandler drawHandler;
-    private LinkedList<Player> players;
-    private LinkedList<GameObject> objects;
     private Textures textures;
     private int lastPlayersNumber = 0;
     private int messagesCounterToDown = 10;
@@ -24,16 +19,12 @@ public class Msg {
     public Msg(Game game, Textures textures) {
         this.game = game;
         this.drawHandler = game.getDrawHandler();
-        players = game.getDrawHandler().players;
-        objects = game.getDrawHandler().objects;
         this.textures = textures;
     }
 
 
     //metoda interpretująca wiadomość z serwera
     public void interpretujJednaWiadomoscZSerwera(String wiadom) {
-
-
 
         //wstępne rozdzielenie wiadomośći z serwera
         String[] parts = wiadom.split("_");
@@ -66,7 +57,7 @@ public class Msg {
             int bufPosY = Integer.parseInt(bufPistolBullet[3]);
             bufPosX = (int) Game.screenWidth * bufPosX / 1920;
             bufPosY = (int) Game.screenHeight * bufPosY / 1080;
-            objects.add(new PistolBullet(bufPosX, bufPosY, bufDir, textures, objects));
+            game.getDrawHandler().objects.add(new PistolBullet(bufPosX, bufPosY, bufDir, textures, game.getDrawHandler().objects));
         }
 
         //poustawianie pozycji wszystkich graczy na ekranie
@@ -84,14 +75,16 @@ public class Msg {
             posX = (int) Game.screenWidth * posX / 1920;
             posY = (int) Game.screenHeight * posY / 1080;
 
-            for (int j = 0; j < players.size(); j++) {
-                Player bufPlayer = players.get(j);
-                if (i-1 == players.get(j).getPlayerNumber()) {
-                    bufPlayer.setLastWeapon(lastWeapon);
-                    bufPlayer.setDirection(direction);
-                    bufPlayer.setCharacterImageNumber(characterImageNumber);
-                    bufPlayer.setPositionX(posX);
-                    bufPlayer.setPositionY(posY);
+            for (int u = 0; u < game.getDrawHandler().objects.size(); u++){
+                if(game.getDrawHandler().objects.get(u).getClass().equals(Player.class)){
+                    Player bufPlayer = (Player)game.getDrawHandler().objects.get(u);
+                    if (i-1 == ((Player)game.getDrawHandler().objects.get(u)).getPlayerNumber()) {
+                        bufPlayer.setLastWeapon(lastWeapon);
+                        bufPlayer.setDirection(direction);
+                        bufPlayer.setCharacterImageNumber(characterImageNumber);
+                        bufPlayer.setPositionX(posX);
+                        bufPlayer.setPositionY(posY);
+                    }
                 }
             }
         }

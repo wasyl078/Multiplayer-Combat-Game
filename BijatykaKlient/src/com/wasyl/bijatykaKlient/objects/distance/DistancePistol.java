@@ -26,19 +26,19 @@ public class DistancePistol extends DistanceArmas {
         int lastWeapon = getOwnerPlayer().getLastWeapon();
         if (lastWeapon == 9) {
 
-            gc.drawImage(getLeftImage(), (int) getOwnerPlayer().getPositionX() + addPosX1, (int) (getOwnerPlayer().getPositionY() + addPosY1));
+            gc.drawImage(getLeftImage(), (int) getOwnerPlayer().getPositionX() + addPosX1 +cpx, (int) (getOwnerPlayer().getPositionY() + addPosY1 + cpy));
             soundSwitch = true;
         } else if (lastWeapon == 10) {
-            gc.drawImage(getRightImage(), (int) getOwnerPlayer().getPositionX() + addPosX2, (int) (getOwnerPlayer().getPositionY() + addPosY2));
+            gc.drawImage(getRightImage(), (int) getOwnerPlayer().getPositionX() + addPosX2+cpx, (int) (getOwnerPlayer().getPositionY() + addPosY2+cpy));
             soundSwitch = true;
         } else if (lastWeapon == 11) {
-            gc.drawImage(getLeftImage(), (int) getOwnerPlayer().getPositionX() + addPosX1, (int) (getOwnerPlayer().getPositionY() + addPosY1));
+            gc.drawImage(getLeftImage(), (int) getOwnerPlayer().getPositionX() + addPosX1+cpx, (int) (getOwnerPlayer().getPositionY() + addPosY1+cpy));
             if (soundSwitch) {
                 soundSwitch = false;
                 SoundsEffect.makePistolSound();
             }
         } else if (lastWeapon == 12) {
-            gc.drawImage(getRightImage(), (int) getOwnerPlayer().getPositionX() + addPosX2, (int) (getOwnerPlayer().getPositionY() + addPosY2));
+            gc.drawImage(getRightImage(), (int) getOwnerPlayer().getPositionX() + addPosX2+cpx, (int) (getOwnerPlayer().getPositionY() + addPosY2+cpy));
             if (soundSwitch) {
                 soundSwitch = false;
                 SoundsEffect.makePistolSound();

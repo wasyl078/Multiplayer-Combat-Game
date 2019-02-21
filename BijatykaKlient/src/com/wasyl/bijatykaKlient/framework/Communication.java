@@ -8,6 +8,7 @@ import java.net.Socket;
 
 public class Communication {
 
+
     //WAŻNE
     private String host = "192.168.1.28";
     //!!!!
@@ -17,16 +18,13 @@ public class Communication {
     PrintWriter pisarz;
     Socket gniazdo;
     private Msg msg;
-    private Game game;
 
-    public Communication(Game game, Msg msg) {
+    public Communication(Msg msg) {
         this.msg = msg;
-        this.game = game;
         konfigurujKomunikacje();
     }
 
     public void update() {
-
         String wiadom;
         try {
             wiadom = msg.createMessageToSendToServer();
@@ -63,7 +61,6 @@ public class Communication {
                 wiadom = czytelnik.readLine();
                 msg.interpretujJednaWiadomoscZSerwera(wiadom);
                 update();
-                game.draw();
             } catch (Exception e) {
                 e.printStackTrace();
             }

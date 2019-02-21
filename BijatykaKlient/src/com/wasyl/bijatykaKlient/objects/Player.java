@@ -7,7 +7,6 @@ import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class Player extends GameObject {
 
@@ -45,11 +44,17 @@ public class Player extends GameObject {
     //rysowanie odpoiwedniego obrazka postaci
     @Override
     public void draw(GraphicsContext gc, int cpx, int cpy) {
-        setPositionX(getPositionX() + cpx);
-        setPositionY(getPositionY() + cpy);
+        //setPositionX(getPositionX() + cpx);
+        //setPositionY(getPositionY() + cpy);
 
-        if (direction == 1) gc.drawImage(imageLeft, getPositionX(), getPositionY());
-        else gc.drawImage(imageRight, getPositionX(), getPositionY());
+        if (direction == 1) {
+            gc.drawImage(imageLeft, getPositionX()+cpx, getPositionY()+cpy);
+            System.out.println("PLAYER " + playerNumber + " x = " +getPositionX()+cpx);
+        }
+        else {
+            gc.drawImage(imageRight, getPositionX()+cpx, getPositionY()+cpy);
+            System.out.println("PLAYER " + playerNumber + " x = " +getPositionX()+cpx);
+        }
 
         meleeLightSaber.draw(gc, cpx, cpy);
         meleeAxe.draw(gc, cpx, cpy);

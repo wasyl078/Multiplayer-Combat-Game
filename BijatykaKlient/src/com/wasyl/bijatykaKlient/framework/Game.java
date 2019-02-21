@@ -3,8 +3,9 @@ package com.wasyl.bijatykaKlient.framework;
 import com.wasyl.bijatykaKlient.objects.Background;
 import com.wasyl.bijatykaKlient.objects.Bot;
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
-import com.wasyl.bijatykaKlient.objects.Player;
 import com.wasyl.bijatykaKlient.textures.Textures;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -28,20 +30,19 @@ public class Game extends Application {
     public static double screenWidth = 1600;
     public static double screenHeight = 900;
 
-    private Canvas canvas;
-    private GraphicsContext gc;
+    private final Canvas canvas = new Canvas(Game.screenWidth, Game.screenHeight);
+    private final GraphicsContext gc = canvas.getGraphicsContext2D();
     private Image lukaszPrawoImage;
     private Image maciekLewoImage;
     private Image botPrawoImage;
 
     //związane z obiektami w grze
     private ArrayList<String> input = new ArrayList<String>();
-    private DrawHandler drawHandler;
-    private Textures textures;
+    private final Textures textures = new Textures();
+    private final DrawHandler drawHandler = new DrawHandler(textures);
     private Camera camera;
     private Background background;
     private Bot bot;
-    private int counter = 0;
 
     //związane z identyfikacją grtacza
     private int playerLastAction = 0;
@@ -65,8 +66,6 @@ public class Game extends Application {
         stage.setTitle("Gra");
 
         //stworzenie ważnych objektów
-        textures = new Textures();
-        drawHandler = new DrawHandler(textures);
         background = new Background(0, 0, textures);
         drawHandler.addObject(background);
         drawHandler.makeFirstLevel();
@@ -81,7 +80,7 @@ public class Game extends Application {
         this.lukaszPrawoImage = textures.getLukaszPrawoImage();
         this.maciekLewoImage = textures.getMaciekLewoImage();
         this.botPrawoImage = textures.getBotPrawoImage();
-        Scene scene = new Scene(root,screenWidth,screenHeight,true, SceneAntialiasing.BALANCED);
+        Scene scene = new Scene(root, screenWidth, screenHeight, true, SceneAntialiasing.BALANCED);
         stage.setScene(scene);
 
         //obsługa zdarzeń (myszki)
@@ -109,10 +108,9 @@ public class Game extends Application {
 
         //utworzEnie komunikacji z serwerem
         Msg msg = new Msg(this, textures);
-        Communication communication = new Communication(this, msg);
+        Communication communication = new Communication(msg);
 
         //obsługa zdarzeń z klawiatury
-
         scene.setOnKeyPressed(
                 e -> {
                     String code = e.getCode().toString();
@@ -139,14 +137,22 @@ public class Game extends Application {
                 });
 
         //stworzenie płótna
-        canvas = new Canvas(Game.screenWidth, Game.screenHeight);
         root.getChildren().add(canvas);
-        gc = canvas.getGraphicsContext2D();
         //stage.setMaximized(true);
         //stage.setFullScreen(true);
 
         //wyświetlenie wszystkiego
         communication.update();
+
+        Timeline gameLoop = new Timeline();
+        gameLoop.setCycleCount( Timeline.INDEFINITE );
+
+        KeyFrame kf = new KeyFrame(
+                Duration.seconds(0.017),                // 60 FPS
+                ae -> draw());
+
+        gameLoop.getKeyFrames().add( kf );
+        gameLoop.play();
         stage.show();
     }
 
@@ -176,8 +182,6 @@ public class Game extends Application {
             //gc.fillRect(0, 0, Game.screenWidth, Game.screenHeight);
             camera.update();
             drawHandler.draw(gc, (int) camera.getPositionX(), (int) camera.getPositionY());
-            counter++;
-            System.out.println(counter + " | " + (int) camera.getPositionX() +", "+ (int) camera.getPositionY());
         }
     }
 

@@ -33,22 +33,22 @@ public class MeleeAxe extends MeleeArmas {
         Player player = getOwnerPlayer();
         int lastWeapon = player.getLastWeapon();
         if (lastWeapon == 5) {
-            gc.drawImage(getVerLeft(), (int) player.getPositionX() + addPosX1, (int) (player.getPositionY() + addPosY1));
+            gc.drawImage(getVerLeft(), (int) player.getPositionX() + addPosX1+cpx, (int) (player.getPositionY() + addPosY1+cpy));
             soundSwitch = true;
         }
         else if (lastWeapon == 6) {
-            gc.drawImage(getVerRigh(), (int) player.getPositionX() + addPosX2, (int) (player.getPositionY() + addPosY2));
+            gc.drawImage(getVerRigh(), (int) player.getPositionX() + addPosX2+cpx, (int) (player.getPositionY() + addPosY2+cpy));
             soundSwitch = true;
         }
         else if (lastWeapon == 7) {
-            gc.drawImage(getAttLeft(), (int) player.getPositionX() + addPosX3, (int) (player.getPositionY() + addPosY3));
+            gc.drawImage(getAttLeft(), (int) player.getPositionX() + addPosX3+cpx, (int) (player.getPositionY() + addPosY3+cpy));
             if(soundSwitch){
                 SoundsEffect.makeAxeSwingSound();
                 soundSwitch = false;
             }
         }
         else if (lastWeapon == 8) {
-            gc.drawImage(getAttRight(), (int) player.getPositionX() + addPosX4, (int) (player.getPositionY() + addPosY4));
+            gc.drawImage(getAttRight(), (int) player.getPositionX() + addPosX4+cpx, (int) (player.getPositionY() + addPosY4+cpy));
             if(soundSwitch){
                 SoundsEffect.makeAxeSwingSound();
                 soundSwitch = false;
