@@ -33,6 +33,7 @@ public class Textures {
     private BufferedImage toporPionowoLewo;
     private BufferedImage toporAtakLewo;
     private BufferedImage toporAtakPrawo;
+    private BufferedImage healthBar1;
 
 
     public Textures() {
@@ -66,6 +67,7 @@ public class Textures {
         toporPionowoLewo = ss.grabImage(6, 2, 30, 117);
         toporAtakPrawo = ss.grabImage(7, 2, 121, 66);
         toporAtakLewo = ss.grabImage(8, 2, 121, 66);
+        healthBar1 = ss.grabImage(9,2,340,42);
     }
 
 
@@ -171,6 +173,11 @@ public class Textures {
 
     public Image getBotPrawoImage() {
         Image bufImage = toFXImage(scale(botPrawoImage, (int) (0.02421875 * Game.screenWidth), (int) (0.059259 * Game.screenHeight)), null);
+        return bufImage;
+    }
+
+    public Image getHealthbar1(){
+        Image bufImage = toFXImage(scale(healthBar1, (int)(0.177083 * Game.screenWidth), (int)(0.03888*Game.screenHeight)),null);
         return bufImage;
     }
 

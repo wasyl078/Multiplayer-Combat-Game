@@ -1,7 +1,7 @@
 package com.wasyl.bijatykaKlient.framework;
 
-import com.wasyl.bijatykaKlient.objects.Background;
-import com.wasyl.bijatykaKlient.objects.Bot;
+import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Background;
+import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Bot;
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.animation.KeyFrame;
@@ -25,10 +25,10 @@ public class Game extends Application {
 
     //związane z okienkiem
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    //public final static int screenWidth = (int)screenSize.getWidth();
-    //public final static int screenHeight = (int)screenSize.getHeight();
-    public final static int screenWidth = 1600;
-    public final static int screenHeight = 900;
+    public final static int screenWidth = (int)screenSize.getWidth();
+    public final static int screenHeight = (int)screenSize.getHeight();
+    //public final static int screenWidth = 1600;
+    //public final static int screenHeight = 900;
 
     private final Canvas canvas = new Canvas(Game.screenWidth, Game.screenHeight);
     private final GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -138,8 +138,8 @@ public class Game extends Application {
 
         //stworzenie płótna
         root.getChildren().add(canvas);
-        //stage.setMaximized(true);
-        //stage.setFullScreen(true);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
 
         //wyświetlenie wszystkiego
         communication.update();

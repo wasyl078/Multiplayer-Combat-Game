@@ -1,8 +1,9 @@
-package com.wasyl.bijatykaKlient.objects;
+package com.wasyl.bijatykaKlient.objects.gameobjects.characters;
 
-import com.wasyl.bijatykaKlient.objects.distance.DistancePistol;
-import com.wasyl.bijatykaKlient.objects.melee.MeleeAxe;
-import com.wasyl.bijatykaKlient.objects.melee.MeleeLightSaber;
+import com.wasyl.bijatykaKlient.objects.gameobjects.GameObject;
+import com.wasyl.bijatykaKlient.objects.gameobjects.distance.DistancePistol;
+import com.wasyl.bijatykaKlient.objects.gameobjects.melee.MeleeAxe;
+import com.wasyl.bijatykaKlient.objects.gameobjects.melee.MeleeLightSaber;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -21,6 +22,8 @@ public class Player extends GameObject {
     private int characterImageNumber = 0;
     private double PlayerImageWidth;
     private double PlayerImageHeight;
+    private Healthbar healthbar;
+    private double health;
 
     //związane z broniami
     private MeleeLightSaber meleeLightSaber;
@@ -37,6 +40,7 @@ public class Player extends GameObject {
         meleeLightSaber = new MeleeLightSaber(0, 0, this, textures);
         meleeAxe = new MeleeAxe(0, 0, this, textures);
         distancePistol = new DistancePistol(0, 0, this, textures);
+        healthbar = new Healthbar(0,0,this, textures);
         setCharacterImageNumber(characterNumber);
     }
 
@@ -51,6 +55,7 @@ public class Player extends GameObject {
         meleeLightSaber.draw(gc, cpx, cpy);
         meleeAxe.draw(gc, cpx, cpy);
         distancePistol.draw(gc, cpx, cpy);
+        healthbar.draw(gc, cpx, cpy);
     }
 
 
@@ -78,6 +83,7 @@ public class Player extends GameObject {
             meleeLightSaber.calculateWeaponPosition();
             meleeAxe.calculateWeaponPosition();
             distancePistol.calculateWeaponPosition();
+            healthbar.setPlayerImageAtHealthBar(imageRight);
         }
     }
 
@@ -111,4 +117,11 @@ public class Player extends GameObject {
         return direction;
     }
 
+    public double getHealth() {
+        return health;
+    }
+
+    public void setHealth(double health) {
+        this.health = health;
+    }
 }

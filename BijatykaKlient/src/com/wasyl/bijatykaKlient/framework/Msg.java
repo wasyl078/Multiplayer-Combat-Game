@@ -1,8 +1,8 @@
 package com.wasyl.bijatykaKlient.framework;
 
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
-import com.wasyl.bijatykaKlient.objects.Player;
-import com.wasyl.bijatykaKlient.objects.bullets.PistolBullet;
+import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Player;
+import com.wasyl.bijatykaKlient.objects.gameobjects.distance.bullets.PistolBullet;
 import com.wasyl.bijatykaKlient.textures.Textures;
 
 public class Msg {
@@ -34,6 +34,7 @@ public class Msg {
         int numberOfPlayers = Integer.valueOf(parts[0]);
         int characterImageNumber;
         int lastWeapon;
+        int HP;
 
         //odczekanie dziesięciu pierwszych wiadomości, żeby mieć pewność, że pierwsza będzie prawidłowa
         if (messagesCounterToDown != 0) {
@@ -67,8 +68,9 @@ public class Msg {
             characterImageNumber = Integer.parseInt(buf[0]);
             direction = Integer.parseInt(buf[1]);
             lastWeapon = Integer.parseInt(buf[2]);
-            posX = Integer.parseInt(buf[3]);
-            posY = Integer.parseInt(buf[4]);
+            HP = Integer.parseInt(buf[3]);
+            posX = Integer.parseInt(buf[4]);
+            posY = Integer.parseInt(buf[5]);
 
 
             //korekta pozycji względem rozmiarów ekranu
@@ -82,6 +84,7 @@ public class Msg {
                         bufPlayer.setLastWeapon(lastWeapon);
                         bufPlayer.setDirection(direction);
                         bufPlayer.setCharacterImageNumber(characterImageNumber);
+                        bufPlayer.setHealth(HP);
                         bufPlayer.setPositionX(posX);
                         bufPlayer.setPositionY(posY);
                     }

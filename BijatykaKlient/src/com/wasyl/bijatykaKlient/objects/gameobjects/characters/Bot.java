@@ -1,6 +1,7 @@
-package com.wasyl.bijatykaKlient.objects;
+package com.wasyl.bijatykaKlient.objects.gameobjects.characters;
 
 import com.wasyl.bijatykaKlient.framework.Game;
+import com.wasyl.bijatykaKlient.objects.gameobjects.GameObject;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 

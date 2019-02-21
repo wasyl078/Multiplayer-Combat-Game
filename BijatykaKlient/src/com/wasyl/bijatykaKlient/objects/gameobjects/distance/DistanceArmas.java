@@ -1,7 +1,7 @@
-package com.wasyl.bijatykaKlient.objects.distance;
+package com.wasyl.bijatykaKlient.objects.gameobjects.distance;
 
-import com.wasyl.bijatykaKlient.objects.GameObject;
-import com.wasyl.bijatykaKlient.objects.Player;
+import com.wasyl.bijatykaKlient.objects.gameobjects.GameObject;
+import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Player;
 import javafx.scene.image.Image;
 
 public abstract class DistanceArmas extends GameObject {

@@ -1,6 +1,6 @@
-package com.wasyl.bijatykaKlient.objects.distance;
+package com.wasyl.bijatykaKlient.objects.gameobjects.distance;
 
-import com.wasyl.bijatykaKlient.objects.Player;
+import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Player;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 

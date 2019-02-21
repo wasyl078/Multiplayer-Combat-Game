@@ -30,6 +30,7 @@ public class Player extends GameObject {
     private double lastPosX = 0;
     private int direction = 1; //true - left       false - right
     private int characterImageNumber = 0;
+    private int HP = 0;
 
     //związane z broniami
     private final MeleeLightSaber lightSaber;
@@ -153,6 +154,7 @@ public class Player extends GameObject {
 
         setPositionX(200);
         setPositionY(200);
+        setHP(1000);
         this.characterImageNumber = imageNumber;
     }
 
@@ -268,4 +270,11 @@ public class Player extends GameObject {
         return PlayerImageHeight;
     }
 
+    public int getHP() {
+        return HP;
+    }
+
+    public void setHP(int HP) {
+        this.HP = HP;
+    }
 }

@@ -1,6 +1,6 @@
-package com.wasyl.bijatykaKlient.objects.melee;
+package com.wasyl.bijatykaKlient.objects.gameobjects.melee;
 
-import com.wasyl.bijatykaKlient.objects.Player;
+import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Player;
 import com.wasyl.bijatykaKlient.sounds.SoundsEffect;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;

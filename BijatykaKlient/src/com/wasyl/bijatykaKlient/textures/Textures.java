@@ -33,14 +33,13 @@ public class Textures {
     private BufferedImage toporPionowoLewo;
     private BufferedImage toporAtakLewo;
     private BufferedImage toporAtakPrawo;
-    private BufferedImage background1;
+    private BufferedImage healthBar1;
     private BufferedImage background2;
 
     public Textures() {
         SpriteSheetLoader loader = new SpriteSheetLoader();
         try {
             spriteSheet = loader.loadImage("obrazki/sprite.png");
-            background1 = loader.loadImage("obrazki/background 1.png");
             background2 = loader.loadImage("obrazki/background 2.png");
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,6 +68,7 @@ public class Textures {
         toporPionowoLewo = ss.grabImage(6, 2, 30, 117);
         toporAtakPrawo = ss.grabImage(7, 2, 121, 66);
         toporAtakLewo = ss.grabImage(8, 2, 121, 66);
+        healthBar1 = ss.grabImage(9,2,340,43);
     }
 
 
@@ -199,13 +199,13 @@ public class Textures {
         return bufImage;
     }
 
-    public Image getBackground1() {
-        Image bufImage = toFXImage(scale(background1, (int) (1 * Game.screenWidth), (int) (1 * Game.screenHeight)), null);
+    public Image getBackground2() {
+        Image bufImage = toFXImage(scale(background2, 2 * Game.screenWidth,   Game.screenHeight), null);
         return bufImage;
     }
 
-    public Image getBackground2() {
-        Image bufImage = toFXImage(scale(background2, (int) (2 * Game.screenWidth), (int) (1 * Game.screenHeight)), null);
+    public Image getHealthbar1(){
+        Image bufImage = toFXImage(scale(healthBar1, (int)(0.177083 * Game.screenWidth), (int)(0.039814*Game.screenHeight)),null);
         return bufImage;
     }
 }

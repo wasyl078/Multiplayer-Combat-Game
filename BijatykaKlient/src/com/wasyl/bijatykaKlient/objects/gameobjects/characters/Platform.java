@@ -1,5 +1,6 @@
-package com.wasyl.bijatykaKlient.objects;
+package com.wasyl.bijatykaKlient.objects.gameobjects.characters;
 
+import com.wasyl.bijatykaKlient.objects.gameobjects.GameObject;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 

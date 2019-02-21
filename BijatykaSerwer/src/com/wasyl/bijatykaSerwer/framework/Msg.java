@@ -52,6 +52,8 @@ public class Msg {
             bufWiadom += ".";
             bufWiadom += bpla.getLastWeapon();
             bufWiadom += ".";
+            bufWiadom += bpla.getHP();
+            bufWiadom += ".";
             bufWiadom += (int) bpla.getPositionX();
             bufWiadom += ".";
             bufWiadom += (int) bpla.getPositionY();

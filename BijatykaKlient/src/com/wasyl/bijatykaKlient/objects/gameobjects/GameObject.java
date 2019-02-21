@@ -1,4 +1,4 @@
-package com.wasyl.bijatykaKlient.objects;
+package com.wasyl.bijatykaKlient.objects.gameobjects;
 
 import javafx.scene.canvas.GraphicsContext;
 

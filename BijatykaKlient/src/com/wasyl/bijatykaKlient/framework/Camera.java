@@ -1,7 +1,7 @@
 package com.wasyl.bijatykaKlient.framework;
 
 
-import com.wasyl.bijatykaKlient.objects.Player;
+import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Player;
 
 import java.util.LinkedList;
 
