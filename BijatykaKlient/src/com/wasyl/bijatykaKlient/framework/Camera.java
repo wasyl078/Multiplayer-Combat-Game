@@ -27,9 +27,10 @@ public class Camera {
                 numberOfPlayers++;
             }
         }
-        bufPos = bufPos / numberOfPlayers;
-        setPositionX(bufPos);
-
+        if (numberOfPlayers != 0) {
+            bufPos = bufPos / numberOfPlayers;
+            setPositionX(bufPos);
+        }
     }
 
 

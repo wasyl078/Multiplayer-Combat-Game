@@ -47,7 +47,8 @@ public class PistolBullet extends GameObject {
                         bufPlayer.setHittedCounter(198);
                         if(defVel > 0) bufPlayer.setDirectionToRecoil(1);
                         else bufPlayer.setDirectionToRecoil(-1);
-                        bufPlayer.setHP(bufPlayer.getHP() - 50);
+                        bufPlayer.setGivePenalty(true);
+                        bufPlayer.setPenaltyHPcounter(400);
                     }
                     objects.remove(this);
                 }

@@ -33,7 +33,7 @@ public class UpdateHandler {
     }
 
     public void addPlayer(int playerNumber){
-        Player bufPlayer = new Player(999999,999999,playerNumber, ID.Player,textures,3);
+        Player bufPlayer = new Player(999999,-999999,playerNumber, ID.Player,textures,3);
         objects.add(bufPlayer);
         players.add(bufPlayer);
     }

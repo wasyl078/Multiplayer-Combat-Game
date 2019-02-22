@@ -1,5 +1,6 @@
 package com.wasyl.bijatykaSerwer.objects;
 
+import com.wasyl.bijatykaSerwer.framework.Game;
 import com.wasyl.bijatykaSerwer.objects.distance.DistancePistol;
 import com.wasyl.bijatykaSerwer.objects.melee.MeleeAxe;
 import com.wasyl.bijatykaSerwer.objects.melee.MeleeLightSaber;
@@ -42,6 +43,10 @@ public class Player extends GameObject {
     private int attackingCounter = 0;
     private int attacking = 0;
     private int directionToRecoil = 0;
+    private boolean fallen = false;
+    private boolean givePenalty = true;
+    private int penaltyHPcounter = 100;
+    private boolean onlyOnePenalty = true;
 
     //difoltowe
     private final Random generator = new Random();
@@ -57,8 +62,8 @@ public class Player extends GameObject {
         setCharacterImageNumber(0);
         setPlayerNumber(playerNumber);
         this.lightSaber = new MeleeLightSaber(0, 0, ID.MeleeLightSaber, this, textures);
-        this.axe = new MeleeAxe(0,0,ID.MeleeAxe, this, textures);
-        this.pistol = new DistancePistol(0,0,ID.DistancePistol,this, textures);
+        this.axe = new MeleeAxe(0, 0, ID.MeleeAxe, this, textures);
+        this.pistol = new DistancePistol(0, 0, ID.DistancePistol, this, textures);
     }
 
 
@@ -80,24 +85,45 @@ public class Player extends GameObject {
 
         collisions(objects);
 
+        fallen = false;
+        if (getPositionY() > Game.screenHeight)
+            if (onlyOnePenalty) {
+                fallen = true;
+                onlyOnePenalty = false;
+                penaltyHPcounter+=100;
+            }
+
         if (getPositionY() > 2000) {
             if (getPositionX() > 1000)
                 setPositionX(getPositionX() - 20);
             else if (getPositionX() < 920)
                 setPositionX(getPositionX() + 20);
             else {
-
                 int addX = generator.nextInt(30);
-                if(generator.nextBoolean()) addX*=-1;
+                if (generator.nextBoolean()) addX *= -1;
 
                 setPositionX(960 + addX);
                 setPositionY(-100);
+                fallen = false;
+                onlyOnePenalty = true;
+            }
+        }
+
+        if (fallen || givePenalty) {
+            givePenalty = true;
+
+            if (penaltyHPcounter >= 0) {
+                penaltyHPcounter--;
+                HP--;
+                if (penaltyHPcounter == 0) {
+                    givePenalty = false;
+                }
             }
         }
 
         if (whichWeapon == 1) lightSaber.update(objects);
-        else if(whichWeapon ==2) axe.update(objects);
-        else if(whichWeapon == 3) pistol.update(objects);
+        else if (whichWeapon == 2) axe.update(objects);
+        else if (whichWeapon == 3) pistol.update(objects);
     }
 
 
@@ -152,9 +178,12 @@ public class Player extends GameObject {
             PlayerImageWidth = textures.getBotPrawoImage().getWidth();
         }
 
-        setPositionX(200);
+        setPositionX(500);
         setPositionY(200);
         setHP(1000);
+        fallen = false;
+        givePenalty = false;
+        penaltyHPcounter = 0;
         this.characterImageNumber = imageNumber;
     }
 
@@ -277,4 +306,22 @@ public class Player extends GameObject {
     public void setHP(int HP) {
         this.HP = HP;
     }
+
+    public boolean isGivePenalty() {
+        return givePenalty;
+    }
+
+    public void setGivePenalty(boolean givePenalty) {
+        this.givePenalty = givePenalty;
+    }
+
+    public int getPenaltyHPcounter() {
+        return penaltyHPcounter;
+    }
+
+    public void setPenaltyHPcounter(int penaltyHPcounter) {
+        this.penaltyHPcounter = penaltyHPcounter;
+    }
+
+
 }
