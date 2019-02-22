@@ -54,12 +54,22 @@ public class Msg {
         //nowe PistolBullety
         String[] bufPistolBullet = parts[1].split("\\.");
         if (bufPistolBullet[0].equals("1")) {
-            int bufDir = Integer.parseInt(bufPistolBullet[1]);
-            int bufPosX = Integer.parseInt(bufPistolBullet[2]);
-            int bufPosY = Integer.parseInt(bufPistolBullet[3]);
+            int bufIndBulNumr = Integer.parseInt(bufPistolBullet[1]);
+            int bufDir = Integer.parseInt(bufPistolBullet[2]);
+            int bufPosX = Integer.parseInt(bufPistolBullet[3]);
+            int bufPosY = Integer.parseInt(bufPistolBullet[4]);
             bufPosX = Game.screenWidth * bufPosX / 1920;
             bufPosY = Game.screenHeight * bufPosY / 1080;
-            game.getDrawHandler().objects.add(new PistolBullet(bufPosX, bufPosY, bufDir, textures, game.getDrawHandler().objects));
+            game.getDrawHandler().objects.add(new PistolBullet(bufPosX, bufPosY, bufDir,bufIndBulNumr, textures, game.getDrawHandler().objects));
+        } else if(bufPistolBullet[0].equals("2")){
+            int bufNmbr = Integer.parseInt(bufPistolBullet[1]);
+            for(int i = 0; i < game.getDrawHandler().objects.size();i++) {
+                if(game.getDrawHandler().objects.get(i).getClass().equals(PistolBullet.class)){
+                    PistolBullet bufPB = (PistolBullet) game.getDrawHandler().objects.get(i);
+                    if(bufPB.getIndividualBulletNumber() == bufNmbr)
+                        game.getDrawHandler().objects.remove(bufPB);
+                }
+            }
         }
 
         //poustawianie pozycji wszystkich graczy na ekranie

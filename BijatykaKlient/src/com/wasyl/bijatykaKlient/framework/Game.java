@@ -27,8 +27,8 @@ public class Game extends Application {
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     //public final static int screenWidth = (int)screenSize.getWidth();
     //public final static int screenHeight = (int)screenSize.getHeight();
-    public final static int screenWidth = 900;
-    public final static int screenHeight = 506;
+    public final static int screenWidth = 1600;
+    public final static int screenHeight = 900;
 
     private final Canvas canvas = new Canvas(Game.screenWidth, Game.screenHeight);
     private final GraphicsContext gc = canvas.getGraphicsContext2D();

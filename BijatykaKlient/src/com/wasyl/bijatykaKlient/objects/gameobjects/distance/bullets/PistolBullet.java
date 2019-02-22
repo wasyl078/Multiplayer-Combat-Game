@@ -15,11 +15,13 @@ public class PistolBullet extends GameObject {
     private double defVel;
     private int direction;
     private LinkedList<GameObject> objects;
+    private int individualBulletNumber;
 
-    public PistolBullet(int x, int y, int direction, Textures textures, LinkedList<GameObject>objects) {
+    public PistolBullet(int x, int y, int direction,int individualBulletNumber ,Textures textures, LinkedList<GameObject>objects) {
         super(x, y);
         defVel = 0.03888*Game.screenWidth;
         this.direction = direction;
+        this.individualBulletNumber = individualBulletNumber;
         if (direction == 1) {
             defVel = -defVel;
             this.bulletImage = textures.getPociskLewo();
@@ -41,5 +43,9 @@ public class PistolBullet extends GameObject {
 
     public int getDirection() {
         return direction;
+    }
+
+    public int getIndividualBulletNumber() {
+        return individualBulletNumber;
     }
 }

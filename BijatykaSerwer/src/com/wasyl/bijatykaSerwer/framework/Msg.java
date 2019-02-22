@@ -1,7 +1,6 @@
 package com.wasyl.bijatykaSerwer.framework;
 
 
-import com.wasyl.bijatykaSerwer.objects.GameObject;
 import com.wasyl.bijatykaSerwer.objects.Player;
 import com.wasyl.bijatykaSerwer.objects.UpdateHandler;
 
@@ -31,15 +30,21 @@ public class Msg {
         //nowy PistolBullet
         if (Game.bufPistolBullet != null) {
             bufWiadom += "_";
-            bufWiadom += 1;
+            if (Game.bufPistolBullet.getActive().equals("t")) {
+                bufWiadom += 1;
+            } else {
+                bufWiadom += 2;
+            }
+            bufWiadom += ".";
+            bufWiadom += Game.bufPistolBullet.getIndividualBulletNumber();
             bufWiadom += ".";
             bufWiadom += Game.bufPistolBullet.getDirection();
             bufWiadom += ".";
-            bufWiadom += (int)Game.bufPistolBullet.getPositionX();
+            bufWiadom += (int) Game.bufPistolBullet.getPositionX();
             bufWiadom += ".";
-            bufWiadom += (int)Game.bufPistolBullet.getPositionY();
+            bufWiadom += (int) Game.bufPistolBullet.getPositionY();
             Game.bufPistolBullet = null;
-        } else bufWiadom += "_0.x.x.x";
+        } else bufWiadom += "_0.x.x.x.x";
 
 
         //stan graczy

@@ -13,11 +13,14 @@ import javafx.scene.image.Image;
 
 public class PistolBullet extends GameObject {
 
+    public static int bullets = 0;
+    private int individualBulletNumber;
     private Textures textures;
     private Image leftImage;
     private Image rightImage;
     private int defVel = 75;
     private int direction;
+    private String active = "t";
 
 
     public PistolBullet(double x, double y, ID id, int direction, Textures textures) {
@@ -26,6 +29,8 @@ public class PistolBullet extends GameObject {
         this.rightImage = textures.getPociskPrawo();
         this.direction = direction;
         if (direction == 1) defVel = -defVel;
+        bullets++;
+        individualBulletNumber = bullets;
     }
 
 
@@ -42,8 +47,8 @@ public class PistolBullet extends GameObject {
         for (int i = 0; i < objects.size(); i++) {
             if (objects.get(i).getId().equals(ID.Player)) {
                 Player bufPlayer = (Player) objects.get(i);
-                if ((direction == 1 && bufPlayer.getLastWeapon() != 16) || (direction != 1 && bufPlayer.getLastWeapon() != 15))
-                    if (getBounds().intersects(bufPlayer.getBoundsCentral())) {
+                if (getBounds().intersects(bufPlayer.getBoundsCentral())) {
+                    if ((direction == 1 && bufPlayer.getLastWeapon() != 16) || (direction != 1 && bufPlayer.getLastWeapon() != 15)){
                         if (bufPlayer.getHittedCounter() <= 0) {
                             bufPlayer.setHittedCounter(198);
                             if (defVel > 0) bufPlayer.setDirectionToRecoil(1);
@@ -51,8 +56,11 @@ public class PistolBullet extends GameObject {
                             bufPlayer.setGivePenalty(true);
                             bufPlayer.setPenaltyHPcounter(400);
                         }
-                        objects.remove(this);
                     }
+                    setActive("n");
+                    Game.bufPistolBullet = this;
+                    objects.remove(this);
+                }
             }
         }
     }
@@ -64,5 +72,17 @@ public class PistolBullet extends GameObject {
 
     public int getDirection() {
         return direction;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    public int getIndividualBulletNumber() {
+        return individualBulletNumber;
     }
 }
