@@ -35,6 +35,7 @@ public class Msg {
         int characterImageNumber;
         int lastWeapon;
         int HP;
+        String alive;
 
         //odczekanie dziesięciu pierwszych wiadomości, żeby mieć pewność, że pierwsza będzie prawidłowa
         if (messagesCounterToDown != 0) {
@@ -46,7 +47,7 @@ public class Msg {
         //pododawnie wszystkich obecnych graczy
         while (numberOfPlayers != lastPlayersNumber) {
             lastPlayersNumber++;
-            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber+1].substring(0, 1)), lastPlayersNumber);
+            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber+1].substring(2, 3)), lastPlayersNumber);
         }
 
 
@@ -65,12 +66,13 @@ public class Msg {
         for (int i = 2; i <= numberOfPlayers + 1; i++) {
             String[] buf = parts[i].split("\\.");
 
-            characterImageNumber = Integer.parseInt(buf[0]);
-            direction = Integer.parseInt(buf[1]);
-            lastWeapon = Integer.parseInt(buf[2]);
-            HP = Integer.parseInt(buf[3]);
-            posX = Integer.parseInt(buf[4]);
-            posY = Integer.parseInt(buf[5]);
+            alive = buf[0];
+            characterImageNumber = Integer.parseInt(buf[1]);
+            direction = Integer.parseInt(buf[2]);
+            lastWeapon = Integer.parseInt(buf[3]);
+            HP = Integer.parseInt(buf[4]);
+            posX = Integer.parseInt(buf[5]);
+            posY = Integer.parseInt(buf[6]);
 
 
             //korekta pozycji względem rozmiarów ekranu
@@ -81,6 +83,7 @@ public class Msg {
                 if(game.getDrawHandler().objects.get(u).getClass().equals(Player.class)){
                     Player bufPlayer = (Player)game.getDrawHandler().objects.get(u);
                     if (i-1 == ((Player)game.getDrawHandler().objects.get(u)).getPlayerNumber()) {
+                        bufPlayer.setAlive(alive);
                         bufPlayer.setLastWeapon(lastWeapon);
                         bufPlayer.setDirection(direction);
                         bufPlayer.setCharacterImageNumber(characterImageNumber);

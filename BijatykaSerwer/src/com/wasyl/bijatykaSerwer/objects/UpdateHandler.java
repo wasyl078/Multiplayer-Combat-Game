@@ -19,10 +19,12 @@ public class UpdateHandler {
 
     public void update() {
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).update(objects);
+            if (objects.get(i).getAlive().equals("t"))
+                objects.get(i).update(objects);
         }
     }
-    public void makeFirstLevel(){
+
+    public void makeFirstLevel() {
         double wdth = 1920;
         double hght = 1080;
 
@@ -32,13 +34,13 @@ public class UpdateHandler {
 
     }
 
-    public void addPlayer(int playerNumber){
-        Player bufPlayer = new Player(999999,-999999,playerNumber, ID.Player,textures,3);
+    public void addPlayer(int playerNumber) {
+        Player bufPlayer = new Player(999999, -999999, playerNumber, ID.Player, textures, 3);
         objects.add(bufPlayer);
         players.add(bufPlayer);
     }
 
-    public void addObject(GameObject bufObject){
+    public void addObject(GameObject bufObject) {
         objects.add(bufObject);
 
     }

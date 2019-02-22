@@ -46,6 +46,8 @@ public class Msg {
         for (int i = 0; i < playersList.size(); i++) {
             Player bpla = playersList.get(i);
             bufWiadom += "_";
+            bufWiadom += bpla.getAlive();
+            bufWiadom += ".";
             bufWiadom += (int) bpla.getCharacterImageNumber();
             bufWiadom += ".";
             bufWiadom += bpla.getDirection();

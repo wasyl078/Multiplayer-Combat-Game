@@ -22,7 +22,7 @@ public class Camera {
 
         for (int i = 0; i < players.size(); i++) {
             Player bufPlayer = players.get(i);
-            if (bufPlayer.getPositionY() < 90000) {
+            if (bufPlayer.getAlive().equals("t")) {
                 bufPos += -bufPlayer.getPositionX() + Game.screenWidth / 2;
                 numberOfPlayers++;
             }

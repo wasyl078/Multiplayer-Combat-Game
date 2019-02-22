@@ -34,7 +34,8 @@ public class Textures {
     private BufferedImage toporAtakLewo;
     private BufferedImage toporAtakPrawo;
     private BufferedImage healthBar1;
-
+    private BufferedImage forceShieldLeft;
+    private BufferedImage forceShieldRight;
 
     public Textures() {
         SpriteSheetLoader loader = new SpriteSheetLoader();
@@ -68,6 +69,8 @@ public class Textures {
         toporAtakPrawo = ss.grabImage(7, 2, 121, 66);
         toporAtakLewo = ss.grabImage(8, 2, 121, 66);
         healthBar1 = ss.grabImage(9,2,340,42);
+        forceShieldLeft = ss.grabImage(13,2,52,128);
+        forceShieldRight = ss.grabImage(12,2,52,128);
     }
 
 
@@ -181,6 +184,15 @@ public class Textures {
         return bufImage;
     }
 
+    public Image getForceShieldLeft(){
+        Image bufImage = toFXImage(scale(forceShieldLeft, (int)(0.027083*Game.screenWidth), (int)(0.118518*Game.screenHeight)),null);
+        return bufImage;
+    }
+
+    public Image getForceShieldRight(){
+        Image bufImage = toFXImage(scale(forceShieldRight, (int)(0.027083*Game.screenWidth), (int)(0.118518*Game.screenHeight)),null);
+        return bufImage;
+    }
 
     //metoda skalująca obrazki (BufferedImage ---> JavaFx Image)
     public static BufferedImage scale(BufferedImage src, int w, int h) {

@@ -2,6 +2,7 @@ package com.wasyl.bijatykaSerwer.objects;
 
 import com.wasyl.bijatykaSerwer.framework.Game;
 import com.wasyl.bijatykaSerwer.objects.distance.DistancePistol;
+import com.wasyl.bijatykaSerwer.objects.melee.ForceShield;
 import com.wasyl.bijatykaSerwer.objects.melee.MeleeAxe;
 import com.wasyl.bijatykaSerwer.objects.melee.MeleeLightSaber;
 import com.wasyl.bijatykaSerwer.textures.Textures;
@@ -37,6 +38,7 @@ public class Player extends GameObject {
     private final MeleeLightSaber lightSaber;
     private final MeleeAxe axe;
     private final DistancePistol pistol;
+    private final ForceShield forceShield;
     private int whichWeapon = 1;
     private int lastWeapon = 1;
     private int hittedCounter = 0;
@@ -64,6 +66,8 @@ public class Player extends GameObject {
         this.lightSaber = new MeleeLightSaber(0, 0, ID.MeleeLightSaber, this, textures);
         this.axe = new MeleeAxe(0, 0, ID.MeleeAxe, this, textures);
         this.pistol = new DistancePistol(0, 0, ID.DistancePistol, this, textures);
+        this.forceShield = new ForceShield(0, 0, ID.ForceShield, this, textures);
+        setAlive("n");
     }
 
 
@@ -72,6 +76,25 @@ public class Player extends GameObject {
     public void update(LinkedList<GameObject> objects) {
         setPositionX(getPositionX() + getVelocityX());
         setPositionY(getPositionY() + getVelocityY());
+
+        if (HP <= 0) {
+            setPositionY(-300);
+
+            if (getPositionX() > 1000)
+                setPositionX(getPositionX() - 10);
+            else if (getPositionX() < 920)
+                setPositionX(getPositionX() + 10);
+            else {
+                setPositionX(960);
+
+                fallen = false;
+                onlyOnePenalty = true;
+                HP = 0;
+                setAlive("n");
+            }
+            return;
+        }
+
 
         //grawitacja
         if (falling || jumping) {
@@ -90,7 +113,7 @@ public class Player extends GameObject {
             if (onlyOnePenalty) {
                 fallen = true;
                 onlyOnePenalty = false;
-                penaltyHPcounter+=100;
+                penaltyHPcounter += 100;
             }
 
         if (getPositionY() > 2000) {
@@ -124,6 +147,7 @@ public class Player extends GameObject {
         if (whichWeapon == 1) lightSaber.update(objects);
         else if (whichWeapon == 2) axe.update(objects);
         else if (whichWeapon == 3) pistol.update(objects);
+        else if(whichWeapon == 4) forceShield.update(objects);
     }
 
 
@@ -181,6 +205,7 @@ public class Player extends GameObject {
         setPositionX(500);
         setPositionY(200);
         setHP(1000);
+        setAlive("t");
         fallen = false;
         givePenalty = false;
         penaltyHPcounter = 0;
@@ -322,6 +347,4 @@ public class Player extends GameObject {
     public void setPenaltyHPcounter(int penaltyHPcounter) {
         this.penaltyHPcounter = penaltyHPcounter;
     }
-
-
 }

@@ -57,6 +57,7 @@ public class MeleeAxe extends MeleeArmas {
                     if (getBounds().intersects(anotherPlayer.getBoundsCentral())) {
                         anotherPlayer.setHittedCounter(210);
                         if(getOwnerPlayer().getDirection() == 1) anotherPlayer.setDirectionToRecoil(-1);
+                        else anotherPlayer.setDirectionToRecoil(1);
                         anotherPlayer.setGivePenalty(true);
                         anotherPlayer.setPenaltyHPcounter(75);
                     }

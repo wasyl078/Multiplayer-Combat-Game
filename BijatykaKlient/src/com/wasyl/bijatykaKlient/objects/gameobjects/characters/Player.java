@@ -2,11 +2,13 @@ package com.wasyl.bijatykaKlient.objects.gameobjects.characters;
 
 import com.wasyl.bijatykaKlient.objects.gameobjects.GameObject;
 import com.wasyl.bijatykaKlient.objects.gameobjects.distance.DistancePistol;
+import com.wasyl.bijatykaKlient.objects.gameobjects.melee.ForceShield;
 import com.wasyl.bijatykaKlient.objects.gameobjects.melee.MeleeAxe;
 import com.wasyl.bijatykaKlient.objects.gameobjects.melee.MeleeLightSaber;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 
 public class Player extends GameObject {
@@ -24,11 +26,13 @@ public class Player extends GameObject {
     private double PlayerImageHeight;
     private Healthbar healthbar;
     private double health;
+    private String alive = "n";
 
     //związane z broniami
     private MeleeLightSaber meleeLightSaber;
     private MeleeAxe meleeAxe;
     private DistancePistol distancePistol;
+    private ForceShield forceShield;
     private int lastWeapon = 0;
 
 
@@ -41,6 +45,7 @@ public class Player extends GameObject {
         meleeAxe = new MeleeAxe(0, 0, this, textures);
         distancePistol = new DistancePistol(0, 0, this, textures);
         healthbar = new Healthbar(0,0,this, textures);
+        forceShield = new ForceShield(0,0,this,textures);
         setCharacterImageNumber(characterNumber);
     }
 
@@ -56,6 +61,7 @@ public class Player extends GameObject {
         meleeAxe.draw(gc, cpx, cpy);
         distancePistol.draw(gc, cpx, cpy);
         healthbar.draw(gc, cpx, cpy);
+        forceShield.draw(gc, cpx, cpy);
     }
 
 
@@ -84,6 +90,7 @@ public class Player extends GameObject {
             meleeAxe.calculateWeaponPosition();
             distancePistol.calculateWeaponPosition();
             healthbar.setPlayerImageAtHealthBar(imageRight);
+            forceShield.calculateWeaponPosition();
         }
     }
 
@@ -123,5 +130,13 @@ public class Player extends GameObject {
 
     public void setHealth(double health) {
         this.health = health;
+    }
+
+    public String getAlive() {
+        return alive;
+    }
+
+    public void setAlive(String alive) {
+        this.alive = alive;
     }
 }

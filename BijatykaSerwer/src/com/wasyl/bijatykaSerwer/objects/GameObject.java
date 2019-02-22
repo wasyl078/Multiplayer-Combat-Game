@@ -12,6 +12,7 @@ public abstract class GameObject {
     private double velocityX;
     private double velocityY;
     private ID id;
+    private String alive = "t";
 
     //konstruktor klasy
     public GameObject(double x, double y, ID id) {
@@ -68,5 +69,13 @@ public abstract class GameObject {
 
     public void setId(ID id) {
         this.id = id;
+    }
+
+    public String getAlive() {
+        return alive;
+    }
+
+    public void setAlive(String alive) {
+        this.alive = alive;
     }
 }

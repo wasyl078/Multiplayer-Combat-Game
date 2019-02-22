@@ -17,7 +17,7 @@ public class Platform extends GameObject {
 
     @Override
     public void draw(GraphicsContext gc, int cpx, int cpy) {
-        gc.setFill(Color.DEEPSKYBLUE);
+        gc.setFill(Color.ORANGERED);
         gc.fillRect(getPositionX() + cpx, getPositionY() + cpy, sizeWidth, sizeHeight);
     }
 }

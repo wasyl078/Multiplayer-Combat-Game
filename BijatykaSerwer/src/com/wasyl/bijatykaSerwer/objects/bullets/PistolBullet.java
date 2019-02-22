@@ -33,7 +33,7 @@ public class PistolBullet extends GameObject {
     public void update(LinkedList<GameObject> objects) {
         setPositionX(getPositionX() + defVel);
         collisions(objects);
-        if(getPositionX() > Game.screenWidth*2 || getPositionX()< Game.screenWidth*-2)
+        if (getPositionX() > Game.screenWidth * 2 || getPositionX() < Game.screenWidth * -2)
             objects.remove(this);
     }
 
@@ -42,23 +42,24 @@ public class PistolBullet extends GameObject {
         for (int i = 0; i < objects.size(); i++) {
             if (objects.get(i).getId().equals(ID.Player)) {
                 Player bufPlayer = (Player) objects.get(i);
-                if (getBounds().intersects(bufPlayer.getBoundsCentral())) {
-                    if (bufPlayer.getHittedCounter() <= 0) {
-                        bufPlayer.setHittedCounter(198);
-                        if(defVel > 0) bufPlayer.setDirectionToRecoil(1);
-                        else bufPlayer.setDirectionToRecoil(-1);
-                        bufPlayer.setGivePenalty(true);
-                        bufPlayer.setPenaltyHPcounter(400);
+                if ((direction == 1 && bufPlayer.getLastWeapon() != 16) || (direction != 1 && bufPlayer.getLastWeapon() != 15))
+                    if (getBounds().intersects(bufPlayer.getBoundsCentral())) {
+                        if (bufPlayer.getHittedCounter() <= 0) {
+                            bufPlayer.setHittedCounter(198);
+                            if (defVel > 0) bufPlayer.setDirectionToRecoil(1);
+                            else bufPlayer.setDirectionToRecoil(-1);
+                            bufPlayer.setGivePenalty(true);
+                            bufPlayer.setPenaltyHPcounter(400);
+                        }
+                        objects.remove(this);
                     }
-                    objects.remove(this);
-                }
             }
         }
     }
 
     @Override
     public Rectangle2D getBounds() {
-        return new Rectangle2D((int) getPositionX() - leftImage.getWidth(), (int) getPositionY(), leftImage.getWidth()*3, rightImage.getHeight());
+        return new Rectangle2D((int) getPositionX() - leftImage.getWidth(), (int) getPositionY(), leftImage.getWidth() * 3, rightImage.getHeight());
     }
 
     public int getDirection() {
