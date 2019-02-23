@@ -27,20 +27,21 @@ public class Grenade extends GameObject {
     private double imageHeight;
     private String active = "t";
     private final double gravity = 0.5;
-    private final double air = 0.5;
+    private double air = 0.05;
     private final double maxSpeed = 30;
     private boolean falling = true;
     private boolean jumping = true;
-
+    private int countdown = 500;
+    private double jumpDivider = 1;
 
     public Grenade(double x, double y, ID id, int direction, Textures textures) {
         super(x, y, id);
         if (direction == 1) setVelocityX(-defVel);
         else setVelocityX(defVel);
-        setVelocityY(-defVel*2);
+        setVelocityY(-defVel * 1.75);
         this.direction = direction;
-        this.leftImage = textures.getPociskLewo();
-        this.rightImage = textures.getPociskPrawo();
+        this.leftImage = textures.getGrenadeLeft();
+        this.rightImage = textures.getGrenadeRight();
         this.imageWidth = leftImage.getWidth();
         this.imageHeight = rightImage.getHeight();
         grenades++;
@@ -59,15 +60,16 @@ public class Grenade extends GameObject {
         }
 
         //opór powietrza XD
-        //if(getVelocityX() > 0) setVelocityX(getVelocityX() - air);
-        //else if(getVelocityX()<0) setVelocityY(getVelocityX() + air);
+        if (getVelocityX() > 0) setVelocityX(getVelocityX() - air);
+        else if (getVelocityX() < 0) setVelocityX(getVelocityX() +air);
+        countdown--;
+        air+=0.00000075;
+        if (countdown < 0) countdown = 0;
 
         collisions(objects, sounds);
 
-        if (getPositionX() > Game.screenWidth*2 || getPositionX() < -Game.screenWidth) {
+        if (getPositionX() > Game.screenWidth * 2 || getPositionX() < -Game.screenWidth) {
             setActive("n");
-           // grenades--;
-            //objects.remove(this);
         }
     }
 
@@ -83,7 +85,8 @@ public class Grenade extends GameObject {
                 //kolizja z podłogą
                 if (getBounds().intersects(bufGameObject.getBounds())) {
                     setPositionY(bufGameObject.getPositionY() - imageHeight);
-                    setVelocityY(-2*defVel);
+                    setVelocityY(-1.75 * defVel*jumpDivider);
+                    jumpDivider*=0.7;
                     setFalling(false);
                     setJumping(true);
                 } else setFalling(true);
@@ -116,15 +119,13 @@ public class Grenade extends GameObject {
                     if (bufPlayer.getHittedCounter() <= 0) {
                         bufPlayer.setHittedCounter(198);
                         if (getVelocityX() > 0) bufPlayer.setDirectionToRecoil(1);
-                        else if(getVelocityX()<0)bufPlayer.setDirectionToRecoil(-1);
+                        else if (getVelocityX() < 0) bufPlayer.setDirectionToRecoil(-1);
                         else bufPlayer.setDirectionToRecoil(0);
                         bufPlayer.setGivePenalty(true);
                         bufPlayer.setPenaltyHPcounter(200);
                         sounds.add(-5);
                     }
                     setActive("n");
-                   // grenades--;
-                   // objects.remove(this);
                 }
             }
         }
@@ -133,7 +134,7 @@ public class Grenade extends GameObject {
     //bounds
     @Override
     public Rectangle2D getBounds() /*Bottom */ {
-        return new Rectangle2D((int) getPositionX() + imageWidth / 5, (int) getPositionY() + imageHeight * 3 / 4, imageWidth * 3 / 5, imageHeight / 4);
+        return new Rectangle2D((int) getPositionX() + imageWidth / 5, (int) getPositionY() + imageHeight/ 2, imageWidth * 3 / 5, imageHeight / 2);
     }
 
     public Rectangle2D getBoundsTop() {

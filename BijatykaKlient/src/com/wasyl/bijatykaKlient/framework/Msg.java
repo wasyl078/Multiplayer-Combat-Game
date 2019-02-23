@@ -111,10 +111,7 @@ public class Msg {
                         bufGr.setPositionX(bufX);
                         bufGr.setPositionY(bufY);
                         bufGr.setDirection(bufDirection);
-                        if(bufActive == 2){
-                            game.getDrawHandler().objects.remove(bufGr);
-                            System.out.println("iusus");
-                        }
+                        if(bufActive == 2) game.getDrawHandler().objects.remove(bufGr);
                     }
                 }
             }
