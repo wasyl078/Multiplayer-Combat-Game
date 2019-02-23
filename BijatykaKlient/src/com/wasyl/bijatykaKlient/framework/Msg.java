@@ -3,6 +3,7 @@ package com.wasyl.bijatykaKlient.framework;
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Player;
 import com.wasyl.bijatykaKlient.objects.gameobjects.distance.bullets.PistolBullet;
+import com.wasyl.bijatykaKlient.sounds.SoundsEffect;
 import com.wasyl.bijatykaKlient.textures.Textures;
 
 public class Msg {
@@ -31,11 +32,25 @@ public class Msg {
         int posX;
         int posY;
         int direction;
-        int numberOfPlayers = Integer.valueOf(parts[0]);
+        String[] numberOfPlayersAndSounds = parts[0].split("\\.");
+        int numberOfPlayers = Integer.valueOf(numberOfPlayersAndSounds[0]);
         int characterImageNumber;
         int lastWeapon;
         int HP;
         String alive;
+
+        //interpretacja dzwięków
+        for(int i = 2 ; i <= Integer.parseInt(numberOfPlayersAndSounds[1])+1;i++){
+            int bufsounds = Integer.parseInt(numberOfPlayersAndSounds[i]);
+            if(bufsounds == 1) SoundsEffect.makeLightSaberSound();
+            else if(bufsounds ==-1)SoundsEffect.makeLightSaberHitSound();
+            else if(bufsounds == 2)SoundsEffect.makeAxeSwingSound();
+            else if(bufsounds == -2)SoundsEffect.makeAxeSwingSound();            //TODO
+            else if(bufsounds ==3)SoundsEffect.makePistolSound();
+            else if(bufsounds ==-3)SoundsEffect.makeBulletImactSound();
+            else if(bufsounds == 4)SoundsEffect.makeForceShieldSound();
+        }
+
 
         //odczekanie dziesięciu pierwszych wiadomości, żeby mieć pewność, że pierwsza będzie prawidłowa
         if (messagesCounterToDown != 0) {
@@ -47,7 +62,7 @@ public class Msg {
         //pododawnie wszystkich obecnych graczy
         while (numberOfPlayers != lastPlayersNumber) {
             lastPlayersNumber++;
-            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber+1].substring(2, 3)), lastPlayersNumber);
+            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber + 1].substring(2, 3)), lastPlayersNumber);
         }
 
 
@@ -60,13 +75,13 @@ public class Msg {
             int bufPosY = Integer.parseInt(bufPistolBullet[4]);
             bufPosX = Game.screenWidth * bufPosX / 1920;
             bufPosY = Game.screenHeight * bufPosY / 1080;
-            game.getDrawHandler().objects.add(new PistolBullet(bufPosX, bufPosY, bufDir,bufIndBulNumr, textures, game.getDrawHandler().objects));
-        } else if(bufPistolBullet[0].equals("2")){
+            game.getDrawHandler().objects.add(new PistolBullet(bufPosX, bufPosY, bufDir, bufIndBulNumr, textures, game.getDrawHandler().objects));
+        } else if (bufPistolBullet[0].equals("2")) {
             int bufNmbr = Integer.parseInt(bufPistolBullet[1]);
-            for(int i = 0; i < game.getDrawHandler().objects.size();i++) {
-                if(game.getDrawHandler().objects.get(i).getClass().equals(PistolBullet.class)){
+            for (int i = 0; i < game.getDrawHandler().objects.size(); i++) {
+                if (game.getDrawHandler().objects.get(i).getClass().equals(PistolBullet.class)) {
                     PistolBullet bufPB = (PistolBullet) game.getDrawHandler().objects.get(i);
-                    if(bufPB.getIndividualBulletNumber() == bufNmbr)
+                    if (bufPB.getIndividualBulletNumber() == bufNmbr)
                         game.getDrawHandler().objects.remove(bufPB);
                 }
             }
@@ -89,10 +104,10 @@ public class Msg {
             posX = (int) Game.screenWidth * posX / 1920;
             posY = (int) Game.screenHeight * posY / 1080;
 
-            for (int u = 0; u < game.getDrawHandler().objects.size(); u++){
-                if(game.getDrawHandler().objects.get(u).getClass().equals(Player.class)){
-                    Player bufPlayer = (Player)game.getDrawHandler().objects.get(u);
-                    if (i-1 == ((Player)game.getDrawHandler().objects.get(u)).getPlayerNumber()) {
+            for (int u = 0; u < game.getDrawHandler().objects.size(); u++) {
+                if (game.getDrawHandler().objects.get(u).getClass().equals(Player.class)) {
+                    Player bufPlayer = (Player) game.getDrawHandler().objects.get(u);
+                    if (i - 1 == ((Player) game.getDrawHandler().objects.get(u)).getPlayerNumber()) {
                         bufPlayer.setAlive(alive);
                         bufPlayer.setLastWeapon(lastWeapon);
                         bufPlayer.setDirection(direction);

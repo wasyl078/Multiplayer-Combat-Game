@@ -6,13 +6,14 @@ import com.wasyl.bijatykaSerwer.objects.Player;
 import com.wasyl.bijatykaSerwer.textures.Textures;
 import javafx.geometry.Rectangle2D;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
 public class MeleeAxe extends MeleeArmas {
 
     private int attackCounter = 100;
-
+    private boolean soundSwitch = true;
 
     public MeleeAxe(double x, double y, ID id, Player ownerPlayer, Textures textures) {
         super(x, y, id, ownerPlayer, textures);
@@ -24,42 +25,53 @@ public class MeleeAxe extends MeleeArmas {
 
 
     @Override
-    public void update(LinkedList<GameObject> objects) {
+    public void update(LinkedList<GameObject> objects, ArrayList<Integer> sounds) {
         Player player = getOwnerPlayer();
         if (player.getDirection() == 1) {
             if (player.getAttacking() == 1 && attackCounter > 0) {
                 player.setLastWeapon(7);
                 attackCounter--;
+                if (soundSwitch) {
+                    sounds.add(2);
+                    soundSwitch = false;
+                }
             } else {
                 player.setLastWeapon(5);
                 if (player.getAttacking() == 0) attackCounter = 25;
+                soundSwitch = true;
             }
 
         } else {
             if (player.getAttacking() == 1 && attackCounter > 0) {
                 player.setLastWeapon(8);
                 attackCounter--;
+                if (soundSwitch) {
+                    sounds.add(2);
+                    soundSwitch = false;
+                }
             } else {
                 player.setLastWeapon(6);
                 if (player.getAttacking() == 0) attackCounter = 25;
+                soundSwitch = true;
             }
         }
 
-        if (player.getLastWeapon() == 7 || player.getLastWeapon() == 8) collisions(objects);
+        if (player.getLastWeapon() == 7 || player.getLastWeapon() == 8) collisions(objects, sounds);
     }
 
 
-    private void collisions(LinkedList<GameObject> objects) {
+    private void collisions(LinkedList<GameObject> objects, ArrayList<Integer> sounds) {
         for (int i = 0; i < objects.size(); i++) {
             if (objects.get(i).getId().equals(ID.Player)) {
                 Player anotherPlayer = (Player) objects.get(i);
                 if (anotherPlayer.getHittedCounter() <= 0) {
                     if (getBounds().intersects(anotherPlayer.getBoundsCentral())) {
                         anotherPlayer.setHittedCounter(210);
-                        if(getOwnerPlayer().getDirection() == 1) anotherPlayer.setDirectionToRecoil(-1);
+                        if (getOwnerPlayer().getDirection() == 1) anotherPlayer.setDirectionToRecoil(-1);
                         else anotherPlayer.setDirectionToRecoil(1);
                         anotherPlayer.setGivePenalty(true);
                         anotherPlayer.setPenaltyHPcounter(75);
+                        sounds.add(-2);
                     }
                 }
             }

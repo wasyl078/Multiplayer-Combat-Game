@@ -9,6 +9,7 @@ import com.wasyl.bijatykaSerwer.textures.Textures;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -73,7 +74,7 @@ public class Player extends GameObject {
 
     //updatowanie pozycji gracza
     @Override
-    public void update(LinkedList<GameObject> objects) {
+    public void update(LinkedList<GameObject> objects, ArrayList<Integer> sounds) {
         setPositionX(getPositionX() + getVelocityX());
         setPositionY(getPositionY() + getVelocityY());
 
@@ -144,10 +145,10 @@ public class Player extends GameObject {
             }
         }
 
-        if (whichWeapon == 1) lightSaber.update(objects);
-        else if (whichWeapon == 2) axe.update(objects);
-        else if (whichWeapon == 3) pistol.update(objects);
-        else if(whichWeapon == 4) forceShield.update(objects);
+        if (whichWeapon == 1) lightSaber.update(objects,sounds);
+        else if (whichWeapon == 2) axe.update(objects,sounds);
+        else if (whichWeapon == 3) pistol.update(objects,sounds);
+        else if(whichWeapon == 4) forceShield.update(objects,sounds);
     }
 
 

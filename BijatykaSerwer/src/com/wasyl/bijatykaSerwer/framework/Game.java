@@ -21,7 +21,6 @@ public class Game implements Runnable {
     private Msg msg;
     public static PistolBullet bufPistolBullet;
 
-
     //konstruktor gry, wywołuje kilka podstawowych metod na początek
     public Game() {
         makeImportantObjects();

@@ -4,6 +4,7 @@ package com.wasyl.bijatykaSerwer.framework;
 import com.wasyl.bijatykaSerwer.objects.Player;
 import com.wasyl.bijatykaSerwer.objects.UpdateHandler;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Msg {
@@ -11,12 +12,14 @@ public class Msg {
     //zmienne i obiekty
     private UpdateHandler updateHandler;
     private LinkedList<Player> playersList;
+    private ArrayList<Integer>soundsList;
 
 
     //konstruktor klasy
     public Msg(UpdateHandler updateHandler) {
         this.updateHandler = updateHandler;
         playersList = updateHandler.players;
+        soundsList = updateHandler.sounds;
     }
 
     //metoda twrząca jedną długą wiadomość do wysłania każdemu klientowi
@@ -26,6 +29,16 @@ public class Msg {
         String bufWiadom = "";
         int players = playersList.size();
         bufWiadom += players;
+
+        //dzwięki
+        bufWiadom+=".";
+        bufWiadom+=soundsList.size();
+        for(int i = 0 ; i < soundsList.size();i++){
+            bufWiadom+=".";
+            bufWiadom+=soundsList.get(i);
+        }
+        soundsList.clear();
+        updateHandler.sounds.clear();
 
         //nowy PistolBullet
         if (Game.bufPistolBullet != null) {

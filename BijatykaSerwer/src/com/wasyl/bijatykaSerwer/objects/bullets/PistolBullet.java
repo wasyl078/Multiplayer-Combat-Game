@@ -7,6 +7,7 @@ import com.wasyl.bijatykaSerwer.objects.Player;
 import com.wasyl.bijatykaSerwer.textures.Textures;
 import javafx.geometry.Rectangle2D;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javafx.scene.image.Image;
@@ -35,15 +36,15 @@ public class PistolBullet extends GameObject {
 
 
     @Override
-    public void update(LinkedList<GameObject> objects) {
+    public void update(LinkedList<GameObject> objects, ArrayList<Integer>sounds) {
         setPositionX(getPositionX() + defVel);
-        collisions(objects);
+        collisions(objects, sounds);
         if (getPositionX() > Game.screenWidth * 2 || getPositionX() < Game.screenWidth * -2)
             objects.remove(this);
     }
 
 
-    private void collisions(LinkedList<GameObject> objects) {
+    private void collisions(LinkedList<GameObject> objects,ArrayList<Integer>sounds) {
         for (int i = 0; i < objects.size(); i++) {
             if (objects.get(i).getId().equals(ID.Player)) {
                 Player bufPlayer = (Player) objects.get(i);
@@ -55,6 +56,7 @@ public class PistolBullet extends GameObject {
                             else bufPlayer.setDirectionToRecoil(-1);
                             bufPlayer.setGivePenalty(true);
                             bufPlayer.setPenaltyHPcounter(400);
+                            sounds.add(-3);
                         }
                     }
                     setActive("n");

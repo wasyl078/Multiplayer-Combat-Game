@@ -27,7 +27,6 @@ public class PistolBullet extends GameObject {
             this.bulletImage = textures.getPociskLewo();
         } else this.bulletImage = textures.getPociskPrawo();
         this.objects = objects;
-        SoundsEffect.makePistolSound();
     }
 
     @Override

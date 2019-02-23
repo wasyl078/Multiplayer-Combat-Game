@@ -2,6 +2,7 @@ package com.wasyl.bijatykaSerwer.objects;
 
 import javafx.geometry.Rectangle2D;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public abstract class GameObject {
@@ -23,7 +24,7 @@ public abstract class GameObject {
 
 
     //update()
-    public abstract void update(LinkedList<GameObject> objects);
+    public abstract void update(LinkedList<GameObject> objects, ArrayList<Integer>sounds);
 
 
     //bounds

@@ -3,24 +3,27 @@ package com.wasyl.bijatykaSerwer.objects;
 
 import com.wasyl.bijatykaSerwer.textures.Textures;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class UpdateHandler {
 
     public LinkedList<GameObject> objects;
     public LinkedList<Player> players;
+    public ArrayList<Integer>sounds;
     private Textures textures;
 
     public UpdateHandler(Textures textures) {
         this.textures = textures;
         objects = new LinkedList<GameObject>();
         players = new LinkedList<Player>();
+        sounds = new ArrayList<Integer>();
     }
 
     public void update() {
         for (int i = 0; i < objects.size(); i++) {
             if (objects.get(i).getAlive().equals("t"))
-                objects.get(i).update(objects);
+                objects.get(i).update(objects, sounds);
         }
     }
 

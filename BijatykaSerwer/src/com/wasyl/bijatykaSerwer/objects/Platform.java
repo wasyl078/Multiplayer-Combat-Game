@@ -2,6 +2,7 @@ package com.wasyl.bijatykaSerwer.objects;
 
 import javafx.geometry.Rectangle2D;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Platform extends GameObject {
@@ -16,7 +17,7 @@ public class Platform extends GameObject {
     }
 
     @Override
-    public void update(LinkedList<GameObject> object) {
+    public void update(LinkedList<GameObject> object, ArrayList<Integer> sounds) {
     }
 
     @Override

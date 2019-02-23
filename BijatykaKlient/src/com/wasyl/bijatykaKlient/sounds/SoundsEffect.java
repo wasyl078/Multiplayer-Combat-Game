@@ -44,6 +44,12 @@ public class SoundsEffect {
         clip.start();
     }
 
+    public static void makeForceShieldSound() {
+        soundName = "sounds\\force shield 1.wav";
+        getSounds();
+        clip.start();
+    }
+
     private static void getSounds() {
         try {
             File file = new File(soundName);

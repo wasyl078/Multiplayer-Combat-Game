@@ -8,6 +8,7 @@ import com.wasyl.bijatykaSerwer.objects.bullets.PistolBullet;
 import com.wasyl.bijatykaSerwer.textures.Textures;
 import javafx.geometry.Rectangle2D;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class DistancePistol extends DistanceArmas {
@@ -22,7 +23,7 @@ public class DistancePistol extends DistanceArmas {
     }
 
     @Override
-    public void update(LinkedList<GameObject> objects) {
+    public void update(LinkedList<GameObject> objects, ArrayList<Integer> sounds) {
         if (getOwnerPlayer().getDirection() == 1) {
             if (getOwnerPlayer().getAttacking() == 1 && attackCounter == 0) {
                 getOwnerPlayer().setLastWeapon(11);
@@ -30,6 +31,7 @@ public class DistancePistol extends DistanceArmas {
                 PistolBullet bufPistolBullet = new PistolBullet((int) getOwnerPlayer().getPositionX() - getLeftImage().getWidth(), (int) getOwnerPlayer().getPositionY() + getOwnerPlayer().getPlayerImageHeight() - getLeftImage().getHeight() + 0.5 * getTextures().getPociskLewo().getHeight() / 2, ID.PistolBullet, 1, getTextures());
                 objects.add(bufPistolBullet);
                 Game.bufPistolBullet = bufPistolBullet;
+                sounds.add(3);
             } else {
                 getOwnerPlayer().setLastWeapon(9);
                 attackCounter--;
@@ -42,6 +44,7 @@ public class DistancePistol extends DistanceArmas {
                 PistolBullet bufPistolBullet = new PistolBullet((int) getOwnerPlayer().getPositionX() + getRightImage().getWidth() + getTextures().getPociskPrawo().getWidth(), (int) getOwnerPlayer().getPositionY() + getOwnerPlayer().getPlayerImageHeight() - getLeftImage().getHeight() + 0.5 * getTextures().getPociskLewo().getHeight() / 2, ID.PistolBullet, 2, getTextures());
                 objects.add(bufPistolBullet);
                 Game.bufPistolBullet = bufPistolBullet;
+                sounds.add(3);
             } else {
                 getOwnerPlayer().setLastWeapon(10);
                 attackCounter--;

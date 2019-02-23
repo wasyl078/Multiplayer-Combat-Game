@@ -17,7 +17,6 @@ public class MeleeLightSaber extends MeleeArmas {
     private int addPosY2;       //prawo,pionowo
     private int addPosY3;       //lewo,atak
     private int addPosY4;       //prawo,atak
-    private boolean soundSwitch = true;
 
 
     public MeleeLightSaber(int x, int y, Player ownerPlayer, Textures textures) {
@@ -33,25 +32,10 @@ public class MeleeLightSaber extends MeleeArmas {
     public void draw(GraphicsContext gc, int cpx, int cpy) {
         Player player = getOwnerPlayer();
         int lastWeapon = player.getLastWeapon();
-        if (lastWeapon == 1) {
-            gc.drawImage(getVerLeft(),  player.getPositionX() + addPosX1 + cpx,player.getPositionY() + addPosY1 + cpy);
-            soundSwitch = true;
-        } else if (lastWeapon == 2) {
-            gc.drawImage(getVerRigh(), player.getPositionX() + addPosX2 + cpx,player.getPositionY() + addPosY2 + cpy);
-            soundSwitch = true;
-        } else if (lastWeapon == 3) {
-            gc.drawImage(getAttLeft(), player.getPositionX() + addPosX3 + cpx, player.getPositionY() + addPosY3 + cpy);
-            if (soundSwitch) {
-                SoundsEffect.makeLightSaberSound();
-                soundSwitch = false;
-            }
-        } else if (lastWeapon == 4) {
-            gc.drawImage(getAttRight(), player.getPositionX() + addPosX4 + cpx, player.getPositionY() + addPosY4 + cpy);
-            if (soundSwitch) {
-                SoundsEffect.makeLightSaberSound();
-                soundSwitch = false;
-            }
-        }
+        if (lastWeapon == 1) gc.drawImage(getVerLeft(),  player.getPositionX() + addPosX1 + cpx,player.getPositionY() + addPosY1 + cpy);
+         else if (lastWeapon == 2) gc.drawImage(getVerRigh(), player.getPositionX() + addPosX2 + cpx,player.getPositionY() + addPosY2 + cpy);
+         else if (lastWeapon == 3) gc.drawImage(getAttLeft(), player.getPositionX() + addPosX3 + cpx, player.getPositionY() + addPosY3 + cpy);
+         else if (lastWeapon == 4) gc.drawImage(getAttRight(), player.getPositionX() + addPosX4 + cpx, player.getPositionY() + addPosY4 + cpy);
     }
 
 
