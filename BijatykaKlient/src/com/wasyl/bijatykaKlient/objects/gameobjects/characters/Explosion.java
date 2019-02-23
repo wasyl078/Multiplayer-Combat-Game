@@ -17,7 +17,6 @@ public class Explosion extends GameObject {
         super(x, y);
         this.explosionsImage = textures.getExplosions();
         this.grenadeImage = textures.getGrenadeLeft();
-        calculatePosition();
     }
 
     @Override
@@ -32,7 +31,4 @@ public class Explosion extends GameObject {
         gc.drawImage(explosionsImage[bufDivide], getPositionX() + cpx - explosionsImage[bufDivide].getWidth()*0.5 + grenadeImage.getWidth()*0.5, getPositionY() + cpy - explosionsImage[bufDivide].getHeight()*0.5 + grenadeImage.getHeight()*0.5);
     }
 
-    private void calculatePosition() {
-
-    }
 }

@@ -1,10 +1,7 @@
 package com.wasyl.bijatykaSerwer.framework;
 
 
-import com.wasyl.bijatykaSerwer.objects.GameObject;
-import com.wasyl.bijatykaSerwer.objects.ID;
-import com.wasyl.bijatykaSerwer.objects.Player;
-import com.wasyl.bijatykaSerwer.objects.UpdateHandler;
+import com.wasyl.bijatykaSerwer.objects.*;
 import com.wasyl.bijatykaSerwer.objects.bullets.Grenade;
 
 import java.util.ArrayList;
@@ -87,12 +84,17 @@ public class Msg {
             }
         }
         for(int i = 0 ; i< objects.size();i ++){
-            if(objects.get(i).getId().equals(ID.Grenade))
+            if(objects.get(i).getId().equals(ID.Grenade)){
                 if(((Grenade)objects.get(i)).getActive().equals("n")){
                     Grenade.grenades--;
                     objects.remove(objects.get(i));
                     soundsList.add(-5);
                 }
+            } else if(objects.get(i).getId().equals(ID.Explosion)){
+                if(((Explosion)objects.get(i)).getActive().equals("n")){
+                    objects.remove(objects.get(i));
+                }
+            }
         }
 
 

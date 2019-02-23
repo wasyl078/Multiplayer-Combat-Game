@@ -1,10 +1,7 @@
 package com.wasyl.bijatykaSerwer.objects.bullets;
 
 import com.wasyl.bijatykaSerwer.framework.Game;
-import com.wasyl.bijatykaSerwer.objects.GameObject;
-import com.wasyl.bijatykaSerwer.objects.ID;
-import com.wasyl.bijatykaSerwer.objects.Platform;
-import com.wasyl.bijatykaSerwer.objects.Player;
+import com.wasyl.bijatykaSerwer.objects.*;
 import com.wasyl.bijatykaSerwer.textures.Textures;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -45,6 +42,7 @@ public class Grenade extends GameObject {
         this.rightImage = textures.getGrenadeRight();
         this.imageWidth = leftImage.getWidth();
         this.imageHeight = rightImage.getHeight();
+        this.textures = textures;
         grenades++;
         grenadesInGeneral++;
         individualGrenadeNumber = grenadesInGeneral;
@@ -76,6 +74,7 @@ public class Grenade extends GameObject {
 
         if (getPositionX() > Game.screenWidth * 2 || getPositionX() < -Game.screenWidth || getPositionY()>Game.screenHeight - 2*imageHeight) {
             setActive("n");
+            objects.add(new Explosion(getPositionX(), getPositionY(),ID.Explosion,textures));
         }
     }
 
@@ -94,7 +93,10 @@ public class Grenade extends GameObject {
                     setVelocityY(-1.75 * defVel*jumpDivider);
                     jumpDivider*=0.7;
                     if(jumpDivider>0.02)sounds.add(-4);
-                    else if(jumpDivider<0.001)setActive("n");
+                    else if(jumpDivider<0.001){
+                        setActive("n");
+                        objects.add(new Explosion(getPositionX(), getPositionY(),ID.Explosion,textures));
+                    }
                     setFalling(false);
                     setJumping(true);
                 } else setFalling(true);
@@ -144,6 +146,7 @@ public class Grenade extends GameObject {
                         sounds.add(-5);
                     }
                     setActive("n");
+                    objects.add(new Explosion(getPositionX(), getPositionY(),ID.Explosion,textures));
                 }
             }
         }
