@@ -8,6 +8,7 @@ public abstract class GameObject {
     private int positionY;
     private int velocityX;
     private int velocityY;
+    private boolean delete = false;
 
     public GameObject(int x, int y) {
         setPositionX(x);
@@ -48,5 +49,13 @@ public abstract class GameObject {
 
     public void setVelocityY(int velocityY) {
         this.velocityY = velocityY;
+    }
+
+    public boolean shouldDelete() {
+        return delete;
+    }
+
+    public void setDelete(boolean delete) {
+        this.delete = delete;
     }
 }

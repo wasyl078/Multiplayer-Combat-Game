@@ -50,6 +50,24 @@ public class SoundsEffect {
         clip.start();
     }
 
+    public static void makeGrenadeThrowSound() {
+        soundName = "sounds\\granat rzut.wav";
+        getSounds();
+        clip.start();
+    }
+
+    public static void makeExplosionSound() {
+        soundName = "sounds\\granat wybuch.wav";
+        getSounds();
+        clip.start();
+    }
+
+    public static void makeGrenadeBounceSound() {
+        soundName = "sounds\\granat odbicie.wav";
+        getSounds();
+        clip.start();
+    }
+
     private static void getSounds() {
         try {
             File file = new File(soundName);

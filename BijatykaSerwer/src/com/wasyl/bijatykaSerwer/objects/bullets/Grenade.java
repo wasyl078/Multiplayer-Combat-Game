@@ -33,6 +33,7 @@ public class Grenade extends GameObject {
     private boolean jumping = true;
     private int countdown = 500;
     private double jumpDivider = 1;
+    private double lastPosX = 0;
 
     public Grenade(double x, double y, ID id, int direction, Textures textures) {
         super(x, y, id);
@@ -68,7 +69,12 @@ public class Grenade extends GameObject {
 
         collisions(objects, sounds);
 
-        if (getPositionX() > Game.screenWidth * 2 || getPositionX() < -Game.screenWidth) {
+        if (getPositionX() - lastPosX < 0) direction = 1;
+        else if (getPositionX() - lastPosX > 0) direction = 2;
+        lastPosX = (int) getPositionX();
+
+
+        if (getPositionX() > Game.screenWidth * 2 || getPositionX() < -Game.screenWidth || getPositionY()>Game.screenHeight - 2*imageHeight) {
             setActive("n");
         }
     }
@@ -87,6 +93,8 @@ public class Grenade extends GameObject {
                     setPositionY(bufGameObject.getPositionY() - imageHeight);
                     setVelocityY(-1.75 * defVel*jumpDivider);
                     jumpDivider*=0.7;
+                    if(jumpDivider>0.02)sounds.add(-4);
+                    else if(jumpDivider<0.001)setActive("n");
                     setFalling(false);
                     setJumping(true);
                 } else setFalling(true);
@@ -95,18 +103,21 @@ public class Grenade extends GameObject {
                 if (getBoundsTop().intersects(bufGameObject.getBounds())) {
                     setPositionY(bufGameObject.getPositionY() + ((Platform) bufGameObject).getHeight());
                     setVelocityY(0);
+                    sounds.add(-4);
                 } else setFalling(true);
 
                 //kolizja ze ścianą (od lewej strony)
                 if (getBoundsLeft().intersects(bufGameObject.getBounds())) {
                     setPositionX(getPositionX() + getVelocityX());
-                    setVelocityX(0);
+                    setVelocityX(-getVelocityX());
+                    sounds.add(-4);
                 }
 
                 //kolizja ze ścianą (od prawej strony)
                 if (getBoundsRight().intersects(bufGameObject.getBounds())) {
                     setPositionX(getPositionX() - getVelocityX());
-                    setVelocityX(0);
+                    setVelocityX(-getVelocityX());
+                    sounds.add(-4);
                 }
             }
         }
@@ -115,12 +126,19 @@ public class Grenade extends GameObject {
         for (int i = 0; i < objects.size(); i++) {
             if (objects.get(i).getId().equals(ID.Player)) {
                 Player bufPlayer = (Player) objects.get(i);
-                if (getBounds().intersects(bufPlayer.getBoundsCentral())) {
+                if (getBoundsCentral().intersects(bufPlayer.getBoundsRight())) { //w lewo
                     if (bufPlayer.getHittedCounter() <= 0) {
                         bufPlayer.setHittedCounter(198);
-                        if (getVelocityX() > 0) bufPlayer.setDirectionToRecoil(1);
-                        else if (getVelocityX() < 0) bufPlayer.setDirectionToRecoil(-1);
-                        else bufPlayer.setDirectionToRecoil(0);
+                        bufPlayer.setDirectionToRecoil(-1);
+                        bufPlayer.setGivePenalty(true);
+                        bufPlayer.setPenaltyHPcounter(200);
+                        sounds.add(-5);
+                    }
+                    setActive("n");
+                } else if(getBoundsCentral().intersects(bufPlayer.getBoundsLeft()))  {  //w prawo
+                    if (bufPlayer.getHittedCounter() <= 0) {
+                        bufPlayer.setHittedCounter(198);
+                        bufPlayer.setDirectionToRecoil(1);
                         bufPlayer.setGivePenalty(true);
                         bufPlayer.setPenaltyHPcounter(200);
                         sounds.add(-5);

@@ -91,6 +91,7 @@ public class Msg {
                 if(((Grenade)objects.get(i)).getActive().equals("n")){
                     Grenade.grenades--;
                     objects.remove(objects.get(i));
+                    soundsList.add(-5);
                 }
         }
 

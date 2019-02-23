@@ -1,6 +1,7 @@
 package com.wasyl.bijatykaKlient.framework;
 
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
+import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Explosion;
 import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Player;
 import com.wasyl.bijatykaKlient.objects.gameobjects.distance.throwablethings.Grenade;
 import com.wasyl.bijatykaKlient.objects.gameobjects.distance.throwablethings.PistolBullet;
@@ -52,6 +53,9 @@ public class Msg {
             else if (bufsounds == 3) SoundsEffect.makePistolSound();
             else if (bufsounds == -3) SoundsEffect.makeBulletImactSound();
             else if (bufsounds == 4) SoundsEffect.makeForceShieldSound();
+            else if (bufsounds == -4) SoundsEffect.makeGrenadeBounceSound();
+            else if (bufsounds == 5) SoundsEffect.makeGrenadeThrowSound();
+            else if (bufsounds == -5) SoundsEffect.makeExplosionSound();
         }
 
 
@@ -111,7 +115,10 @@ public class Msg {
                         bufGr.setPositionX(bufX);
                         bufGr.setPositionY(bufY);
                         bufGr.setDirection(bufDirection);
-                        if(bufActive == 2) game.getDrawHandler().objects.remove(bufGr);
+                        if(bufActive == 2) {
+                            game.getDrawHandler().objects.remove(bufGr);
+                            game.getDrawHandler().objects.add(new Explosion(bufX,bufY, textures));
+                        }
                     }
                 }
             }

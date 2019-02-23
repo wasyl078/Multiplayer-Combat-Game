@@ -38,6 +38,12 @@ public class Textures {
     private BufferedImage forceShieldRight;
     private BufferedImage grenadeLeft;
     private BufferedImage grenadeRight;
+    private BufferedImage explosionFrame0;
+    private BufferedImage explosionFrame1;
+    private BufferedImage explosionFrame2;
+    private BufferedImage explosionFrame3;
+    private BufferedImage explosionFrame4;
+    private BufferedImage explosionFrame5;
 
     public Textures() {
         SpriteSheetLoader loader = new SpriteSheetLoader();
@@ -75,6 +81,12 @@ public class Textures {
         forceShieldRight = ss.grabImage(12,2,52,128);
         grenadeLeft = ss.grabImage(15,2,65,108);
         grenadeRight = ss.grabImage(14,2,65,108);
+        explosionFrame0 =ss.grabImage(1,3,68,63);
+        explosionFrame1 =ss.grabImage(2,3,72,65);
+        explosionFrame2 =ss.grabImage(3,3,96,72);
+        explosionFrame3 =ss.grabImage(4,3,122,80);
+        explosionFrame4 =ss.grabImage(5,3,126,85);
+        explosionFrame5 =ss.grabImage(6,3,128,87);
     }
 
 
@@ -199,12 +211,24 @@ public class Textures {
     }
 
     public Image getGrenadeLeft(){
-        Image bufImage = toFXImage(scale(grenadeLeft, (int)(0.033854*Game.screenWidth), (int)(0.1*Game.screenHeight)),null);
+        Image bufImage = toFXImage(scale(grenadeLeft, (int)(0.0114583*Game.screenWidth), (int)(0.033333*Game.screenHeight)),null);
         return bufImage;
     }
     public Image getGrenadeRight(){
-        Image bufImage = toFXImage(scale(grenadeRight, (int)(0.033854*Game.screenWidth), (int)(0.1*Game.screenHeight)),null);
+        Image bufImage = toFXImage(scale(grenadeRight, (int)(0.0114583*Game.screenWidth), (int)(0.033333*Game.screenHeight)),null);
         return bufImage;
+    }
+
+    public Image[] getExplosions(){
+        Image bufImage0 = toFXImage(scale(explosionFrame0, (int)(0.0708332*Game.screenWidth), (int)(0.1166666*Game.screenHeight)),null);
+        Image bufImage1 = toFXImage(scale(explosionFrame1, (int)(0.075*Game.screenWidth), (int)(0.1203702*Game.screenHeight)),null);
+        Image bufImage2 = toFXImage(scale(explosionFrame2, (int)(0.1*Game.screenWidth), (int)(0.1333332*Game.screenHeight)),null);
+        Image bufImage3 = toFXImage(scale(explosionFrame3, (int)(0.1270832*Game.screenWidth), (int)(0.148148*Game.screenHeight)),null);
+        Image bufImage4 = toFXImage(scale(explosionFrame4, (int)(0.13125*Game.screenWidth), (int)(0.1574074*Game.screenHeight)),null);
+        Image bufImage5 = toFXImage(scale(explosionFrame5, (int)(0.1333332*Game.screenWidth), (int)(0.161111*Game.screenHeight)),null);
+
+        Image []explosions = {bufImage5,bufImage4,bufImage3,bufImage2,bufImage1,bufImage0};
+        return explosions;
     }
 
     //metoda skalująca obrazki (BufferedImage ---> JavaFx Image)

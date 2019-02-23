@@ -14,6 +14,7 @@ public class DrawHandler {
     public final LinkedList<GameObject> objects = new LinkedList<GameObject>();
     public final LinkedList<Player> players = new LinkedList<Player>();
     private Textures textures;
+    private GameObject buforGameObject;
 
     public DrawHandler(Textures textures) {
         this.textures = textures;
@@ -21,7 +22,9 @@ public class DrawHandler {
 
     public void draw(GraphicsContext gc,int cpx,int cpy) {
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).draw(gc,cpx,cpy);
+            buforGameObject = objects.get(i);
+            buforGameObject.draw(gc,cpx,cpy);
+            if(buforGameObject.shouldDelete()) objects.remove(buforGameObject);
         }
     }
 

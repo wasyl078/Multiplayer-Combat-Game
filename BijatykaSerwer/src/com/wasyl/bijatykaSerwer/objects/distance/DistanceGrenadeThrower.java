@@ -30,8 +30,7 @@ public class DistanceGrenadeThrower extends DistanceArmas {
             if(countdown>0){
                 player.setLastWeapon(19);
             } else if(player.getAttacking() == 1 && countdown==0){
-                //TODO nowy granat w lewo
-                Grenade bufGrenade = new Grenade((int) getOwnerPlayer().getPositionX() - getLeftImage().getWidth(), (int) getOwnerPlayer().getPositionY() + getOwnerPlayer().getPlayerImageHeight() - getLeftImage().getHeight(), ID.Grenade, 1, getTextures());
+                Grenade bufGrenade = new Grenade((int) getOwnerPlayer().getPositionX() - getLeftImage().getWidth(), (int) getOwnerPlayer().getPositionY(), ID.Grenade, 1, getTextures());
                 objects.add(bufGrenade);
                 sounds.add(5);
                 player.setLastWeapon(19);
@@ -42,8 +41,7 @@ public class DistanceGrenadeThrower extends DistanceArmas {
             if(countdown>0){
                 player.setLastWeapon(20);
             }else if(player.getAttacking() == 1 && countdown==0){
-                //TODO nowy granat w prawo
-                Grenade bufGrenade = new Grenade((int) getOwnerPlayer().getPositionX() + getOwnerPlayer().getPlayerImageWidth(), (int) getOwnerPlayer().getPositionY() + getOwnerPlayer().getPlayerImageHeight() - getLeftImage().getHeight(), ID.Grenade, 2, getTextures());
+                Grenade bufGrenade = new Grenade((int) getOwnerPlayer().getPositionX() + getOwnerPlayer().getPlayerImageWidth(), (int) getOwnerPlayer().getPositionY(), ID.Grenade, 2, getTextures());
                 objects.add(bufGrenade);
                 sounds.add(5);
                 player.setLastWeapon(20);

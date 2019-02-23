@@ -24,8 +24,8 @@ public class DistanceGrenadeThrower extends DistanceArmas {
     @Override
     public void draw(GraphicsContext gc, int cpx, int cpy) {
         int lastWeapon = getOwnerPlayer().getLastWeapon();
-        if (lastWeapon == 17) gc.drawImage(getLeftImage(), getOwnerPlayer().getPositionX() + addPosX1 + cpx, getOwnerPlayer().getPositionY() + addPosY1 + cpy);
-        else if (lastWeapon == 18) gc.drawImage(getRightImage(), getOwnerPlayer().getPositionX() + addPosX2 + cpx, getOwnerPlayer().getPositionY() + addPosY2 + cpy);
+        if (lastWeapon == 17) gc.drawImage(getLeftImage(), getOwnerPlayer().getPositionX() + addPosX1 + cpx, getOwnerPlayer().getPositionY() + cpy);
+        else if (lastWeapon == 18) gc.drawImage(getRightImage(), getOwnerPlayer().getPositionX() + addPosX2 + cpx, getOwnerPlayer().getPositionY() + cpy);
       //  else if (lastWeapon == 19) gc.drawImage(getLeftImage(), getOwnerPlayer().getPositionX() + addPosX1 + cpx, getOwnerPlayer().getPositionY() + addPosY1 + cpy);
       //  else if (lastWeapon == 20) gc.drawImage(getRightImage(), getOwnerPlayer().getPositionX() + addPosX2 + cpx, getOwnerPlayer().getPositionY() + addPosY2 + cpy);
     }
