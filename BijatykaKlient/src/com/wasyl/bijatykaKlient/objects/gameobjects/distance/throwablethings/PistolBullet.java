@@ -1,8 +1,7 @@
-package com.wasyl.bijatykaKlient.objects.gameobjects.distance.bullets;
+package com.wasyl.bijatykaKlient.objects.gameobjects.distance.throwablethings;
 
 import com.wasyl.bijatykaKlient.framework.Game;
 import com.wasyl.bijatykaKlient.objects.gameobjects.GameObject;
-import com.wasyl.bijatykaKlient.sounds.SoundsEffect;
 import com.wasyl.bijatykaKlient.textures.Textures;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

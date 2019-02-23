@@ -1,6 +1,7 @@
 package com.wasyl.bijatykaSerwer.objects;
 
 import com.wasyl.bijatykaSerwer.framework.Game;
+import com.wasyl.bijatykaSerwer.objects.distance.DistanceGrenadeThrower;
 import com.wasyl.bijatykaSerwer.objects.distance.DistancePistol;
 import com.wasyl.bijatykaSerwer.objects.melee.ForceShield;
 import com.wasyl.bijatykaSerwer.objects.melee.MeleeAxe;
@@ -40,6 +41,7 @@ public class Player extends GameObject {
     private final MeleeAxe axe;
     private final DistancePistol pistol;
     private final ForceShield forceShield;
+    private final DistanceGrenadeThrower grenadeThrower;
     private int whichWeapon = 1;
     private int lastWeapon = 1;
     private int hittedCounter = 0;
@@ -68,6 +70,7 @@ public class Player extends GameObject {
         this.axe = new MeleeAxe(0, 0, ID.MeleeAxe, this, textures);
         this.pistol = new DistancePistol(0, 0, ID.DistancePistol, this, textures);
         this.forceShield = new ForceShield(0, 0, ID.ForceShield, this, textures);
+        this.grenadeThrower = new DistanceGrenadeThrower(0,0,ID.DistanceGrenadeThrower,this,textures);
         setAlive("n");
     }
 
@@ -149,6 +152,7 @@ public class Player extends GameObject {
         else if (whichWeapon == 2) axe.update(objects,sounds);
         else if (whichWeapon == 3) pistol.update(objects,sounds);
         else if(whichWeapon == 4) forceShield.update(objects,sounds);
+        else if(whichWeapon == 5) grenadeThrower.update(objects,sounds);
     }
 
 

@@ -1,8 +1,11 @@
 package com.wasyl.bijatykaSerwer.framework;
 
 
+import com.wasyl.bijatykaSerwer.objects.GameObject;
+import com.wasyl.bijatykaSerwer.objects.ID;
 import com.wasyl.bijatykaSerwer.objects.Player;
 import com.wasyl.bijatykaSerwer.objects.UpdateHandler;
+import com.wasyl.bijatykaSerwer.objects.bullets.Grenade;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -13,6 +16,7 @@ public class Msg {
     private UpdateHandler updateHandler;
     private LinkedList<Player> playersList;
     private ArrayList<Integer>soundsList;
+    private LinkedList<GameObject>objects;
 
 
     //konstruktor klasy
@@ -20,6 +24,7 @@ public class Msg {
         this.updateHandler = updateHandler;
         playersList = updateHandler.players;
         soundsList = updateHandler.sounds;
+        objects = updateHandler.objects;
     }
 
     //metoda twrząca jedną długą wiadomość do wysłania każdemu klientowi
@@ -58,6 +63,36 @@ public class Msg {
             bufWiadom += (int) Game.bufPistolBullet.getPositionY();
             Game.bufPistolBullet = null;
         } else bufWiadom += "_0.x.x.x.x";
+
+        //granaty
+        bufWiadom += "_";
+        bufWiadom +=Grenade.grenades;
+        for(int i = 0 ; i < objects.size(); i++){
+            if(objects.get(i).getId().equals(ID.Grenade)){
+                Grenade bufGrenade = (Grenade) objects.get(i);
+                bufWiadom += ".";
+                if (bufGrenade.getActive().equals("t")) {
+                    bufWiadom += 1;
+                } else {
+                    bufWiadom += 2;
+                }
+                bufWiadom += ".";
+                bufWiadom += bufGrenade.getIndividualGrenadeNumber();
+                bufWiadom += ".";
+                bufWiadom += bufGrenade.getDirection();
+                bufWiadom += ".";
+                bufWiadom += (int) bufGrenade.getPositionX();
+                bufWiadom += ".";
+                bufWiadom += (int) bufGrenade.getPositionY();
+            }
+        }
+        for(int i = 0 ; i< objects.size();i ++){
+            if(objects.get(i).getId().equals(ID.Grenade))
+                if(((Grenade)objects.get(i)).getActive().equals("n")){
+                    Grenade.grenades--;
+                    objects.remove(objects.get(i));
+                }
+        }
 
 
         //stan graczy

@@ -2,6 +2,7 @@ package com.wasyl.bijatykaSerwer.framework;
 
 
 import com.wasyl.bijatykaSerwer.objects.UpdateHandler;
+import com.wasyl.bijatykaSerwer.objects.bullets.Grenade;
 import com.wasyl.bijatykaSerwer.objects.bullets.PistolBullet;
 import com.wasyl.bijatykaSerwer.textures.Textures;
 

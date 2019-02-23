@@ -1,6 +1,7 @@
 package com.wasyl.bijatykaKlient.objects.gameobjects.characters;
 
 import com.wasyl.bijatykaKlient.objects.gameobjects.GameObject;
+import com.wasyl.bijatykaKlient.objects.gameobjects.distance.DistanceGrenadeThrower;
 import com.wasyl.bijatykaKlient.objects.gameobjects.distance.DistancePistol;
 import com.wasyl.bijatykaKlient.objects.gameobjects.melee.ForceShield;
 import com.wasyl.bijatykaKlient.objects.gameobjects.melee.MeleeAxe;
@@ -33,6 +34,7 @@ public class Player extends GameObject {
     private MeleeAxe meleeAxe;
     private DistancePistol distancePistol;
     private ForceShield forceShield;
+    private DistanceGrenadeThrower grenadeThrower;
     private int lastWeapon = 0;
 
 
@@ -46,6 +48,7 @@ public class Player extends GameObject {
         distancePistol = new DistancePistol(0, 0, this, textures);
         healthbar = new Healthbar(0,0,this, textures);
         forceShield = new ForceShield(0,0,this,textures);
+        grenadeThrower = new DistanceGrenadeThrower(0,0,this,textures);
         setCharacterImageNumber(characterNumber);
     }
 
@@ -62,6 +65,7 @@ public class Player extends GameObject {
         distancePistol.draw(gc, cpx, cpy);
         healthbar.draw(gc, cpx, cpy);
         forceShield.draw(gc, cpx, cpy);
+        grenadeThrower.draw(gc,cpx,cpy);
     }
 
 
@@ -91,6 +95,7 @@ public class Player extends GameObject {
             distancePistol.calculateWeaponPosition();
             healthbar.setPlayerImageAtHealthBar(imageRight);
             forceShield.calculateWeaponPosition();
+            grenadeThrower.calculateWeaponPosition();
         }
     }
 

@@ -36,6 +36,8 @@ public class Textures {
     private BufferedImage healthBar1;
     private BufferedImage forceShieldLeft;
     private BufferedImage forceShieldRight;
+    private BufferedImage grenadeLeft;
+    private BufferedImage grenadeRight;
 
     public Textures() {
         SpriteSheetLoader loader = new SpriteSheetLoader();
@@ -71,6 +73,8 @@ public class Textures {
         healthBar1 = ss.grabImage(9,2,340,42);
         forceShieldLeft = ss.grabImage(13,2,52,128);
         forceShieldRight = ss.grabImage(12,2,52,128);
+        grenadeLeft = ss.grabImage(15,2,65,108);
+        grenadeRight = ss.grabImage(14,2,65,108);
     }
 
 
@@ -191,6 +195,15 @@ public class Textures {
 
     public Image getForceShieldRight(){
         Image bufImage = toFXImage(scale(forceShieldRight, (int)(0.027083*Game.screenWidth), (int)(0.118518*Game.screenHeight)),null);
+        return bufImage;
+    }
+
+    public Image getGrenadeLeft(){
+        Image bufImage = toFXImage(scale(grenadeLeft, (int)(0.033854*Game.screenWidth), (int)(0.1*Game.screenHeight)),null);
+        return bufImage;
+    }
+    public Image getGrenadeRight(){
+        Image bufImage = toFXImage(scale(grenadeRight, (int)(0.033854*Game.screenWidth), (int)(0.1*Game.screenHeight)),null);
         return bufImage;
     }
 

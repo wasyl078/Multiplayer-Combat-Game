@@ -25,8 +25,8 @@ public class Game extends Application {
 
     //związane z okienkiem
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    //public final static int screenWidth = (int)screenSize.getWidth();
-    //public final static int screenHeight = (int)screenSize.getHeight();
+   // public final static int screenWidth = (int)screenSize.getWidth();
+   // public final static int screenHeight = (int)screenSize.getHeight();
     public final static int screenWidth = 1600;
     public final static int screenHeight = 900;
 
@@ -148,7 +148,7 @@ public class Game extends Application {
         gameLoop.setCycleCount( Timeline.INDEFINITE );
 
         KeyFrame kf = new KeyFrame(
-                Duration.seconds(0.0085),                // 60 FPS
+                Duration.seconds(0.008333),                // 120 FPS
                 ae -> draw());
 
         gameLoop.getKeyFrames().add( kf );
@@ -214,7 +214,8 @@ public class Game extends Application {
         if (getWeaponNumber() == 1) setWeaponNumber(2);
         else if (getWeaponNumber() == 2) setWeaponNumber(3);
         else if (getWeaponNumber() == 3) setWeaponNumber(4);
-        else if (getWeaponNumber() == 4) setWeaponNumber(1);
+        else if (getWeaponNumber() == 4) setWeaponNumber(5);
+        else if (getWeaponNumber() == 5) setWeaponNumber(1);
 
     }
 

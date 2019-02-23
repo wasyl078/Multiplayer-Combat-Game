@@ -2,9 +2,12 @@ package com.wasyl.bijatykaKlient.framework;
 
 import com.wasyl.bijatykaKlient.objects.DrawHandler;
 import com.wasyl.bijatykaKlient.objects.gameobjects.characters.Player;
-import com.wasyl.bijatykaKlient.objects.gameobjects.distance.bullets.PistolBullet;
+import com.wasyl.bijatykaKlient.objects.gameobjects.distance.throwablethings.Grenade;
+import com.wasyl.bijatykaKlient.objects.gameobjects.distance.throwablethings.PistolBullet;
 import com.wasyl.bijatykaKlient.sounds.SoundsEffect;
 import com.wasyl.bijatykaKlient.textures.Textures;
+
+import java.util.ArrayList;
 
 public class Msg {
 
@@ -40,15 +43,15 @@ public class Msg {
         String alive;
 
         //interpretacja dzwięków
-        for(int i = 2 ; i <= Integer.parseInt(numberOfPlayersAndSounds[1])+1;i++){
+        for (int i = 2; i <= Integer.parseInt(numberOfPlayersAndSounds[1]) + 1; i++) {
             int bufsounds = Integer.parseInt(numberOfPlayersAndSounds[i]);
-            if(bufsounds == 1) SoundsEffect.makeLightSaberSound();
-            else if(bufsounds ==-1)SoundsEffect.makeLightSaberHitSound();
-            else if(bufsounds == 2)SoundsEffect.makeAxeSwingSound();
-            else if(bufsounds == -2)SoundsEffect.makeAxeSwingSound();            //TODO
-            else if(bufsounds ==3)SoundsEffect.makePistolSound();
-            else if(bufsounds ==-3)SoundsEffect.makeBulletImactSound();
-            else if(bufsounds == 4)SoundsEffect.makeForceShieldSound();
+            if (bufsounds == 1) SoundsEffect.makeLightSaberSound();
+            else if (bufsounds == -1) SoundsEffect.makeLightSaberHitSound();
+            else if (bufsounds == 2) SoundsEffect.makeAxeSwingSound();
+            else if (bufsounds == -2) SoundsEffect.makeAxeSwingSound();            //TODO
+            else if (bufsounds == 3) SoundsEffect.makePistolSound();
+            else if (bufsounds == -3) SoundsEffect.makeBulletImactSound();
+            else if (bufsounds == 4) SoundsEffect.makeForceShieldSound();
         }
 
 
@@ -62,7 +65,7 @@ public class Msg {
         //pododawnie wszystkich obecnych graczy
         while (numberOfPlayers != lastPlayersNumber) {
             lastPlayersNumber++;
-            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber + 1].substring(2, 3)), lastPlayersNumber);
+            drawHandler.addPlayer(Integer.parseInt(parts[lastPlayersNumber + 2].substring(2, 3)), lastPlayersNumber);
         }
 
 
@@ -87,8 +90,39 @@ public class Msg {
             }
         }
 
+        //nowe granaty
+        String[] bufGrenade = parts[2].split("\\.");
+        int grenades = Integer.parseInt(bufGrenade[0]);
+        for (int i = 1; i <= grenades; i++) {
+            int bufActive = Integer.parseInt(bufGrenade[(i - 1) * 5 + 1]);
+            int bufIndividualGrenadeNumber = Integer.parseInt(bufGrenade[(i - 1) * 5 + 2]);
+            int bufDirection = Integer.parseInt(bufGrenade[(i - 1) * 5 + 3]);
+            int bufX = Integer.parseInt(bufGrenade[(i - 1) * 5 + 4]);
+            int bufY = Integer.parseInt(bufGrenade[(i - 1) * 5 + 5]);
+            bufX = Game.screenWidth * bufX / 1920;
+            bufY = Game.screenHeight * bufY / 1080;
+            if (!Grenade.listOfGrenadesNumbers.contains(bufIndividualGrenadeNumber)) {
+                game.getDrawHandler().objects.add(new Grenade(bufX, bufY, bufIndividualGrenadeNumber, bufDirection, textures));
+            }
+            for (int u = 0; u < game.getDrawHandler().objects.size(); u++) {
+                if (game.getDrawHandler().objects.get(u).getClass().equals(Grenade.class)) {
+                    Grenade bufGr = (Grenade) game.getDrawHandler().objects.get(u);
+                    if(bufGr.getIndividualGrenadeNumber() == bufIndividualGrenadeNumber){
+                        bufGr.setPositionX(bufX);
+                        bufGr.setPositionY(bufY);
+                        bufGr.setDirection(bufDirection);
+                        if(bufActive == 2){
+                            game.getDrawHandler().objects.remove(bufGr);
+                            System.out.println("iusus");
+                        }
+                    }
+                }
+            }
+
+        }
+
         //poustawianie pozycji wszystkich graczy na ekranie
-        for (int i = 2; i <= numberOfPlayers + 1; i++) {
+        for (int i = 3; i <= numberOfPlayers + 2; i++) {
             String[] buf = parts[i].split("\\.");
 
             alive = buf[0];
@@ -107,7 +141,7 @@ public class Msg {
             for (int u = 0; u < game.getDrawHandler().objects.size(); u++) {
                 if (game.getDrawHandler().objects.get(u).getClass().equals(Player.class)) {
                     Player bufPlayer = (Player) game.getDrawHandler().objects.get(u);
-                    if (i - 1 == ((Player) game.getDrawHandler().objects.get(u)).getPlayerNumber()) {
+                    if (i - 2 == ((Player) game.getDrawHandler().objects.get(u)).getPlayerNumber()) {
                         bufPlayer.setAlive(alive);
                         bufPlayer.setLastWeapon(lastWeapon);
                         bufPlayer.setDirection(direction);

@@ -15,9 +15,9 @@ public class UpdateHandler {
 
     public UpdateHandler(Textures textures) {
         this.textures = textures;
-        objects = new LinkedList<GameObject>();
-        players = new LinkedList<Player>();
-        sounds = new ArrayList<Integer>();
+        objects = new LinkedList<>();
+        players = new LinkedList<>();
+        sounds = new ArrayList<>();
     }
 
     public void update() {
