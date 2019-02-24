@@ -70,7 +70,7 @@ public class Player extends GameObject {
         this.axe = new MeleeAxe(0, 0, ID.MeleeAxe, this, textures);
         this.pistol = new DistancePistol(0, 0, ID.DistancePistol, this, textures);
         this.forceShield = new ForceShield(0, 0, ID.ForceShield, this, textures);
-        this.grenadeThrower = new DistanceGrenadeThrower(0,0,ID.DistanceGrenadeThrower,this,textures);
+        this.grenadeThrower = new DistanceGrenadeThrower(0, 0, ID.DistanceGrenadeThrower, this, textures);
         setAlive("n");
     }
 
@@ -113,11 +113,11 @@ public class Player extends GameObject {
         collisions(objects);
 
         fallen = false;
-        if (getPositionY() > Game.screenHeight)
+        if (getPositionY() > Game.screenHeight + 4 * getPlayerImageHeight())
             if (onlyOnePenalty) {
                 fallen = true;
                 onlyOnePenalty = false;
-                penaltyHPcounter += 100;
+                addPenaltyHP(100);
             }
 
         if (getPositionY() > 2000) {
@@ -148,11 +148,11 @@ public class Player extends GameObject {
             }
         }
 
-        if (whichWeapon == 1) lightSaber.update(objects,sounds);
-        else if (whichWeapon == 2) axe.update(objects,sounds);
-        else if (whichWeapon == 3) pistol.update(objects,sounds);
-        else if(whichWeapon == 4) forceShield.update(objects,sounds);
-        else if(whichWeapon == 5) grenadeThrower.update(objects,sounds);
+        if (whichWeapon == 1) lightSaber.update(objects, sounds);
+        else if (whichWeapon == 2) axe.update(objects, sounds);
+        else if (whichWeapon == 3) pistol.update(objects, sounds);
+        else if (whichWeapon == 4) forceShield.update(objects, sounds);
+        else if (whichWeapon == 5) grenadeThrower.update(objects, sounds);
     }
 
 
@@ -334,6 +334,7 @@ public class Player extends GameObject {
     }
 
     public void setHP(int HP) {
+        if(HP>1000)return;
         this.HP = HP;
     }
 
@@ -351,5 +352,9 @@ public class Player extends GameObject {
 
     public void setPenaltyHPcounter(int penaltyHPcounter) {
         this.penaltyHPcounter = penaltyHPcounter;
+    }
+
+    public void addPenaltyHP(int additionHP) {
+        setPenaltyHPcounter(getPenaltyHPcounter() + additionHP);
     }
 }

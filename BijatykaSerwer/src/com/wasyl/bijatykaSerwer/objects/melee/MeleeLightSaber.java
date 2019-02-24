@@ -69,7 +69,7 @@ public class MeleeLightSaber extends MeleeArmas {
                         if (getOwnerPlayer().getDirection() == 1) anotherPlayer.setDirectionToRecoil(-1);
                         else anotherPlayer.setDirectionToRecoil(1);
                         anotherPlayer.setGivePenalty(true);
-                        anotherPlayer.setPenaltyHPcounter(50);
+                        anotherPlayer.addPenaltyHP(50);
                         sounds.add(-1);
                     }
                 }

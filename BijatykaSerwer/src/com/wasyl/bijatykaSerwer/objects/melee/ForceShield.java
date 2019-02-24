@@ -26,6 +26,7 @@ public class ForceShield extends MeleeArmas {
         if (player.getDirection() == 1) {
             if (player.getAttacking() == 1) {
                 player.setLastWeapon(15);
+                player.setHP(player.getHP()+1);
                 if(soundSwitch){
                     sounds.add(4);
                     soundSwitch= false;
@@ -37,6 +38,7 @@ public class ForceShield extends MeleeArmas {
         } else {
             if (player.getAttacking() == 1) {
                 player.setLastWeapon(16);
+                player.setHP(player.getHP()+1);
                 if(soundSwitch){
                     sounds.add(4);
                     soundSwitch= false;

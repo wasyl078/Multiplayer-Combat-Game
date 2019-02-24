@@ -133,7 +133,7 @@ public class Grenade extends GameObject {
                         bufPlayer.setHittedCounter(198);
                         bufPlayer.setDirectionToRecoil(-1);
                         bufPlayer.setGivePenalty(true);
-                        bufPlayer.setPenaltyHPcounter(200);
+                        bufPlayer.addPenaltyHP(200);
                         sounds.add(-5);
                     }
                     setActive("n");
@@ -142,7 +142,7 @@ public class Grenade extends GameObject {
                         bufPlayer.setHittedCounter(198);
                         bufPlayer.setDirectionToRecoil(1);
                         bufPlayer.setGivePenalty(true);
-                        bufPlayer.setPenaltyHPcounter(200);
+                        bufPlayer.addPenaltyHP(200);
                         sounds.add(-5);
                     }
                     setActive("n");

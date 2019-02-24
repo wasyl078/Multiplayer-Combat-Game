@@ -70,7 +70,7 @@ public class MeleeAxe extends MeleeArmas {
                         if (getOwnerPlayer().getDirection() == 1) anotherPlayer.setDirectionToRecoil(-1);
                         else anotherPlayer.setDirectionToRecoil(1);
                         anotherPlayer.setGivePenalty(true);
-                        anotherPlayer.setPenaltyHPcounter(75);
+                        anotherPlayer.addPenaltyHP(700);
                         sounds.add(-2);
                     }
                 }

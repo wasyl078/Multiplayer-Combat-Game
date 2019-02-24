@@ -46,14 +46,14 @@ public class Explosion extends GameObject {
                         bufPlayer.setHittedCounter(198);
                         bufPlayer.setDirectionToRecoil(-1);
                         bufPlayer.setGivePenalty(true);
-                        bufPlayer.setPenaltyHPcounter(200);
+                        bufPlayer.setPenaltyHPcounter(150);
                     }
                 } else if(getBounds().intersects(bufPlayer.getBoundsLeft()))  {  //w prawo
                     if (bufPlayer.getHittedCounter() <= 0) {
                         bufPlayer.setHittedCounter(198);
                         bufPlayer.setDirectionToRecoil(1);
                         bufPlayer.setGivePenalty(true);
-                        bufPlayer.setPenaltyHPcounter(200);
+                        bufPlayer.setPenaltyHPcounter(150);
                     }
                 }
             }

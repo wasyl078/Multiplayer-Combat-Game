@@ -55,7 +55,7 @@ public class PistolBullet extends GameObject {
                             if (defVel > 0) bufPlayer.setDirectionToRecoil(1);
                             else bufPlayer.setDirectionToRecoil(-1);
                             bufPlayer.setGivePenalty(true);
-                            bufPlayer.setPenaltyHPcounter(400);
+                            bufPlayer.addPenaltyHP(400);
                             sounds.add(-3);
                         }
                     }
