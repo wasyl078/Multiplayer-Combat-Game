@@ -1,4 +1,4 @@
-# :pizza: Myltiplayer-Combat-Game ![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102) ![my badge](https://img.shields.io/badge/status-finished-brightgreen) ![my badge 2](https://img.shields.io/badge/special_feature-multiplayer-pink) 
+# :pizza: Myltiplayer-Combat-Game ![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102) ![my badge](https://img.shields.io/badge/status-frozen-grey) ![my badge 2](https://img.shields.io/badge/special_feature-multiplayer-pink) 
 This is my first **big** project. I started with singleplayer version of Brawhalla-like mechanichs 2D game, but I immadietely turned it multiplayer, becouse I saw some potenitial in this idea. It turned out quite nice. We can have plenty of players online at the same time. If someone doesn't want to find another person, he / she can try playing against smart bot, which is supposed not to die (thanks to healing shield feature)
 ## Technologies and algorithms 
 I used Java 8 with JavaFX library and concurrent programming (but only to handle rendering and receving messages from server by client)
