@@ -25,6 +25,6 @@ Actually available weapons:
 ![screen3](https://github.com/wasyl078/Multiplayer-Combat-Game/blob/master/MCG_Client/obrazki/mcg3.png)
 
 ### Credits:
-Thanks to my friend Łukasz for testing this game with me,for being one of the players in game and for giving me many ideas for new weapons:  [@Ukasz](https://github.com/Ukasz09)
+Thanks to my friend Łukasz for testing this game with me, being one of the players in game and for giving me many ideas for new weapons:  [@Ukasz](https://github.com/Ukasz09)
  
 ![java badge](https://forthebadge.com/images/badges/made-with-java.svg)
