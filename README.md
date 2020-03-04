@@ -18,7 +18,7 @@ Actually available weapons:
 #### Player choice menu
 ![screen1](https://github.com/wasyl078/Multiplayer-Combat-Game/blob/master/MCG_Client/obrazki/mcg1.png)
 
-#### Battle with bots and another player
+#### Battle with bot and another player
 ![screen2](https://github.com/wasyl078/Multiplayer-Combat-Game/blob/master/MCG_Client/obrazki/mcg2.png)
 
 #### Grenade explosion
